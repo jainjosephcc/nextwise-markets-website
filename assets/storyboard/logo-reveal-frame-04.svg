@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941" role="img" aria-label="Nextwise Markets logo emerging from dark amber clouds">
+  <defs>
+    <radialGradient id="focus" cx="50%" cy="48%" r="42%">
+      <stop offset="0" stop-color="#f46a22" stop-opacity=".14"/>
+      <stop offset=".52" stop-color="#8e3517" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#f0aa35" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#ef6b23" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ef6b23" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <image href="logo-reveal-frame-03.png" width="1672" height="941" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="1672" height="941" fill="#020304" opacity=".22"/>
+  <ellipse cx="836" cy="462" rx="500" ry="300" fill="url(#focus)" filter="url(#softGlow)"/>
+  <text x="836" y="362" text-anchor="middle" fill="#d3c0ac" font-family="Cairo, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="4">CLARITY EMERGES</text>
+  <image href="../nextwise-logo-gradient.svg" x="476" y="394" width="720" height="152" preserveAspectRatio="xMidYMid meet"/>
+  <text x="836" y="595" text-anchor="middle" fill="#f3eee8" font-family="Cairo, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="5">TRADE WITH CLARITY.</text>
+  <rect x="272" y="642" width="1128" height="1" fill="url(#line)"/>
+</svg>
