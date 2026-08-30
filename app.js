@@ -9,6 +9,8 @@ const defaultMarket = isWeekend
 const state = { ...defaultMarket, interval: "60" };
 const chart = document.querySelector("[data-chart]");
 const iframe = document.querySelector("#trading-chart");
+const chartRetryButton = document.querySelector("[data-chart-retry]");
+let chartLoadTimer = 0;
 
 function chartUrl() {
   const params = new URLSearchParams({
@@ -27,14 +29,40 @@ function chartUrl() {
   return `https://s.tradingview.com/widgetembed/?${params.toString()}`;
 }
 
-function loadChart() {
-  chart?.classList.remove("loaded");
-  if (!iframe) return;
-  iframe.title = `Chart for ${state.label}, ${state.interval === "D" ? "1 day" : `${state.interval} minutes`}`;
-  iframe.src = chartUrl();
+function setChartState(nextState) {
+  if (!chart) return;
+  chart.classList.toggle("loaded", nextState === "ready");
+  chart.classList.toggle("is-slow", nextState === "slow");
+  chart.setAttribute("aria-busy", String(nextState === "loading"));
 }
 
-iframe?.addEventListener("load", () => chart.classList.add("loaded"));
+function loadChart({ force = false } = {}) {
+  if (!iframe) return;
+  const nextUrl = chartUrl();
+  if (!force && iframe.dataset.chartUrl === nextUrl) return;
+
+  window.clearTimeout(chartLoadTimer);
+  setChartState("loading");
+  iframe.dataset.chartUrl = nextUrl;
+  iframe.title = `Chart for ${state.label}, ${state.interval === "D" ? "1 day" : `${state.interval} minutes`}`;
+  iframe.src = nextUrl;
+  chartLoadTimer = window.setTimeout(() => setChartState("slow"), 10000);
+}
+
+iframe?.addEventListener("load", () => {
+  window.clearTimeout(chartLoadTimer);
+  setChartState("ready");
+});
+
+chartRetryButton?.addEventListener("click", () => loadChart({ force: true }));
+
+/*
+ * The TradingView iframe is kept alive while device previews move around the
+ * hero. Only an actual symbol or timeframe change gets a new URL.
+ */
+function updateHeroChart() {
+  loadChart();
+}
 
 function activateTab(button, selector) {
   document.querySelectorAll(selector).forEach((tab) => {
@@ -61,7 +89,7 @@ document.querySelectorAll(".symbol-tabs button").forEach((button) => {
     state.label = button.textContent.trim();
     document.querySelector("#active-market-name").textContent = button.dataset.label;
     document.querySelector("#market-price").textContent = button.dataset.price;
-    loadChart();
+    updateHeroChart();
   });
 });
 
@@ -69,7 +97,7 @@ document.querySelectorAll(".timeframe-tabs button").forEach((button) => {
   button.addEventListener("click", () => {
     activateTab(button, ".timeframe-tabs button");
     state.interval = button.dataset.interval;
-    loadChart();
+    updateHeroChart();
   });
 });
 
@@ -134,10 +162,10 @@ enableArrowNavigation(".device-switcher", "button");
 
 const marketWidgetShell = document.querySelector("[data-live-market-widget]");
 const marketWidgetStatus = document.querySelector("[data-market-feed-status]");
-const marketWidgetScript = document.querySelector("[data-market-widget-script]");
-const marketDataWidget = document.querySelector("[data-market-data-widget]");
+const marketDataWidget = document.querySelector("[data-market-overview-widget]");
 const marketPanelName = document.querySelector("[data-market-panel-name]");
 const marketCategoryButtons = [...document.querySelectorAll("[data-market-category]")];
+const marketWidgetRetry = document.querySelector("[data-market-widget-retry]");
 const liveMarketGroups = {
   forex: [{ sectionName: "Forex", symbols: ["FX:EURUSD", "FX:GBPUSD", "FX:USDJPY", "FX:USDCHF", "FX:AUDUSD", "FX:USDCAD"] }],
   crypto: [{ sectionName: "Crypto", symbols: ["BINANCE:BTCUSDT", "BINANCE:ETHUSDT", "BINANCE:SOLUSDT", "BINANCE:XRPUSDT", "BINANCE:BNBUSDT", "BINANCE:ADAUSDT"] }],
@@ -145,6 +173,9 @@ const liveMarketGroups = {
   indices: [{ sectionName: "Indices", symbols: ["FOREXCOM:SPXUSD", "FOREXCOM:NSXUSD", "FOREXCOM:DJI", "INDEX:NKY", "INDEX:DEU40", "FOREXCOM:UKXGBP"] }],
 };
 let marketWidgetReady = false;
+let marketWidgetLoadStarted = false;
+let marketWidgetTimer = 0;
+let marketWidgetAttempt = 0;
 
 function setMarketWidgetState(state, message) {
   if (!marketWidgetShell) return;
@@ -159,19 +190,56 @@ function setMarketWidgetState(state, message) {
 
 function markMarketWidgetReady() {
   marketWidgetReady = true;
+  window.clearTimeout(marketWidgetTimer);
   setMarketWidgetState("ready", "Market data available");
 }
 
 function markMarketWidgetUnavailable() {
   if (marketWidgetReady) return;
+  window.clearTimeout(marketWidgetTimer);
   setMarketWidgetState("error", "Market data unavailable");
 }
 
-if (marketWidgetShell && "customElements" in window) {
-  customElements.whenDefined("tv-market-data").then(markMarketWidgetReady);
-  marketWidgetScript?.addEventListener("error", markMarketWidgetUnavailable, { once: true });
-  window.setTimeout(markMarketWidgetUnavailable, 12000);
+function loadMarketOverviewWidget({ retry = false } = {}) {
+  if (!marketWidgetShell || !("customElements" in window)) return;
+  if (customElements.get("tv-market-overview")) {
+    markMarketWidgetReady();
+    return;
+  }
+  if (marketWidgetLoadStarted && !retry) return;
+
+  marketWidgetLoadStarted = true;
+  marketWidgetReady = false;
+  marketWidgetAttempt += 1;
+  setMarketWidgetState("loading", "Connecting to market data");
+
+  document.querySelector("[data-market-widget-script]")?.remove();
+  const script = document.createElement("script");
+  script.type = "module";
+  script.src = `https://widgets.tradingview-widget.com/w/en/tv-market-overview.js${retry ? `?retry=${marketWidgetAttempt}` : ""}`;
+  script.dataset.marketWidgetScript = "";
+  script.addEventListener("error", markMarketWidgetUnavailable, { once: true });
+  document.head.append(script);
+
+  customElements.whenDefined("tv-market-overview").then(markMarketWidgetReady);
+  window.clearTimeout(marketWidgetTimer);
+  marketWidgetTimer = window.setTimeout(markMarketWidgetUnavailable, 15000);
 }
+
+if (marketWidgetShell) {
+  if ("IntersectionObserver" in window) {
+    const marketLoadObserver = new IntersectionObserver((entries, observer) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadMarketOverviewWidget();
+    }, { rootMargin: "900px 0px" });
+    marketLoadObserver.observe(marketWidgetShell);
+  } else {
+    loadMarketOverviewWidget();
+  }
+}
+
+marketWidgetRetry?.addEventListener("click", () => loadMarketOverviewWidget({ retry: true }));
 
 marketCategoryButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -180,7 +248,8 @@ marketCategoryButtons.forEach((button) => {
     activateTab(button, "[data-market-category]");
     marketDataWidget.setAttribute("symbol-sectors", JSON.stringify(group));
     const marketLabel = button.dataset.marketLabel || button.textContent.trim();
-    document.querySelector("#market-data-panel")?.setAttribute("aria-label", `${marketLabel} market data`);
+    document.querySelector("#market-data-panel")?.setAttribute("aria-label", `${marketLabel} market data and interactive chart`);
+    marketDataWidget.setAttribute("aria-label", `Interactive ${marketLabel} market prices and chart`);
     if (marketPanelName) marketPanelName.textContent = marketLabel;
   });
 });

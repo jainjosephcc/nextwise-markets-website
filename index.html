@@ -6,10 +6,11 @@
     <meta name="theme-color" content="#ff6a00" />
     <meta name="description" content="Nextwise Markets — a clear, connected way to access global markets." />
     <title>Nextwise Markets — Trade with clarity</title>
-    <link rel="preconnect" href="https://s.tradingview.com" />
-    <link rel="stylesheet" href="styles.css?v=32" />
-    <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-data.js" data-market-widget-script></script>
-    <script src="app.js?v=32" defer></script>
+    <link rel="preconnect" href="https://s.tradingview.com" crossorigin />
+    <link rel="preconnect" href="https://widgets.tradingview-widget.com" crossorigin />
+    <link rel="dns-prefetch" href="https://s3.tradingview.com" />
+    <link rel="stylesheet" href="styles.css?v=33" />
+    <script src="app.js?v=33" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -65,8 +66,12 @@
                 <button type="button" role="tab" aria-selected="false" data-symbol="OANDA:NAS100USD" data-label="NASDAQ 100" data-price="24,119.8">NAS100</button>
                 <button type="button" role="tab" aria-selected="false" data-symbol="BINANCE:BTCUSDT" data-label="Bitcoin / USDT" data-price="112,684">BTC/USDT</button>
               </div>
-              <div class="chart-frame" data-chart>
-                <div class="chart-loading"><span></span> Loading chart</div>
+              <div class="chart-frame" data-chart aria-busy="true">
+                <div class="chart-loading" role="status" aria-live="polite"><span></span><b>Loading chart</b></div>
+                <div class="chart-error" data-chart-error>
+                  <strong>Chart is taking longer than expected.</strong>
+                  <button type="button" data-chart-retry>Retry chart</button>
+                </div>
                 <iframe id="trading-chart" title="Chart for EUR/USD, 1 hour" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
               <div class="chart-meta">
@@ -464,7 +469,7 @@
               <div class="market-rail-session"><i></i><span>Feed active</span><small>Availability varies by venue</small></div>
             </aside>
             <div class="market-data-column">
-              <div class="market-data-toolbar"><div><span data-market-panel-name>Forex</span><strong>Live quotes and session movement</strong></div><small>Prices update through TradingView</small></div>
+              <div class="market-data-toolbar"><div><span data-market-panel-name>Forex</span><strong>Select a symbol to update its chart here</strong></div><small>Prices update through TradingView</small></div>
               <div class="market-widget-stage" id="market-data-panel" role="tabpanel" aria-label="Forex market data" aria-busy="true">
                 <div class="market-widget-loading" data-market-widget-loading aria-hidden="true">
                   <span></span>
@@ -473,14 +478,15 @@
                 <div class="market-widget-error" data-market-widget-error role="alert">
                   <strong>Market data is temporarily unavailable.</strong>
                   <p>Please check your connection and try again.</p>
+                  <button type="button" data-market-widget-retry>Retry data</button>
                 </div>
-                <tv-market-data
+                <tv-market-overview
                   theme="dark"
                   transparent
                   symbol-sectors='[{"sectionName":"Forex","symbols":["FX:EURUSD","FX:GBPUSD","FX:USDJPY","FX:USDCHF","FX:AUDUSD","FX:USDCAD"]}]'
-                  data-market-data-widget
-                  aria-label="Market prices for forex, crypto, metals, energy and global indices"
-                ></tv-market-data>
+                  data-market-overview-widget
+                  aria-label="Interactive forex market prices and chart"
+                ></tv-market-overview>
               </div>
             </div>
           </div>
