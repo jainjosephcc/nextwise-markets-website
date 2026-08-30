@@ -35,7 +35,9 @@ assets/*
 !assets/nextwise-logo-white.svg
 !assets/nextwise-mt5-terminal-only-v2.webp
 !assets/nextwise-story-activity-ledger-v1.webp
+!assets/nextwise-story-activity-ledger-v2.webp
 !assets/nextwise-story-context-terminal-v1.webp
+!assets/nextwise-story-context-terminal-v2.webp
 !assets/nextwise-story-funding-gateway-v1.webp
 
 # This file configures the upload and must not be served publicly.
