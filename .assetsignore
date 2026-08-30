@@ -1,0 +1,43 @@
+# Dependencies and deployment state
+**/node_modules
+**/.wrangler
+
+# Repository and local machine metadata
+**/.git
+**/.DS_Store
+.gitignore
+.nojekyll
+
+# Local development and project source files
+package.json
+package-lock.json
+bun.lock
+bun.lockb
+server.mjs
+README.md
+reference/
+concepts/
+storyboard-logo-sequence.html
+
+# Upload only the production assets referenced by index.html.
+assets/*
+!assets/mt5-logo.png
+!assets/mt5-metal-medallion-v3.png
+!assets/nextwise-connected-device-workspace-v1.png
+!assets/nextwise-continuity-devices-v1.png
+!assets/nextwise-hero-hand-laptop-v1.png
+!assets/nextwise-hero-hand-phone-pro-v2.png
+!assets/nextwise-hero-hand-tablet-v1.png
+!assets/nextwise-kinetic-ribbons-desktop-v1.webp
+!assets/nextwise-kinetic-ribbons-mobile-v1.webp
+!assets/nextwise-logo-blue.svg
+!assets/nextwise-logo-gradient.svg
+!assets/nextwise-logo-white.svg
+!assets/nextwise-mt5-terminal-only-v2.webp
+!assets/nextwise-story-activity-ledger-v1.webp
+!assets/nextwise-story-context-terminal-v1.webp
+!assets/nextwise-story-funding-gateway-v1.webp
+
+# This file configures the upload and must not be served publicly.
+.assetsignore
+wrangler.jsonc
