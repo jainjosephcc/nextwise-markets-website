@@ -11,6 +11,9 @@ const chart = document.querySelector("[data-chart]");
 const iframe = document.querySelector("#trading-chart");
 const chartRetryButton = document.querySelector("[data-chart-retry]");
 let chartLoadTimer = 0;
+let heroChartReady = false;
+let marketWidgetRequested = false;
+let marketWidgetReleaseTimer = 0;
 
 function chartUrl() {
   const params = new URLSearchParams({
@@ -52,6 +55,12 @@ function loadChart({ force = false } = {}) {
 iframe?.addEventListener("load", () => {
   window.clearTimeout(chartLoadTimer);
   setChartState("ready");
+  if (heroChartReady) return;
+  heroChartReady = true;
+  window.clearTimeout(marketWidgetReleaseTimer);
+  marketWidgetReleaseTimer = window.setTimeout(() => {
+    if (marketWidgetRequested) loadMarketOverviewWidget();
+  }, 700);
 });
 
 chartRetryButton?.addEventListener("click", () => loadChart({ force: true }));
@@ -63,6 +72,10 @@ chartRetryButton?.addEventListener("click", () => loadChart({ force: true }));
 function updateHeroChart() {
   loadChart();
 }
+
+// Begin the primary chart before the rest of the page initializes.
+setInitialMarket();
+loadChart();
 
 function activateTab(button, selector) {
   document.querySelectorAll(selector).forEach((tab) => {
@@ -226,16 +239,25 @@ function loadMarketOverviewWidget({ retry = false } = {}) {
   marketWidgetTimer = window.setTimeout(markMarketWidgetUnavailable, 15000);
 }
 
+function requestMarketOverviewWidget() {
+  marketWidgetRequested = true;
+  if (heroChartReady) {
+    loadMarketOverviewWidget();
+    return;
+  }
+  setMarketWidgetState("loading", "Waiting for primary chart");
+}
+
 if (marketWidgetShell) {
   if ("IntersectionObserver" in window) {
     const marketLoadObserver = new IntersectionObserver((entries, observer) => {
       if (!entries.some((entry) => entry.isIntersecting)) return;
       observer.disconnect();
-      loadMarketOverviewWidget();
+      requestMarketOverviewWidget();
     }, { rootMargin: "900px 0px" });
     marketLoadObserver.observe(marketWidgetShell);
   } else {
-    loadMarketOverviewWidget();
+    requestMarketOverviewWidget();
   }
 }
 
@@ -485,7 +507,5 @@ window.addEventListener("resize", () => {
 }, { passive: true });
 prefersReducedMotion.addEventListener?.("change", updateSignalAnimation);
 document.querySelector("#year").textContent = new Date().getFullYear();
-setInitialMarket();
-loadChart();
 syncStoryVideoSources();
 updateSignalAnimation();
