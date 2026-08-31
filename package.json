@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check policy.js && node --check server.mjs",
+    "check": "node --check app.js && node --check content.js && node --check policy.js && node --check server.mjs",
     "preview": "npx wrangler dev",
     "deploy": "npx wrangler deploy"
   }
