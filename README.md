@@ -18,4 +18,12 @@ Open `http://127.0.0.1:4174`.
 npm run check
 ```
 
+## Build for deployment
+
+```sh
+npm run build
+```
+
+The production-ready static site is written to `dist/`. For a Cloudflare Git deployment, use `npm run build` as the build command and `dist` as the build output directory.
+
 The hero chart and market board use TradingView's public embeds and therefore need an internet connection. They are read-only market previews and may use delayed data.

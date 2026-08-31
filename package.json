@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "node scripts/build.mjs",
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check content.js && node --check policy.js && node --check server.mjs",
+    "check": "node --check app.js && node --check content.js && node --check policy.js && node --check server.mjs && node --check scripts/build.mjs",
     "preview": "npx wrangler dev",
     "deploy": "npx wrangler deploy"
   }
