@@ -11,6 +11,7 @@ const mimeTypes = {
   ".js": "text/javascript; charset=utf-8",
   ".jpg": "image/jpeg",
   ".mp4": "video/mp4",
+  ".pdf": "application/pdf",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".webp": "image/webp",
