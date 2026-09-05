@@ -10,6 +10,7 @@ if (dirname(outputDirectory) !== projectDirectory || basename(outputDirectory) !
 }
 
 const publicFiles = [
+  "_headers",
   "app.js",
   "content.css",
   "content.js",
@@ -36,11 +37,11 @@ const publicAssets = [
   "mt5-logo.png",
   "mt5-metal-medallion-v3.png",
   "nextwise-cinematic-clouds-v1.jpg",
-  "nextwise-connected-device-workspace-v1.png",
-  "nextwise-continuity-devices-v1.png",
-  "nextwise-hero-hand-laptop-v1.png",
-  "nextwise-hero-hand-phone-pro-v2.png",
-  "nextwise-hero-hand-tablet-v1.png",
+  "nextwise-connected-device-workspace-v1.webp",
+  "nextwise-continuity-devices-v1.webp",
+  "nextwise-hero-hand-laptop-v1.webp",
+  "nextwise-hero-hand-phone-pro-v2.webp",
+  "nextwise-hero-hand-tablet-v1.webp",
   "nextwise-kinetic-ribbons-desktop-v1.webp",
   "nextwise-kinetic-ribbons-mobile-v1.webp",
   "nextwise-logo-blue.svg",

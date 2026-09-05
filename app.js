@@ -73,9 +73,23 @@ function updateHeroChart() {
   loadChart();
 }
 
-// Begin the primary chart before the rest of the page initializes.
+function schedulePrimaryChart() {
+  const begin = () => {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => loadChart(), { timeout: 2500 });
+    } else {
+      window.setTimeout(() => loadChart(), 900);
+    }
+  };
+
+  if (document.readyState === "complete") begin();
+  else window.addEventListener("load", begin, { once: true });
+}
+
+// Preserve the live preview while giving the branded hero art first access to
+// the network and main thread during the initial render.
 setInitialMarket();
-loadChart();
+schedulePrimaryChart();
 
 function activateTab(button, selector) {
   document.querySelectorAll(selector).forEach((tab) => {
@@ -254,7 +268,7 @@ if (marketWidgetShell) {
       if (!entries.some((entry) => entry.isIntersecting)) return;
       observer.disconnect();
       requestMarketOverviewWidget();
-    }, { rootMargin: "900px 0px" });
+    }, { rootMargin: "200px 0px" });
     marketLoadObserver.observe(marketWidgetShell);
   } else {
     requestMarketOverviewWidget();
@@ -271,7 +285,6 @@ marketCategoryButtons.forEach((button) => {
     marketDataWidget.setAttribute("symbol-sectors", JSON.stringify(group));
     const marketLabel = button.dataset.marketLabel || button.textContent.trim();
     document.querySelector("#market-data-panel")?.setAttribute("aria-label", `${marketLabel} market data and interactive chart`);
-    marketDataWidget.setAttribute("aria-label", `Interactive ${marketLabel} market prices and chart`);
     if (marketPanelName) marketPanelName.textContent = marketLabel;
   });
 });
@@ -506,6 +519,7 @@ window.addEventListener("resize", () => {
   handlePageMotion();
 }, { passive: true });
 prefersReducedMotion.addEventListener?.("change", updateSignalAnimation);
-document.querySelector("#year").textContent = new Date().getFullYear();
+const year = document.querySelector("#year");
+if (year) year.textContent = new Date().getFullYear();
 syncStoryVideoSources();
 updateSignalAnimation();
