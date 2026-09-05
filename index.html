@@ -35,7 +35,8 @@
     <meta name="twitter:image:alt" content="Nextwise Markets — Markets move fast. Trade with clarity." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" /></noscript>
     <!-- SEO structured data -->
     <script type="application/ld+json">
 {
@@ -140,8 +141,8 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="styles.css?v=35" />
-    <script src="app.js?v=34" defer></script>
+    <link rel="stylesheet" href="styles.css?v=36" />
+    <script src="app.js?v=35" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -181,7 +182,10 @@
           <div class="device-glow" aria-hidden="true"></div>
           <div class="device-stage" data-device-stage data-device="phone">
             <div class="device-panel device-panel-phone active" id="device-panel-phone" role="tabpanel" aria-label="Phone preview">
-              <img class="device-art hand-device" src="assets/nextwise-hero-hand-phone-pro-v2.webp?v=1" alt="A hand holding a latest-generation Pro smartphone with the Nextwise Markets application" width="1024" height="1536" fetchpriority="high" decoding="async" />
+              <picture class="device-art-picture">
+                <source media="(max-width: 620px)" srcset="assets/nextwise-hero-hand-phone-pro-480.webp" />
+                <img class="device-art hand-device" src="assets/nextwise-hero-hand-phone-pro-v2.webp?v=1" alt="A hand holding a latest-generation Pro smartphone with the Nextwise Markets application" width="1024" height="1536" fetchpriority="high" decoding="async" />
+              </picture>
               <section class="live-screen" data-live-screen aria-label="Interactive Nextwise Markets chart on phone">
               <div class="screen-topbar">
                 <img src="assets/nextwise-logo-gradient.svg" alt="Nextwise Markets" width="453" height="71" />
@@ -224,10 +228,10 @@
               </section>
             </div>
             <div class="device-panel device-panel-tablet" id="device-panel-tablet" role="tabpanel" aria-label="iPad preview" aria-hidden="true">
-              <img class="device-art" src="assets/nextwise-hero-hand-tablet-v1.webp?v=1" alt="Two hands holding an iPad with the Nextwise Markets chart" width="1536" height="1024" loading="lazy" decoding="async" />
+              <img class="device-art" data-src="assets/nextwise-hero-hand-tablet-v1.webp?v=1" alt="Two hands holding an iPad with the Nextwise Markets chart" width="1536" height="1024" decoding="async" />
             </div>
             <div class="device-panel device-panel-laptop" id="device-panel-laptop" role="tabpanel" aria-label="MacBook preview" aria-hidden="true">
-              <img class="device-art" src="assets/nextwise-hero-hand-laptop-v1.webp?v=1" alt="Two hands holding an open MacBook with the Nextwise Markets chart" width="1536" height="1024" loading="lazy" decoding="async" />
+              <img class="device-art" data-src="assets/nextwise-hero-hand-laptop-v1.webp?v=1" alt="Two hands holding an open MacBook with the Nextwise Markets chart" width="1536" height="1024" decoding="async" />
             </div>
           </div>
         </div>
@@ -328,21 +332,21 @@
           <div class="experience-viewport" aria-label="A visual journey through the Nextwise Markets experience">
             <div class="experience-track" data-story-track>
               <article class="experience-card" data-story-card>
-                <div class="experience-media story-funding-media"><img src="assets/nextwise-story-funding-gateway-v1.webp" alt="An illuminated institutional funding gateway with converging amber payment rails" width="1254" height="1254" loading="lazy" decoding="async" /></div>
+                <div class="experience-media story-funding-media"><img src="assets/nextwise-story-funding-gateway-v1.webp" srcset="assets/nextwise-story-funding-gateway-640.webp 640w" sizes="640px" alt="An illuminated institutional funding gateway with converging amber payment rails" width="1254" height="1254" loading="lazy" decoding="async" /></div>
                 <div class="experience-copy"><span>01 · Funding</span><h3>Fund your account.</h3><p>Choose a payment route and follow each deposit through a clear, connected flow.</p></div>
               </article>
               <article class="experience-card" data-story-card>
-                <div class="experience-media story-activity-media"><img src="assets/nextwise-story-activity-ledger-v3.webp" alt="A projected glass activity ledger with an illuminated account timeline" width="1254" height="1254" loading="lazy" decoding="async" /></div>
+                <div class="experience-media story-activity-media"><img src="assets/nextwise-story-activity-ledger-v3.webp" srcset="assets/nextwise-story-activity-ledger-640.webp 640w" sizes="640px" alt="A projected glass activity ledger with an illuminated account timeline" width="1254" height="1254" loading="lazy" decoding="async" /></div>
                 <div class="experience-copy"><span>02 · Activity</span><h3>See every move.</h3><p>Balances, transactions and account activity stay readable in one connected view.</p></div>
               </article>
               <article class="experience-card" data-story-card>
-                <div class="experience-media story-context-media"><img src="assets/nextwise-story-context-terminal-v2.webp" alt="A focused institutional market display surrounded by a contextual data ring" width="1254" height="1254" loading="lazy" decoding="async" /></div>
+                <div class="experience-media story-context-media"><img src="assets/nextwise-story-context-terminal-v2.webp" srcset="assets/nextwise-story-context-terminal-640.webp 640w" sizes="640px" alt="A focused institutional market display surrounded by a contextual data ring" width="1254" height="1254" loading="lazy" decoding="async" /></div>
                 <div class="experience-copy"><span>03 · Control</span><h3>Trade with context.</h3><p>Keep the information that matters close without losing sight of the wider market.</p></div>
               </article>
               <article class="experience-card ribbon-preview-card" data-story-card aria-label="Nextwise clarity reveal">
                 <div class="experience-media ribbon-card-media">
                   <picture class="ribbon-card-art" aria-hidden="true">
-                    <source media="(max-width: 600px)" srcset="assets/nextwise-kinetic-ribbons-mobile-v1.webp" />
+                    <source media="(max-width: 600px)" srcset="assets/nextwise-kinetic-ribbons-mobile-480.webp" />
                     <img src="assets/nextwise-kinetic-ribbons-desktop-v1.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" />
                   </picture>
                   <img class="ribbon-card-logo" src="assets/nextwise-logo-gradient.svg" alt="Nextwise Markets" width="453" height="71" loading="lazy" decoding="async" />
@@ -354,7 +358,7 @@
 
           <div class="ribbon-expansion" aria-hidden="true">
             <picture class="ribbon-expansion-art">
-              <source media="(max-width: 600px)" srcset="assets/nextwise-kinetic-ribbons-mobile-v1.webp" />
+              <source media="(max-width: 600px)" srcset="assets/nextwise-kinetic-ribbons-mobile-480.webp" />
               <img src="assets/nextwise-kinetic-ribbons-desktop-v1.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" />
             </picture>
             <div class="ribbon-light-wash"></div>

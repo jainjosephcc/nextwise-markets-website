@@ -159,6 +159,12 @@ function selectDevice(button) {
   const target = document.querySelector(`#device-panel-${device}`);
   if (!target) return;
 
+  const targetArtwork = target.querySelector("img[data-src]");
+  if (targetArtwork && !targetArtwork.getAttribute("src")) {
+    targetArtwork.src = targetArtwork.dataset.src;
+    targetArtwork.removeAttribute("data-src");
+  }
+
   clearTimeout(deviceSwapTimer);
   deviceStage.classList.add("switching");
   deviceButtons.forEach((item) => {
