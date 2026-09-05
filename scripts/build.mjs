@@ -17,7 +17,9 @@ const publicFiles = [
   "index.html",
   "policy.css",
   "policy.js",
+  "robots.txt",
   "site.webmanifest",
+  "sitemap.xml",
   "styles.css",
 ];
 
