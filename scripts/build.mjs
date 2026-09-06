@@ -11,6 +11,8 @@ if (dirname(outputDirectory) !== projectDirectory || basename(outputDirectory) !
 
 const publicFiles = [
   "_headers",
+  "analytics.css",
+  "analytics.js",
   "app.js",
   "content.css",
   "content.js",

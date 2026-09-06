@@ -44,7 +44,7 @@ const pages = {
   },
   "contact/index.html": {
     title: "Contact Nextwise Markets | Client Support",
-    description: "Contact Nextwise Markets client support by email or phone, or send an enquiry to our team. Find our registered Saint Lucia office address.",
+    description: "Contact Nextwise Markets client support and find our Saint Lucia registered address and Dubai representative office in Iris Bay Tower, Business Bay.",
     path: "/contact/",
     type: "ContactPage",
     breadcrumb: "Contact",
@@ -163,6 +163,24 @@ const organization = {
     contactType: "customer support",
     availableLanguage: "English",
   },
+  location: { "@id": `${siteUrl}/#dubai-representative-office` },
+};
+
+const representativeOffice = {
+  "@type": "FinancialService",
+  "@id": `${siteUrl}/#dubai-representative-office`,
+  name: "Nextwise Markets Representative Office",
+  url: `${siteUrl}/contact/#where-to-find-us`,
+  image: `${siteUrl}/assets/nextwise-logo-gradient.svg`,
+  telephone: "+971586765113",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Office 3002, 30th Floor, Iris Bay Tower, Business Bay",
+    addressLocality: "Dubai",
+    addressCountry: "AE",
+  },
+  hasMap: "https://www.google.com/maps/search/?api=1&query=Iris%20Bay%20Tower%2C%20Business%20Bay%2C%20Dubai",
+  parentOrganization: { "@id": `${siteUrl}/#organization` },
 };
 
 const homeFaq = [
@@ -205,6 +223,7 @@ function schemaForPage(page) {
         inLanguage: "en",
       },
       organization,
+      representativeOffice,
     );
     graph.push({
       "@type": "FAQPage",
@@ -218,6 +237,7 @@ function schemaForPage(page) {
       })),
     });
   } else {
+    if (page.path === "/contact/") graph.push(representativeOffice);
     graph.push({
       "@type": "BreadcrumbList",
       "@id": `${canonical}#breadcrumb`,
@@ -283,6 +303,13 @@ for (const [relativePath, page] of Object.entries(pages)) {
     html = html.replace(
       '    <meta name="viewport" content="width=device-width, initial-scale=1" />',
       '    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />\n    <meta name="author" content="The Nextwise Markets Ltd." />',
+    );
+  }
+
+  if (!html.includes('href="/analytics.css')) {
+    html = html.replace(
+      /(    <link rel="stylesheet")/,
+      '    <link rel="stylesheet" href="/analytics.css?v=1" />\n    <script src="/analytics.js?v=1" defer></script>\n$1',
     );
   }
 
