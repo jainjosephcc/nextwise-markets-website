@@ -29,6 +29,13 @@ const publicFiles = [
 
 const publicAssets = [
   "apple-touch-icon.png",
+  "dubai-office-entrance.webp",
+  "dubai-office-meeting-room.webp",
+  "dubai-office-private-office.webp",
+  "dubai-office-reception.webp",
+  "dubai-office-signage.webp",
+  "dubai-office-workspace-1.webp",
+  "dubai-office-workspace-2.webp",
   "favicon-16x16.png",
   "favicon-192x192.png",
   "favicon-32x32.png",

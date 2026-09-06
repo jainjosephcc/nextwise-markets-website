@@ -171,7 +171,11 @@ const representativeOffice = {
   "@id": `${siteUrl}/#dubai-representative-office`,
   name: "Nextwise Markets Representative Office",
   url: `${siteUrl}/contact/#where-to-find-us`,
-  image: `${siteUrl}/assets/nextwise-logo-gradient.svg`,
+  image: [
+    `${siteUrl}/assets/dubai-office-entrance.webp`,
+    `${siteUrl}/assets/dubai-office-reception.webp`,
+    `${siteUrl}/assets/dubai-office-workspace-1.webp`,
+  ],
   telephone: "+971586765113",
   address: {
     "@type": "PostalAddress",
