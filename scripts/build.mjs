@@ -10,6 +10,7 @@ if (dirname(outputDirectory) !== projectDirectory || basename(outputDirectory) !
 }
 
 const publicFiles = [
+  "6e02189adaa4463eafada2b903695fe7.txt",
   "_headers",
   "analytics.css",
   "analytics.js",
