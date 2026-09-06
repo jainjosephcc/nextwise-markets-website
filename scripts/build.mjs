@@ -16,6 +16,7 @@ const publicFiles = [
   "content.js",
   "favicon.ico",
   "index.html",
+  "llms.txt",
   "policy.css",
   "policy.js",
   "robots.txt",
