@@ -6,6 +6,7 @@ const projectDirectory = fileURLToPath(new URL("..", import.meta.url));
 const targetDirectory = resolve(projectDirectory, process.argv[2] || ".");
 const productionOrigin = "https://nextwisemarkets.com";
 const officialSocialProfiles = [
+  "https://www.linkedin.com/company/nextwise-markets/about/",
   "https://www.facebook.com/nextwise.markets",
   "https://www.instagram.com/nextwise.markets/",
   "https://www.youtube.com/@nextwise.markets",

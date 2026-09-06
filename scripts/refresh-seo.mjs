@@ -151,6 +151,7 @@ const organization = {
   email: "support@nextwisemarkets.com",
   telephone: "+2302138158",
   sameAs: [
+    "https://www.linkedin.com/company/nextwise-markets/about/",
     "https://www.facebook.com/nextwise.markets",
     "https://www.instagram.com/nextwise.markets/",
     "https://www.youtube.com/@nextwise.markets",
@@ -191,6 +192,7 @@ const representativeOffice = {
   hasMap: "https://www.google.com/maps/search/?api=1&query=Iris%20Bay%20Tower%2C%20Business%20Bay%2C%20Dubai",
   sameAs: [
     "https://www.google.com/maps?cid=10873996067987219276",
+    "https://www.linkedin.com/company/nextwise-markets/about/",
     "https://www.facebook.com/nextwise.markets",
     "https://www.instagram.com/nextwise.markets/",
     "https://www.youtube.com/@nextwise.markets",
