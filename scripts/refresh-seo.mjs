@@ -184,6 +184,12 @@ const representativeOffice = {
     addressCountry: "AE",
   },
   hasMap: "https://www.google.com/maps/search/?api=1&query=Iris%20Bay%20Tower%2C%20Business%20Bay%2C%20Dubai",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "10:00",
+    closes: "20:00",
+  },
   parentOrganization: { "@id": `${siteUrl}/#organization` },
 };
 
