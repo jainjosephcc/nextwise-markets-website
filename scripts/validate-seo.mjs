@@ -5,6 +5,11 @@ import { fileURLToPath } from "node:url";
 const projectDirectory = fileURLToPath(new URL("..", import.meta.url));
 const targetDirectory = resolve(projectDirectory, process.argv[2] || ".");
 const productionOrigin = "https://nextwisemarkets.com";
+const officialSocialProfiles = [
+  "https://www.facebook.com/nextwise.markets",
+  "https://www.instagram.com/nextwise.markets/",
+  "https://www.youtube.com/@nextwise.markets",
+];
 
 const entries = await readdir(targetDirectory, { withFileTypes: true });
 const pageFiles = ["index.html"];
@@ -34,6 +39,7 @@ for (const relativePath of pageFiles) {
   const h1Count = (html.match(/<h1(?:\s|>)/g) || []).length;
   const imageTags = html.match(/<img\b[^>]*>/g) || [];
   const schemaBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  let parsedSchema;
 
   if (!title) failures.push(`${relativePath}: missing title`);
   if (title.length < 25 || title.length > 65) failures.push(`${relativePath}: title length is ${title.length}`);
@@ -58,9 +64,17 @@ for (const relativePath of pageFiles) {
   if (schemaBlocks.length !== 1) failures.push(`${relativePath}: expected one JSON-LD block, found ${schemaBlocks.length}`);
   for (const [, json] of schemaBlocks) {
     try {
-      JSON.parse(json);
+      parsedSchema = JSON.parse(json);
     } catch (error) {
       failures.push(`${relativePath}: invalid JSON-LD (${error.message})`);
+    }
+  }
+
+  if (relativePath === "index.html") {
+    const organization = parsedSchema?.["@graph"]?.find((item) => item["@id"] === `${productionOrigin}/#organization`);
+    for (const profile of officialSocialProfiles) {
+      if (!html.includes(`href="${profile}"`)) failures.push(`${relativePath}: missing footer link for ${profile}`);
+      if (!organization?.sameAs?.includes(profile)) failures.push(`${relativePath}: Organization sameAs missing ${profile}`);
     }
   }
 }
