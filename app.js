@@ -14,6 +14,8 @@ let chartLoadTimer = 0;
 let heroChartReady = false;
 let marketWidgetRequested = false;
 let marketWidgetReleaseTimer = 0;
+let primaryChartReleaseTimer = 0;
+let primaryChartScheduled = false;
 
 function chartUrl() {
   const params = new URLSearchParams({
@@ -73,17 +75,29 @@ function updateHeroChart() {
   loadChart();
 }
 
-function schedulePrimaryChart() {
-  const begin = () => {
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(() => loadChart(), { timeout: 2500 });
-    } else {
-      window.setTimeout(() => loadChart(), 900);
-    }
-  };
+function releasePrimaryChart() {
+  if (primaryChartScheduled) return;
+  primaryChartScheduled = true;
+  window.clearTimeout(primaryChartReleaseTimer);
+  window.removeEventListener("pointerdown", releasePrimaryChart);
+  window.removeEventListener("scroll", releasePrimaryChart);
+  window.removeEventListener("keydown", releasePrimaryChart);
+  chart?.removeEventListener("pointerenter", releasePrimaryChart);
+  chart?.removeEventListener("focusin", releasePrimaryChart);
+  loadChart();
+}
 
-  if (document.readyState === "complete") begin();
-  else window.addEventListener("load", begin, { once: true });
+function schedulePrimaryChart() {
+  if (!iframe) return;
+  window.addEventListener("pointerdown", releasePrimaryChart, { passive: true });
+  window.addEventListener("scroll", releasePrimaryChart, { passive: true });
+  window.addEventListener("keydown", releasePrimaryChart);
+  chart?.addEventListener("pointerenter", releasePrimaryChart, { passive: true });
+  chart?.addEventListener("focusin", releasePrimaryChart);
+
+  // Keep the live chart automatic for visitors who pause on the hero while
+  // preventing its large third-party runtime from blocking initial rendering.
+  primaryChartReleaseTimer = window.setTimeout(releasePrimaryChart, 20000);
 }
 
 // Preserve the live preview while giving the branded hero art first access to
@@ -528,4 +542,4 @@ prefersReducedMotion.addEventListener?.("change", updateSignalAnimation);
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
 syncStoryVideoSources();
-updateSignalAnimation();
+if (scrollY > 0 || location.hash) requestAnimationFrame(updateSignalAnimation);

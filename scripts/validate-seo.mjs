@@ -58,7 +58,7 @@ for (const relativePath of pageFiles) {
   if (!html.includes(`property="og:title" content="${title.replaceAll("&", "&amp;")}`) && !html.includes(`property="og:title" content="${title}`)) failures.push(`${relativePath}: Open Graph title does not match page title`);
   if (!html.includes(`property="og:url" content="${canonical}"`)) failures.push(`${relativePath}: Open Graph URL does not match canonical`);
   if (!html.includes('name="twitter:card" content="summary_large_image"')) failures.push(`${relativePath}: missing large X/Twitter card`);
-  if (!html.includes('href="/analytics.css?v=1"')) failures.push(`${relativePath}: missing analytics consent styles`);
+  if (!/href="\/analytics\.css\?v=\d+"/.test(html)) failures.push(`${relativePath}: missing analytics consent styles`);
   if (!html.includes('src="/analytics.js?v=1"')) failures.push(`${relativePath}: missing consent-aware analytics loader`);
   if (imageTags.some((tag) => !/\balt="[^"]*"/.test(tag))) failures.push(`${relativePath}: image without alt attribute`);
   if (schemaBlocks.length !== 1) failures.push(`${relativePath}: expected one JSON-LD block, found ${schemaBlocks.length}`);

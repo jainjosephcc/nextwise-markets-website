@@ -35,7 +35,8 @@
     <meta name="twitter:image:alt" content="Nextwise Markets — Markets move fast. Trade with clarity." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="/analytics.css?v=1" />
+    <link rel="stylesheet" href="/analytics.css?v=2" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/analytics.css?v=2" /></noscript>
     <script src="/analytics.js?v=1" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" /></noscript>
@@ -186,8 +187,8 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="styles.css?v=36" />
-    <script src="app.js?v=35" defer></script>
+    <link rel="stylesheet" href="styles.css?v=37" />
+    <script src="app.js?v=36" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -252,7 +253,7 @@
                   <strong>Chart is taking longer than expected.</strong>
                   <button type="button" data-chart-retry>Retry chart</button>
                 </div>
-                <iframe id="trading-chart" title="Chart for EUR/USD, 1 hour" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe id="trading-chart" title="Chart for EUR/USD, 1 hour" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
               <div class="chart-meta">
                 <span>TradingView market data · may be delayed</span>
