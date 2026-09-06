@@ -174,7 +174,7 @@ const organization = {
 const representativeOffice = {
   "@type": "FinancialService",
   "@id": `${siteUrl}/#dubai-representative-office`,
-  name: "Nextwise Markets Representative Office",
+  name: "Nextwise Markets Ltd. (Rep. Office)",
   url: `${siteUrl}/contact/#where-to-find-us`,
   image: [
     `${siteUrl}/assets/dubai-office-entrance.webp`,
@@ -189,6 +189,7 @@ const representativeOffice = {
     addressCountry: "AE",
   },
   hasMap: "https://www.google.com/maps/search/?api=1&query=Iris%20Bay%20Tower%2C%20Business%20Bay%2C%20Dubai",
+  sameAs: ["https://www.google.com/maps?cid=10873996067987219276"],
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
