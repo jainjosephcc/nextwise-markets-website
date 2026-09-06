@@ -150,6 +150,7 @@ const organization = {
   logo: `${siteUrl}/assets/nextwise-logo-gradient.svg`,
   email: "support@nextwisemarkets.com",
   telephone: "+2302138158",
+  sameAs: ["https://www.instagram.com/nextwise.markets/"],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Ground Floor, The Sotheby Building, Rodney Village, Rodney Bay",
