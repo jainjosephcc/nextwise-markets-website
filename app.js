@@ -321,12 +321,27 @@ menuButton?.addEventListener("click", () => {
   const open = menu.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(open));
   document.body.classList.toggle("menu-open", open);
+  if (open) menu.querySelector("a")?.focus();
 });
 menu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
   menu.classList.remove("open");
   menuButton.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-open");
 }));
+document.addEventListener("pointerdown", (event) => {
+  if (!menu?.classList.contains("open")) return;
+  if (menu.contains(event.target) || menuButton?.contains(event.target)) return;
+  menu.classList.remove("open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !menu?.classList.contains("open")) return;
+  menu.classList.remove("open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+  menuButton?.focus();
+});
 
 document.querySelectorAll("details").forEach((details) => {
   details.addEventListener("toggle", () => {

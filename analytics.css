@@ -44,8 +44,8 @@
 
 @media (max-width:560px){
   .cookie-banner{right:10px;bottom:10px;width:calc(100% - 20px);padding:18px}
-  .cookie-banner-actions{display:grid;grid-template-columns:1fr 1fr}
-  .cookie-banner button{padding:0 10px}
+  .cookie-banner-actions{display:grid;grid-template-columns:1fr}
+  .cookie-banner button{width:100%;padding:0 10px}
 }
 
 @media (prefers-reduced-motion:reduce){.cookie-banner,.cookie-preferences{scroll-behavior:auto}}
