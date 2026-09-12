@@ -44,7 +44,7 @@ const pages = {
   },
   "contact/index.html": {
     title: "Contact Nextwise Markets | Client Support",
-    description: "Contact Nextwise Markets client support and find our Saint Lucia registered address and Dubai representative office in Iris Bay Tower, Business Bay.",
+    description: "Contact Nextwise Markets Client Services for onboarding, account access, platform setup and general enquiries by phone, WhatsApp or email.",
     path: "/contact/",
     type: "ContactPage",
     breadcrumb: "Contact",
@@ -176,12 +176,7 @@ const representativeOffice = {
   "@type": "FinancialService",
   "@id": `${siteUrl}/#dubai-representative-office`,
   name: "Nextwise Markets Ltd. (Rep. Office)",
-  url: `${siteUrl}/contact/#where-to-find-us`,
-  image: [
-    `${siteUrl}/assets/dubai-office-entrance.webp`,
-    `${siteUrl}/assets/dubai-office-reception.webp`,
-    `${siteUrl}/assets/dubai-office-workspace-1.webp`,
-  ],
+  url: `${siteUrl}/contact/`,
   telephone: "+971586765113",
   address: {
     "@type": "PostalAddress",
