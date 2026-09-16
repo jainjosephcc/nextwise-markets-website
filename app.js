@@ -310,10 +310,138 @@ marketCategoryButtons.forEach((button) => {
 });
 enableArrowNavigation(".market-category-tabs", "button");
 
-document.querySelectorAll(".signal-timeframes button").forEach((button) => {
-  button.addEventListener("click", () => activateTab(button, ".signal-timeframes button"));
+const signalMarketCard = document.querySelector("[data-signal-market-card]");
+const signalLiveChart = document.querySelector("[data-signal-live-chart]");
+const signalMiniChart = document.querySelector("[data-signal-mini-chart]");
+const signalFeedState = document.querySelector("[data-signal-feed-state]");
+const signalMarketButtons = [...document.querySelectorAll("[data-signal-market]")];
+const signalWidgetRetry = document.querySelector("[data-signal-widget-retry]");
+const signalMarkets = [
+  { id: "xau", symbol: "OANDA:XAUUSD", name: "XAU/USD", description: "Gold / U.S. Dollar", icon: "Au" },
+  { id: "eur", symbol: "OANDA:EURUSD", name: "EUR/USD", description: "Euro / U.S. Dollar", icon: "FX" },
+  { id: "nas", symbol: "OANDA:NAS100USD", name: "NAS100", description: "Nasdaq 100 Index", icon: "NQ" },
+  { id: "btc", symbol: "BINANCE:BTCUSDT", name: "BTC/USDT", description: "Bitcoin / Tether", icon: "₿" },
+];
+let signalMarketIndex = 0;
+let signalMarketTimer = 0;
+let signalWidgetTimer = 0;
+let signalWidgetAttempt = 0;
+let signalWidgetLoadStarted = false;
+let signalWidgetReady = false;
+let signalRotationPaused = false;
+
+function setSignalMarket(index) {
+  const market = signalMarkets[index];
+  if (!market || !signalMarketCard || !signalMiniChart) return;
+  signalMarketIndex = index;
+  signalMarketButtons.forEach((button) => {
+    const active = button.dataset.signalMarket === market.id;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  const icon = signalMarketCard.querySelector("[data-signal-symbol-icon]");
+  const name = signalMarketCard.querySelector("[data-signal-symbol-name]");
+  const description = signalMarketCard.querySelector("[data-signal-symbol-description]");
+  if (icon) icon.textContent = market.icon;
+  if (name) name.textContent = market.name;
+  if (description) description.textContent = market.description;
+  signalMarketCard.setAttribute("aria-label", `${market.name} live market overview`);
+  signalMiniChart.setAttribute("symbol", market.symbol);
+}
+
+function scheduleSignalMarketRotation() {
+  window.clearTimeout(signalMarketTimer);
+  if (!signalWidgetReady || signalRotationPaused || document.hidden || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  signalMarketTimer = window.setTimeout(() => {
+    setSignalMarket((signalMarketIndex + 1) % signalMarkets.length);
+    scheduleSignalMarketRotation();
+  }, 20000);
+}
+
+function setSignalWidgetState(nextState, message) {
+  signalLiveChart?.classList.toggle("is-ready", nextState === "ready");
+  signalLiveChart?.classList.toggle("has-error", nextState === "error");
+  signalLiveChart?.setAttribute("aria-busy", String(nextState === "loading"));
+  if (signalFeedState) signalFeedState.textContent = message;
+}
+
+function markSignalWidgetReady() {
+  signalWidgetReady = true;
+  window.clearTimeout(signalWidgetTimer);
+  setSignalWidgetState("ready", "TradingView market data");
+  scheduleSignalMarketRotation();
+}
+
+function markSignalWidgetUnavailable() {
+  if (signalWidgetReady) return;
+  window.clearTimeout(signalWidgetTimer);
+  setSignalWidgetState("error", "Market data unavailable");
+}
+
+function loadSignalMarketWidget({ retry = false } = {}) {
+  if (!signalLiveChart || !("customElements" in window)) return;
+  if (customElements.get("tv-mini-chart")) {
+    markSignalWidgetReady();
+    return;
+  }
+  if (signalWidgetLoadStarted && !retry) return;
+  signalWidgetLoadStarted = true;
+  signalWidgetReady = false;
+  signalWidgetAttempt += 1;
+  setSignalWidgetState("loading", "Connecting to market data");
+  document.querySelector("[data-signal-widget-script]")?.remove();
+  const script = document.createElement("script");
+  script.type = "module";
+  script.src = `https://widgets.tradingview-widget.com/w/en/tv-mini-chart.js${retry ? `?retry=${signalWidgetAttempt}` : ""}`;
+  script.dataset.signalWidgetScript = "";
+  script.addEventListener("error", markSignalWidgetUnavailable, { once: true });
+  document.head.append(script);
+  customElements.whenDefined("tv-mini-chart").then(markSignalWidgetReady);
+  window.clearTimeout(signalWidgetTimer);
+  signalWidgetTimer = window.setTimeout(markSignalWidgetUnavailable, 15000);
+}
+
+if (signalLiveChart) {
+  if ("IntersectionObserver" in window) {
+    const signalWidgetObserver = new IntersectionObserver((entries, observer) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadSignalMarketWidget();
+    }, { rootMargin: "240px 0px" });
+    signalWidgetObserver.observe(signalLiveChart);
+  } else {
+    loadSignalMarketWidget();
+  }
+}
+
+signalMarketButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const index = signalMarkets.findIndex((market) => market.id === button.dataset.signalMarket);
+    if (index < 0) return;
+    setSignalMarket(index);
+    scheduleSignalMarketRotation();
+  });
 });
-enableArrowNavigation(".signal-timeframes", "button");
+enableArrowNavigation(".signal-market-tabs", "button");
+signalWidgetRetry?.addEventListener("click", () => loadSignalMarketWidget({ retry: true }));
+signalMarketCard?.addEventListener("pointerenter", () => {
+  signalRotationPaused = true;
+  window.clearTimeout(signalMarketTimer);
+});
+signalMarketCard?.addEventListener("pointerleave", () => {
+  signalRotationPaused = false;
+  scheduleSignalMarketRotation();
+});
+signalMarketCard?.addEventListener("focusin", () => {
+  signalRotationPaused = true;
+  window.clearTimeout(signalMarketTimer);
+});
+signalMarketCard?.addEventListener("focusout", (event) => {
+  if (signalMarketCard.contains(event.relatedTarget)) return;
+  signalRotationPaused = false;
+  scheduleSignalMarketRotation();
+});
+document.addEventListener("visibilitychange", scheduleSignalMarketRotation);
 
 const menuButton = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".site-nav");

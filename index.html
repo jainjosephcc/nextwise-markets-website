@@ -93,7 +93,7 @@
       "@id": "https://nextwisemarkets.com/#dubai-representative-office",
       "name": "Nextwise Markets Ltd. (Rep. Office)",
       "url": "https://nextwisemarkets.com/contact/",
-      "telephone": "+971586765113",
+      "telephone": "+971557519213",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Office 3002, 30th Floor, Iris Bay Tower, Business Bay",
@@ -332,25 +332,27 @@
             <div class="signal-live-pill"><i></i> Live market view</div>
           </header>
 
-          <article class="signal-card signal-chart-card reveal" data-delay="80" aria-label="XAU/USD market overview">
+          <article class="signal-card signal-chart-card reveal" data-delay="80" data-signal-market-card aria-label="XAU/USD live market overview">
             <div class="signal-chart-header">
-              <div class="signal-symbol"><i>Au</i><div><strong>XAU/USD</strong><span>Gold / U.S. Dollar</span></div></div>
-              <div class="signal-quote"><strong>2,384.71 <small>USD</small></strong><span>+18.47&nbsp;&nbsp; +0.78%</span></div>
-              <dl><div><dt>High</dt><dd>2,392.18</dd></div><div><dt>Low</dt><dd>2,361.22</dd></div><div><dt>24h vol</dt><dd>124.58K</dd></div></dl>
+              <div class="signal-symbol"><i data-signal-symbol-icon>Au</i><div><strong data-signal-symbol-name>XAU/USD</strong><span data-signal-symbol-description>Gold / U.S. Dollar</span></div></div>
+              <div class="signal-feed-copy"><strong>Rotating market watch</strong><span data-signal-feed-state>Connecting to market data</span></div>
             </div>
-            <div class="signal-timeframes" role="tablist" aria-label="Signal chart timeframe">
-              <button type="button" role="tab" aria-selected="false">1M</button><button type="button" role="tab" aria-selected="false">5M</button><button type="button" role="tab" aria-selected="false">15M</button><button class="active" type="button" role="tab" aria-selected="true">1H</button><button type="button" role="tab" aria-selected="false">4H</button><button type="button" role="tab" aria-selected="false">1D</button>
+            <div class="signal-market-tabs" role="group" aria-label="Choose a live market symbol">
+              <button class="active" type="button" aria-pressed="true" data-signal-market="xau">XAU/USD</button>
+              <button type="button" aria-pressed="false" data-signal-market="eur">EUR/USD</button>
+              <button type="button" aria-pressed="false" data-signal-market="nas">NAS100</button>
+              <button type="button" aria-pressed="false" data-signal-market="btc">BTC/USDT</button>
             </div>
-            <div class="signal-chart-plot" aria-hidden="true">
-              <span class="axis axis-one">2,400.00</span><span class="axis axis-two">2,380.00</span><span class="axis axis-three">2,360.00</span><span class="axis axis-four">2,340.00</span>
-              <svg viewBox="0 0 720 270" preserveAspectRatio="none">
-                <defs><linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6a18" stop-opacity=".2" /><stop offset="1" stop-color="#ff6a18" stop-opacity="0" /></linearGradient></defs>
-                <path class="signal-chart-area" d="M0 198 C28 208 42 231 70 215 S110 232 132 187 S180 202 211 170 S248 100 282 137 S326 193 362 151 S411 81 445 117 S488 148 521 110 S565 57 610 90 S665 102 720 43 L720 270 L0 270 Z" />
-                <path class="signal-chart-line" data-signal-chart-line pathLength="1" d="M0 198 C28 208 42 231 70 215 S110 232 132 187 S180 202 211 170 S248 100 282 137 S326 193 362 151 S411 81 445 117 S488 148 521 110 S565 57 610 90 S665 102 720 43" />
-                <circle cx="720" cy="43" r="5" />
-              </svg>
+            <div class="signal-live-chart" data-signal-live-chart aria-busy="true">
+              <tv-mini-chart symbol="OANDA:XAUUSD" transparent data-signal-mini-chart>
+                <div class="signal-widget-placeholder"><span></span><p>Loading live market view</p></div>
+              </tv-mini-chart>
+              <div class="signal-widget-error" data-signal-widget-error role="alert">
+                <strong>Market data is temporarily unavailable.</strong>
+                <button type="button" data-signal-widget-retry>Retry</button>
+              </div>
             </div>
-            <div class="signal-chart-footer"><span><b>RSI</b> 63.42</span><span><b>MACD</b> Positive</span><span><b>ATR</b> 12.38</span><span class="market-open"><i></i> Market open</span></div>
+            <div class="signal-chart-footer"><span><b>View</b> 1 day</span><span><b>Source</b> TradingView</span><span><b>Rotation</b> 20 seconds</span><span class="market-open"><i></i> Quotes may be delayed</span></div>
           </article>
 
           <article class="signal-card insight-card reveal" data-delay="130">
@@ -770,7 +772,7 @@
           <address class="footer-column footer-contact">
             <b>Contact info</b>
             <a href="tel:+2302138158"><span>Phone Number</span>+230 2138158</a>
-            <a href="tel:+971586765113"><span>Dubai Office</span>+971 58 676 5113</a>
+            <a href="tel:+971557519213"><span>Dubai Office</span>0557519213</a>
             <a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a>
             <p><span>Registration Number</span>2025-00221</p>
             <p><span>Reg Address</span>Ground Floor, The Sotheby Building, Rodney Village, Rodney Bay, Gros-Islet, Saint Lucia</p>

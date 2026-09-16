@@ -177,7 +177,7 @@ const representativeOffice = {
   "@id": `${siteUrl}/#dubai-representative-office`,
   name: "Nextwise Markets Ltd. (Rep. Office)",
   url: `${siteUrl}/contact/`,
-  telephone: "+971586765113",
+  telephone: "+971557519213",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Office 3002, 30th Floor, Iris Bay Tower, Business Bay",
