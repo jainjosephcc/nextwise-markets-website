@@ -196,7 +196,7 @@ function selectDevice(button) {
     });
     target.append(liveScreen);
     deviceStage.dataset.device = device;
-    liveScreen.setAttribute("aria-label", `Interactive Nextwise Markets chart on ${deviceNames[device]}`);
+    liveScreen.setAttribute("aria-label", `Interactive NEXTWISE MARKETS chart on ${deviceNames[device]}`);
     requestAnimationFrame(() => deviceStage.classList.remove("switching"));
   };
 

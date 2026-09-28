@@ -95,4 +95,4 @@ for (const route of routeDirectories) {
   builtRouteCount += 1;
 }
 
-console.log(`Built Nextwise Markets: ${builtRouteCount + 1} pages in dist/`);
+console.log(`Built NEXTWISE MARKETS: ${builtRouteCount + 1} pages in dist/`);

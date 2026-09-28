@@ -41,7 +41,7 @@ const footerBrand = document.querySelector(".content-footer-brand");
 if (footerBrand && !footerBrand.querySelector(".content-social-links")) {
   const socialNav = document.createElement("nav");
   socialNav.className = "content-social-links";
-  socialNav.setAttribute("aria-label", "Follow Nextwise Markets");
+  socialNav.setAttribute("aria-label", "Follow NEXTWISE MARKETS");
   [
     ["LinkedIn", "https://www.linkedin.com/company/nextwise-markets/about/"],
     ["Facebook", "https://www.facebook.com/nextwise.markets"],
@@ -65,7 +65,7 @@ contactForm?.addEventListener("submit", (event) => {
   if (!contactForm.reportValidity()) return;
   const data = new FormData(contactForm);
   const name = `${data.get("first-name") || ""} ${data.get("last-name") || ""}`.trim();
-  const subject = String(data.get("subject") || "Nextwise Markets enquiry");
+  const subject = String(data.get("subject") || "NEXTWISE MARKETS enquiry");
   const body = [
     `Name: ${name}`,
     `Email: ${data.get("email") || ""}`,

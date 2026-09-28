@@ -1,6 +1,6 @@
-# Nextwise Markets Website
+# NEXTWISE MARKETS Website
 
-This repository contains the responsive Nextwise Markets landing page, including its interactive market experience, scroll-led feature sequences, account comparison, live TradingView market board, and complete company footer.
+This repository contains the responsive NEXTWISE MARKETS landing page, including its interactive market experience, scroll-led feature sequences, account comparison, live TradingView market board, and complete company footer.
 
 The site is designed as a static website and can be published directly through GitHub Pages.
 
