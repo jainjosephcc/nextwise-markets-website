@@ -149,7 +149,7 @@ const organization = {
   url: `${siteUrl}/`,
   logo: `${siteUrl}/assets/nextwise-logo-gradient.svg`,
   email: "support@nextwisemarkets.com",
-  telephone: "+2302138158",
+  telephone: "+17585720778",
   sameAs: [
     "https://www.linkedin.com/company/nextwise-markets/about/",
     "https://www.facebook.com/nextwise.markets",
@@ -162,44 +162,15 @@ const organization = {
     addressLocality: "Gros-Islet",
     addressCountry: "LC",
   },
-  contactPoint: {
+  contactPoint: [{
     "@type": "ContactPoint",
-    telephone: "+2302138158",
+    telephone: "+17585720778",
     email: "support@nextwisemarkets.com",
     contactType: "customer support",
     availableLanguage: "English",
-  },
-  location: { "@id": `${siteUrl}/#dubai-representative-office` },
+  }, { "@type": "ContactPoint", telephone: "+442039966589", contactType: "customer support", availableLanguage: "English" }],
 };
 
-const representativeOffice = {
-  "@type": "FinancialService",
-  "@id": `${siteUrl}/#dubai-representative-office`,
-  name: "NEXTWISE MARKETS Ltd. (Rep. Office)",
-  url: `${siteUrl}/contact/`,
-  telephone: "+971557519213",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Office 3002, 30th Floor, Iris Bay Tower, Business Bay",
-    addressLocality: "Dubai",
-    addressCountry: "AE",
-  },
-  hasMap: "https://www.google.com/maps/search/?api=1&query=Iris%20Bay%20Tower%2C%20Business%20Bay%2C%20Dubai",
-  sameAs: [
-    "https://www.google.com/maps?cid=10873996067987219276",
-    "https://www.linkedin.com/company/nextwise-markets/about/",
-    "https://www.facebook.com/nextwise.markets",
-    "https://www.instagram.com/nextwise.markets/",
-    "https://www.youtube.com/@nextwise.markets",
-  ],
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    opens: "10:00",
-    closes: "20:00",
-  },
-  parentOrganization: { "@id": `${siteUrl}/#organization` },
-};
 
 const homeFaq = [
   ["What can I trade with NEXTWISE MARKETS?", "NEXTWISE MARKETS is designed to provide access across major asset classes, including forex, metals, indices, energy and selected digital assets. Availability can vary by account and region."],
@@ -241,7 +212,6 @@ function schemaForPage(page) {
         inLanguage: "en",
       },
       organization,
-      representativeOffice,
     );
     graph.push({
       "@type": "FAQPage",
@@ -255,7 +225,7 @@ function schemaForPage(page) {
       })),
     });
   } else {
-    if (page.path === "/contact/") graph.push(representativeOffice);
+    if (page.path === "/contact/") graph.push(organization);
     graph.push({
       "@type": "BreadcrumbList",
       "@id": `${canonical}#breadcrumb`,

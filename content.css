@@ -140,3 +140,19 @@ button,input,select,textarea{font:inherit}
 .platform-icon{width:26px;height:26px;flex:0 0 26px;color:var(--orange-dark)}
 .content-section-body .platform-link:hover span{text-decoration:underline;text-underline-offset:5px}
 .content-section-body .platform-link:focus-visible{outline:2px solid var(--orange-dark);outline-offset:5px}
+
+/* Shared disclosures on every page. */
+.footer-disclosures {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;border-top:1px solid #30343a;margin-top:32px;padding:32px 0;color:#b8bdc6;text-align:left;}
+.footer-disclosures article{min-width:0;position:relative;}
+.footer-disclosures article>span{float:right;opacity:.5;font-size:20px;}
+.footer-disclosures h2{font-size:16px;line-height:1.4;color:#fff;margin:0 0 12px;}
+.footer-disclosures p{font-size:12px;line-height:1.8;margin:0;}
+@media(max-width:700px){.footer-disclosures{grid-template-columns:1fr;gap:24px;}}
+
+.account-comparison{grid-template-columns:minmax(0,1fr);gap:32px;}
+.account-comparison .content-section-body{min-width:0;max-width:none;width:100%;}
+.account-comparison .comparison-wrap{overflow:visible;}
+.account-comparison .comparison-table{min-width:0;width:100%;table-layout:fixed;}
+.account-comparison .comparison-table th,.account-comparison .comparison-table td{white-space:normal;overflow-wrap:anywhere;}
+.comparison-cards{display:none;}
+@media(max-width:650px){.account-comparison .comparison-wrap{display:none;}.comparison-cards{display:grid;gap:20px;}.comparison-cards article{border:1px solid #d1d6de;background:#fff;}.comparison-cards h3{margin:0;padding:18px 20px;background:#0b1017;color:#fff;}.comparison-cards dl{margin:0;}.comparison-cards dl>div{display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-top:1px solid #e1e5eb;font-size:14px;}.comparison-cards dt{font-weight:600;}.comparison-cards dd{margin:0;text-align:right;}}
