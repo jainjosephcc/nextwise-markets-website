@@ -1,0 +1,45 @@
+#nextwise-live-chat {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: calc(max(20px, env(safe-area-inset-bottom)) + var(--chat-consent-offset, 0px));
+  z-index: 1100;
+  max-width: calc(100vw - 40px);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+#nextwise-live-chat button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 18px;
+  border: 1px solid #33383e;
+  border-radius: 10px;
+  background: #111418;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+#nextwise-live-chat button:hover { background: #262b31; }
+#nextwise-live-chat button:focus-visible { outline: 3px solid #296eff; outline-offset: 3px; }
+#nextwise-live-chat button:disabled { cursor: wait; }
+#nextwise-live-chat img { flex: none; width: 24px; height: 24px; object-fit: contain; }
+#nextwise-live-chat .website-chat-notice {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  width: min(300px, calc(100vw - 40px));
+  padding: 14px;
+  border: 1px solid #dfe1e4;
+  border-radius: 8px;
+  background: #fff;
+  color: #111418;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+#nextwise-live-chat .website-chat-notice[hidden] { display: none; }
+#nextwise-live-chat .website-chat-notice a { display: inline-flex; align-items: center; min-height: 44px; color: #174dd1; text-decoration: underline; }

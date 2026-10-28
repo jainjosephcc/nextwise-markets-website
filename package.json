@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "build": "node scripts/build.mjs && node scripts/validate-seo.mjs dist",
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check content.js && node --check policy.js && node --check server.mjs && node --check scripts/build.mjs && node --check scripts/refresh-seo.mjs && node --check scripts/validate-seo.mjs && node scripts/validate-seo.mjs",
+    "check": "node --check live-chat.js && node --check app.js && node --check content.js && node --check policy.js && node --check server.mjs && node --check scripts/build.mjs && node --check scripts/refresh-seo.mjs && node --check scripts/validate-seo.mjs && node scripts/validate-seo.mjs",
     "seo:refresh": "node scripts/refresh-seo.mjs",
     "seo:check": "node scripts/validate-seo.mjs",
     "preview": "npx wrangler dev",
