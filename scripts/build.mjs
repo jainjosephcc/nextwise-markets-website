@@ -28,6 +28,7 @@ const publicFiles = [
   "site.webmanifest",
   "sitemap.xml",
   "styles.css",
+  "site-header.css",
 ];
 
 const publicAssets = [
