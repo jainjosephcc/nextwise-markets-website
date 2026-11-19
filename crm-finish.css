@@ -1,0 +1,405 @@
+/* Glacier Glow reference: Figma 4YEsQsIo2YXK4HFKPPxX8D, light 5:29 / dark 181:160.
+   Blue glass surfaces, orange accents and the website's native Boing family. */
+@media screen {
+  :root, html:not([data-theme="dark"]) {
+    --nw-canvas: #61b7ec;
+    --nw-surface: #edf5fc;
+    --nw-surface-alt: #87cbf6;
+    --nw-ink: #242321;
+    --nw-muted: #34404b;
+    --nw-card-muted: #2e3a45;
+    --nw-link-ink: #0a3760;
+    --nw-accent-ink: #682209;
+    --nw-line: #79acd2;
+    --nw-vivid-blue: #168efa;
+    --nw-action: #ad3e0c;
+    --nw-icon-orange: #f86135;
+    --nw-control-orange: #f86135;
+    --nw-glass-edge: #e8faff;
+    --nw-glass-panel: var(--nw-card-panel);
+    /* Reflections sit over opaque blue glass, so page artwork cannot dilute the text. */
+    --nw-card-panel: radial-gradient(ellipse at 32% -70%, #ffffffd9 0%, #ffffff4d 62%, #ffffff00 63%), linear-gradient(125deg, #ffffff99, #ffffff14 17%, #ffffff00 18%), linear-gradient(180deg, #ffffff99, #ffffff00 5%), radial-gradient(ellipse at 100% 100%, #2492dd26, #2492dd00 55%), linear-gradient(140deg, #d5f1ff, #abd9fa 48%, #91c6f0 82%, #b4e6ff);
+    --nw-material-shadow: inset 0 2px 1px #ffffffeb, inset 2px 0 2px #ffffff80, inset -1px -2px 2px #1878bd66, inset 0 -8px 18px #146cb51f, 0 10px 24px #004b8c29, 0 2px 4px #004b8c1a;
+    --nw-button-fill: #0c63ba;
+    --nw-button-ink: #ffffff;
+    --nw-button-hover: #084e96;
+    --nw-section-surface: radial-gradient(ellipse at 10% 12%, #d3efff80, transparent 55%), linear-gradient(115deg, #8bd0f7, #61b7ec 55%, #399ef0);
+    --nw-guide-scene: linear-gradient(180deg, #a6ddfbec, #a6ddfbd9 60%, #8dd2f8a6), url('/assets/optimized/glacier-gloss-background-lossless-1774.cad66aa606ab.webp');
+    --nw-hero-scrim: linear-gradient(90deg, #8dd7ff88 0%, #8dd7ff60 28%, #a3daf910 65%, transparent 82%);
+    --nw-hero-glaze: linear-gradient(180deg, #e2f5ff40, transparent 26%, #0088e00d);
+    --nw-hero-tone: transparent;
+    --nw-hero-scene: url('/assets/optimized/glacier-gloss-background-lossless-1774.cad66aa606ab.webp');
+  }
+  html[data-theme="dark"] {
+    --nw-canvas: #061426;
+    --nw-surface: #0c2035;
+    --nw-surface-alt: #142c45;
+    --nw-ink: #f4f8ff;
+    --nw-muted: #b9cbdd;
+    --nw-card-muted: #c0d4e5;
+    --nw-link-ink: #8fddff;
+    --nw-accent-ink: #ffc199;
+    --nw-line: #31506c;
+    --nw-blue: #63cfff;
+    --nw-vivid-blue: #008fff;
+    --nw-action: #ff936e;
+    --nw-icon-orange: #f86135;
+    --nw-control-orange: #f86135;
+    --nw-glass: #061b30f5;
+    --nw-header: #031225f5;
+    --nw-glow: #006dcc;
+    --nw-warm: #30211e;
+    --nw-glass-edge: #477fa9;
+    --nw-glass-panel: var(--nw-card-panel);
+    --nw-card-panel: radial-gradient(ellipse at 32% -70%, #a8ddff21 0%, #a8ddff0a 62%, #a8ddff00 63%), linear-gradient(125deg, #b8e6ff1a, #74c7ff00 18%), linear-gradient(180deg, #a8ddff14, #a8ddff00 5%), radial-gradient(ellipse at 100% 100%, #009dff14, #009dff00 55%), linear-gradient(140deg, #163e62, #0d3153 48%, #082b4b 82%, #133f63);
+    --nw-material-shadow: inset 0 2px 1px #bceaff99, inset 2px 0 2px #8ed9ff38, inset -1px -2px 2px #00142dcc, inset 0 -8px 18px #018ddd1f, 0 12px 28px #00081466;
+    --nw-button-fill: #53c7ff;
+    --nw-button-ink: #042238;
+    --nw-button-hover: #8adcff;
+    --nw-shadow: 0 18px 48px #00081466;
+    --nw-section-surface: radial-gradient(ellipse at 92% 16%, #007deb24, transparent 56%), radial-gradient(ellipse at 8% 90%, #00a8f510, transparent 48%), linear-gradient(120deg, #03182d, #020d1b 52%, #04203a);
+    --nw-guide-scene: linear-gradient(180deg, #061426ff, #061426ed 50%, #061426b8), url('/assets/optimized/glacier-dark-floor-1025-lossless-1048.73b1194eb16a.webp');
+    --nw-hero-scrim: linear-gradient(90deg, #020d1bef, #020d1bc9 34%, #020d1b40 70%, #020d1b14);
+    --nw-hero-glaze: linear-gradient(180deg, #020d1b33, transparent 35%, #020d1b26);
+    --nw-hero-tone: #020d1b33;
+    --nw-hero-scene: linear-gradient(180deg, #020d1b 0%, #021326f0 24%, #021326a6 53%, #020d1b00 85%), url('/assets/optimized/glacier-dark-floor-1025-lossless-1048.73b1194eb16a.webp');
+    --nw-cta-outline: #ff8a45;
+    --nw-cta-hover: #ff8a45;
+    --nw-cta-hover-ink: #20150e;
+  }
+
+  body { background: var(--nw-section-surface); }
+  html:root body,
+  html:root body :is(h1, h2, h3, h4, button, input, select, textarea,
+    .site-header, .content-header, .policy-header, .content-section-body,
+    .policy-content, .nw-footer, .nw-select-toggle) {
+    font-family: Boing, Arial, sans-serif;
+    font-synthesis: none;
+  }
+  /* Regular keeps display type open; real Bold is reserved for concise emphasis. */
+  html:root body :is(h1, h2, h3, h4, h5, h6) {
+    font-weight: 400;
+    -webkit-text-stroke: 0;
+  }
+  html:root body :is(strong, b) { font-weight: 700; -webkit-text-stroke: 0; }
+  html:root body :is(.hero-summary-text strong, .workspace-option strong,
+    .account-support-shortcuts strong, .site-nav a, .content-primary-nav a, .policy-primary-nav a) {
+    font-weight: 400;
+  }
+  /* Boing has two static weights; a very fine stroke adds modest optical emphasis. */
+  html:root body :is(.site-nav a, .content-primary-nav a, .policy-primary-nav a) {
+    -webkit-text-stroke: .16px currentColor;
+  }
+  html:root body .market-category-tabs strong {
+    font-weight: 400;
+    -webkit-text-stroke: .18px currentColor;
+  }
+
+  /* Let the portal's reflective scene sit beneath the guide, edge to edge. */
+  .account-opening-overview { position: relative; isolation: isolate; }
+  .account-opening-overview::before {
+    content: "";
+    position: absolute;
+    inset: 0 calc(-1 * var(--nw-page-gutter));
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--nw-guide-scene);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* Use the same reflective blue scene as the portal, with a clear reading area. */
+  html:root body :is(.nw-hero, .content-hero, .policy-hero) {
+    background-color: var(--nw-canvas);
+    background-image: var(--nw-hero-scrim), linear-gradient(var(--nw-hero-tone), var(--nw-hero-tone)), var(--nw-hero-scene);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  html:root body :is(.nw-hero, .content-hero, .policy-hero)::after {
+    background: var(--nw-hero-glaze);
+  }
+  html:root body :is(.nw-hero, .content-hero, .policy-hero)::before,
+  html:root body :is(.nw-accounts, .nw-closing, .nw-confidence)::before,
+  .nw-left-ribbon {
+    filter: saturate(1.75) contrast(1.14);
+    opacity: 1;
+  }
+  /* One uninterrupted drape, with its faded ends beyond the viewport.
+     The close-cropped SVG retains the original silk folds and gentle motion. */
+  html:root body :is(.nw-hero, .content-hero, .policy-hero)::before {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    width: 116%;
+    min-width: 64rem;
+    height: clamp(18rem, 48svh, 34rem);
+    aspect-ratio: auto;
+    transform: translateX(-50%);
+    background: url('/assets/portal-signature/silk-drape-hero.svg') center / 100% 100% no-repeat;
+  }
+  html:root body .nw-hero::before { bottom: clamp(4rem, 12svh, 8rem); }
+  :is(.nw-hero, .content-hero, .policy-hero) > .nw-left-ribbon { display: none; }
+  .content-main::before { opacity: .28; filter: saturate(1.2); }
+  html:root body :is(.nw-accounts, .nw-closing, .nw-confidence)::before { opacity: .25; filter: saturate(1.2); }
+  /* Quiet orange drapes recur at section edges, behind the reading surfaces. */
+  :is(.nw-platform, .nw-live-markets, .content-section:nth-of-type(3n + 1)) { position: relative; isolation: isolate; }
+  :is(.nw-platform, .nw-live-markets, .content-section:nth-of-type(3n + 1))::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    inset: auto 0 0 auto;
+    width: min(80%, 65rem);
+    height: min(45%, 22rem);
+    background: url('/assets/portal-signature/silk-drape-wave-v2.svg') right bottom / contain no-repeat;
+    opacity: .2;
+  }
+  html:root body :is(.nw-section, .nw-closing, .nw-footer, .content-section.enquiry-section) {
+    background: var(--nw-section-surface);
+  }
+  html:root body .nw-footer { --nw-footer-accent: var(--nw-action); }
+  html:root body :is(.site-header, .content-header, .policy-header)::before {
+    background: var(--nw-glass-panel);
+    border: 0;
+  }
+
+  /* Crisp glass edges and blue depth carry the reference through every page. */
+  html:root body :is(.hero-summary, .workspace-overview) {
+    --nw-muted: var(--nw-card-muted);
+    background: var(--nw-glass-panel);
+    border-color: var(--nw-glass-edge);
+    box-shadow: var(--nw-material-shadow);
+  }
+  html:root body :is(.market-link, .market-art-card, .platform-capabilities article,
+    .account-card, .confidence-card, .content-grid-item, .stat-item, .instrument-item,
+    .contact-method, .comparison-cards article, .workspace-option, .funding-check,
+    .partnership-topics, .closing-steps > li, .account-roadmap > li,
+    .account-support-shortcuts > a, .support-contact-link, .platform-link,
+    .process-list > li, .comparison-wrap, .document-toc, .policy-switcher,
+    .nw-chart-workspace, .market-widget-shell) {
+    --nw-muted: var(--nw-card-muted);
+    background: var(--nw-card-panel);
+    border-color: var(--nw-glass-edge);
+    box-shadow: var(--nw-material-shadow);
+  }
+  html:root body .account-card-featured {
+    border-color: #ff7546;
+    box-shadow: var(--nw-material-shadow), 0 0 0 1px #ff75464d;
+  }
+  html:root body .nw-hero #home-title span { color: var(--nw-ink); }
+  .hero-device { box-shadow: 0 25px 48px #00539d3b, 0 0 0 1px #a3daf970; }
+  .nw-footer-socials a { background: var(--nw-card-panel); box-shadow: inset 0 1px 0 var(--nw-glass-edge); }
+  .theme-switch-track { box-shadow: inset 0 1px 0 var(--nw-glass-edge); }
+  html:root body :is(.workspace-option-icon, .market-link-icon, .capability-icon,
+    .hero-summary-symbol:not(.mt5-mark)) {
+    background: var(--nw-card-panel);
+    border-color: var(--nw-glass-edge);
+    box-shadow: inset 0 1px 0 var(--nw-glass-edge);
+  }
+  .comparison-table tbody th { background: color-mix(in srgb, var(--nw-surface-alt) 65%, var(--nw-surface)); }
+  .comparison-table tr > :nth-child(4) { background: color-mix(in srgb, var(--nw-surface-alt) 38%, var(--nw-surface)); }
+  .comparison-table thead th { background: var(--nw-glass-panel); font-weight: 400; }
+  html:root body :is(.cookie-banner, .nw-select-menu) {
+    --nw-muted: var(--nw-card-muted);
+    background: var(--nw-glass-panel);
+    border-color: var(--nw-glass-edge);
+    box-shadow: var(--nw-material-shadow);
+  }
+  html:root body [data-cta-tone="orange"],
+  html:root body .enquiry-actions button {
+    --nw-button-fill: #ff7546;
+    --nw-button-ink: #251f1b;
+    --nw-button-hover: #ff936c;
+  }
+  html:root body :is(.nw-button, .nw-text-link, .content-action, .content-text-link,
+    .document-download, .header-cta, .header-return, .back-link, .mobile-portal-link,
+    .platform-link, .enquiry-actions button),
+  html:root body .nw-hero .nw-actions > :is(.nw-button, .nw-text-link) {
+    background: var(--nw-button-fill);
+    background-clip: border-box;
+    border-color: var(--nw-button-fill);
+    color: var(--nw-button-ink);
+    box-shadow: 0 4px 12px #020d1b26;
+  }
+  html:root body :is(.nw-button, .nw-text-link, .content-action, .content-text-link,
+    .document-download, .header-cta, .header-return, .back-link, .mobile-portal-link,
+    .platform-link, .enquiry-actions button):is(:hover, :focus-visible, :active),
+  html:root body .nw-hero .nw-actions > :is(.nw-button, .nw-text-link):is(:hover, :focus-visible, :active) {
+    background: var(--nw-button-hover);
+    border-color: var(--nw-button-hover);
+    color: var(--nw-button-ink);
+  }
+  html:root body .confidence-details li::before { background: var(--nw-control-orange); }
+  html:root body .market-category-tabs button.active { border-bottom-color: var(--nw-control-orange); }
+  html:root body #nextwise-live-chat :is(button, .website-chat-notice) {
+    background: var(--nw-card-panel);
+    color: var(--nw-ink);
+    border-color: var(--nw-glass-edge);
+    box-shadow: var(--nw-material-shadow);
+  }
+
+  /* Artwork stays free-standing; screenshots and platform screens retain their true colours. */
+  img[src*="/assets/illustrations/"]:not([src*="platform-"]):not([src*="client-workspace"]) {
+    filter: saturate(1.12) contrast(1.04);
+  }
+  html:root body .stats-showcase .stat-item strong { color: var(--nw-ink); }
+  html:root body :is(.content-grid-item, .market-link, .instrument-item) h3 { color: var(--nw-ink); }
+  html:not([data-theme="dark"]) :is(h1, h2) .brand-name-accent { color: #c94f18; }
+
+  /* Deeper text accents keep links legible on blue without dulling the artwork. */
+  html:root body :is(.content-section-body p, .content-section-body li,
+    .faq-answer, .policy-content, .nw-risk-strip, .account-pretrade-notice) a:not(:where(
+    .content-action, .content-text-link, .nw-button, .nw-text-link, .platform-link,
+    .document-download, .support-contact-link)) {
+    color: var(--nw-link-ink);
+  }
+  html:root body :is(.hero-summary, .content-grid-item, .faq-item, .policy-document,
+    .partnership-topics, .account-roadmap) .brand-name-accent,
+  html:root body .process-list > li::before { color: var(--nw-accent-ink); }
+  html:root body #nextwise-live-chat .website-chat-notice a { color: var(--nw-link-ink); }
+
+  /* A soft warm surface keeps the form distinct without a strong peach cast. */
+  .enquiry-section .contact-form { box-shadow: var(--nw-material-shadow); }
+  .policy-document { --nw-muted: var(--nw-card-muted); background: var(--nw-glass-panel); box-shadow: var(--nw-material-shadow); }
+
+  /* Each question and its expanded answer share one reading surface. */
+  body .faq-section .faq-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: .75rem;
+    align-content: start;
+  }
+  body .faq-section .faq-list > .faq-item {
+    --nw-muted: var(--nw-card-muted);
+    min-width: 0;
+    margin: 0;
+    border: 1px solid var(--nw-line);
+    border-radius: 1rem;
+    background: var(--nw-card-panel);
+    color: var(--nw-ink);
+    box-shadow: var(--nw-material-shadow);
+  }
+  body .faq-section .faq-list > .faq-item:last-child { border: 1px solid var(--nw-line); }
+  body .faq-section .faq-list > .faq-item[open] { border-color: var(--nw-blue); }
+  body .faq-section .faq-list > .faq-item > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4rem;
+    padding: 1rem clamp(1rem, 2vw, 1.375rem);
+    border-radius: inherit;
+    color: var(--nw-ink);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    list-style: none;
+    cursor: pointer;
+  }
+  body .faq-section .faq-list > .faq-item > summary::-webkit-details-marker { display: none; }
+  body .faq-section .faq-list > .faq-item > summary::after {
+    content: "+";
+    display: grid;
+    place-items: center;
+    flex: 0 0 1.75rem;
+    height: 1.75rem;
+    color: var(--nw-action);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  body .faq-section .faq-list > .faq-item[open] > summary::after { content: "−"; }
+  body .faq-section .faq-list > .faq-item > summary:focus-visible {
+    outline: 2px solid var(--nw-blue);
+    outline-offset: 3px;
+  }
+  body .faq-section .faq-list .faq-answer {
+    padding: 0 clamp(1rem, 2vw, 1.375rem) 1.125rem;
+    color: var(--nw-muted);
+    overflow-wrap: anywhere;
+  }
+  body .faq-section .faq-list .faq-answer p { margin: 0 0 .75rem; font-size: 1rem; line-height: 1.65; }
+  body .faq-section .faq-list .faq-answer > :last-child { margin-bottom: 0; }
+
+  /* Midnight glass, electric-blue edges and flame-orange actions from the dark CRM scene. */
+  html[data-theme="dark"] body [data-cta-tone="blue"] {
+    --nw-cta-outline: #4ac3ff;
+    --nw-cta-hover: #4ac3ff;
+    --nw-cta-hover-ink: #031426;
+  }
+  html[data-theme="dark"] body [data-cta-tone="orange"] {
+    --nw-cta-outline: #ff8a45;
+    --nw-cta-hover: #ff8a45;
+    --nw-cta-hover-ink: #20150e;
+  }
+  html[data-theme="dark"] body :is(.site-header, .content-header, .policy-header)::before {
+    background: linear-gradient(110deg, #020d1bfa, #04182bf7 68%, #062844f5);
+  }
+  html[data-theme="dark"] body :is(.content-grid-item.graphic-card, .market-art-card, .funding-check, .partnership-topics) {
+    background: var(--nw-card-panel);
+    border-color: var(--nw-glass-edge);
+    box-shadow: var(--nw-material-shadow);
+  }
+  html[data-theme="dark"] body :is(.nw-hero, .content-hero, .policy-hero, .nw-accounts, .nw-closing)::before {
+    filter: saturate(1.75) contrast(1.14) hue-rotate(-12deg);
+  }
+  html[data-theme="dark"] .hero-device {
+    border-color: #60a5d3;
+    background: linear-gradient(135deg, #456b8a, #06182d 45%, #154369);
+    box-shadow: 0 24px 48px #00071480, 0 0 36px #008fff21, inset 0 1px 0 #c6edff80;
+  }
+  html[data-theme="dark"] .hero-device-controls button[aria-pressed="true"] {
+    color: var(--nw-action);
+    border-color: var(--nw-blue);
+    box-shadow: inset 0 1px 0 #a6e8ff33;
+  }
+  html[data-theme="dark"] .theme-switch-track { border-color: #4785ad; background: #061a30; }
+  html[data-theme="dark"] .theme-switch-thumb { box-shadow: 0 0 14px #ff7b3638, inset 0 1px 0 #ffd5b780; }
+  html[data-theme="dark"] :is(.cookie-banner, .nw-select-menu) {
+    background: var(--nw-surface);
+    border-color: #4785ad;
+    box-shadow: var(--nw-material-shadow);
+  }
+  html[data-theme="dark"] .cookie-banner button { border-color: var(--nw-action); }
+  html[data-theme="dark"] #nextwise-live-chat :is(button, .website-chat-notice) {
+    background: var(--nw-glass-panel);
+    color: var(--nw-ink);
+    border-color: #4785ad;
+    box-shadow: var(--nw-material-shadow);
+  }
+  html[data-theme="dark"] #nextwise-live-chat button:hover { background: var(--nw-surface-alt); border-color: var(--nw-blue); }
+  html[data-theme="dark"] #nextwise-live-chat button:focus-visible { outline-color: var(--nw-blue); }
+  html[data-theme="dark"] #nextwise-live-chat .website-chat-notice a { color: var(--nw-blue); }
+  html[data-theme="dark"] .enquiry-section .contact-form {
+    background: var(--enquiry-panel);
+    border-color: var(--enquiry-panel-edge);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html:not([data-theme="dark"]) {
+    --nw-hero-scrim: linear-gradient(180deg, #8dd7ffad, #8dd7ff8c 32%, #a3daf926 65%, transparent);
+  }
+  html[data-theme="dark"] {
+    --nw-hero-scrim: linear-gradient(180deg, #020d1bed, #020d1bbf 32%, #020d1b40 65%, #020d1b26);
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  html:root body :is(.site-nav, .content-primary-nav, .policy-primary-nav) {
+    background: var(--nw-glass-panel);
+    border-color: var(--nw-glass-edge);
+    box-shadow: var(--nw-material-shadow);
+  }
+}
+
+@media screen and (hover: hover) {
+  html:root body :is(.market-link, .confidence-card):hover {
+    border-color: var(--nw-blue);
+    box-shadow: var(--nw-material-shadow), 0 0 0 1px color-mix(in srgb, var(--nw-blue) 35%, transparent);
+  }
+}

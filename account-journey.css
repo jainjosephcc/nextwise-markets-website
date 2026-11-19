@@ -1,0 +1,256 @@
+/* Account support keeps contact details readable and the next steps close by. */
+.content-section.account-support.account-support-hub {
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr);
+  grid-template-areas: "art heading" "art body" "links links";
+  gap: 1rem 2rem;
+}
+.account-support.account-support-hub > .section-art {
+  display: grid; place-items: center; width: 100%; max-width: none;
+  height: 100%; min-height: 19rem; padding: 0;
+  border: 0; border-radius: 0; background: none; box-shadow: none;
+}
+.account-support.account-support-hub > .section-art .nw-illustration {
+  width: 100%; height: clamp(17rem, 26vw, 25rem); max-height: none; object-fit: contain;
+}
+.account-support-hub > .content-section-heading { align-self: end; }
+.account-support-hub > .content-section-heading h2 { max-width: 25ch; }
+.account-support.account-support-hub > .content-section-body { max-width: none; }
+.account-support-hub .content-section-body > p { margin-bottom: 1.25rem; }
+.account-support-hub .support-contact-details {
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1.25rem;
+}
+.account-support.account-support-hub .content-section-body a.support-contact-link {
+  grid-template-columns: 2rem minmax(0, 1fr); gap: .75rem;
+  width: 100%; min-height: 5.5rem; padding: 1rem;
+  border: 1px solid var(--nw-glass-edge); border-radius: 1rem;
+  background: var(--nw-card-panel); box-shadow: var(--nw-material-shadow);
+}
+.account-support-hub .support-contact-icon {
+  display: block; width: 2rem; height: 2rem; color: var(--nw-icon-orange);
+}
+.account-support-hub .support-contact-label { margin-bottom: .25rem; font-size: .875rem; }
+.account-support-hub .support-contact-link strong {
+  color: var(--nw-ink); font-size: 1rem; font-weight: 600; line-height: 1.4;
+  text-decoration-color: var(--nw-line);
+}
+.account-support-hub .support-contact-link:hover strong { text-decoration-color: currentColor; }
+.account-support-hub .account-support-footer { display: flex; align-items: center; gap: 1.25rem; }
+.account-support-hub .support-enquiry-note { flex: 1; margin: 0; font-size: .9375rem; line-height: 1.5; }
+.account-support-hub .account-support-footer .content-action { flex: none; }
+.account-support-shortcuts {
+  grid-area: links; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+}
+.account-support-shortcuts > a {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .75rem;
+  min-width: 0; padding: 1.25rem; border: 1px solid var(--nw-glass-edge);
+  border-radius: 1rem; color: var(--nw-ink); background: var(--nw-card-panel);
+  text-decoration: none; box-shadow: var(--nw-material-shadow);
+}
+.account-support-shortcuts > a > svg { grid-area: 1 / 1; width: 1.75rem; height: 1.75rem; color: var(--nw-icon-orange); }
+.account-support-shortcuts > a > span:not(.support-shortcut-arrow) { grid-area: 2 / 1 / 3 / -1; min-width: 0; }
+.account-support-shortcuts strong { display: block; margin-bottom: .375rem; font-size: 1.125rem; line-height: 1.3; }
+.account-support-shortcuts strong + span { display: block; color: var(--nw-muted); font-size: 1rem; line-height: 1.45; }
+.account-support-shortcuts .support-shortcut-arrow { grid-area: 1 / 2; color: var(--nw-action); font-size: 1.5rem; line-height: 1; }
+.account-support-hub :is(.support-contact-link, .account-support-shortcuts > a):hover { border-color: var(--nw-action); }
+.account-support-hub :is(.support-contact-link, .account-support-shortcuts > a):focus-visible { outline: 3px solid var(--nw-action); outline-offset: 4px; }
+@media (max-width: 1100px) and (min-width: 901px) {
+  .account-support-hub .support-contact-details { grid-template-columns: minmax(0, 1fr); }
+  .account-support.account-support-hub .content-section-body a.support-contact-link { min-height: 4.5rem; padding-block: .75rem; }
+}
+@media (max-width: 900px) {
+  .content-section.account-support.account-support-hub {
+    grid-template-columns: minmax(0, 1fr); grid-template-areas: "art" "heading" "body" "links";
+    gap: 1rem;
+  }
+  .account-support.account-support-hub > .section-art { height: clamp(10rem, 21svh, 13rem); min-height: 0; }
+  .account-support.account-support-hub > .section-art .nw-illustration { width: min(100%, 25rem); height: clamp(9rem, 19svh, 12rem); max-height: 12rem; }
+  .account-support-hub > .content-section-heading h2 { max-width: none; }
+  .account-support-hub .content-section-body > p { margin-bottom: 1rem; }
+  .account-support-hub .support-contact-details { margin-bottom: 1rem; }
+  .account-support-shortcuts { gap: .75rem; }
+  .account-support-shortcuts > a { padding: 1rem; }
+}
+@media (max-width: 600px) {
+  .account-support.account-support-hub > .section-art { height: 10rem; }
+  .account-support.account-support-hub > .section-art .nw-illustration { height: 9rem; }
+  .account-support-hub .support-contact-details, .account-support-shortcuts { grid-template-columns: minmax(0, 1fr); }
+  .account-support-hub .account-support-footer { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .account-support-hub .account-support-footer .content-action { align-self: flex-start; }
+  .account-support-shortcuts > a { gap: .5rem; }
+}
+
+/* A practical, sequential guide to a funded trading account. */
+:is(.account-opening,.platform-setup) { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+:is(.account-opening,.platform-setup) .content-section-heading { position: static; }
+:is(.account-opening,.platform-setup) .content-section-heading h2 { max-width: 24ch; }
+.account-roadmap-intro { max-width: 70rem; margin-bottom: 2rem; }
+.account-roadmap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
+.account-roadmap > li { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 1.25rem; padding: clamp(1.35rem, 2vw, 2rem); border: 1px solid var(--nw-line); border-radius: 1.2rem; background: var(--nw-glass); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--nw-surface) 80%, transparent), 0 8px 28px #286c9e0a; }
+.account-roadmap > li:not(:nth-child(3n))::after { content: ""; position: absolute; top: 3.25rem; right: -1.5rem; width: 1.5rem; height: 2px; background: var(--nw-icon-orange); }
+.account-roadmap-number { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; flex: none; color: var(--nw-ink); background: var(--nw-warm); border: 1px solid color-mix(in srgb, var(--nw-icon-orange) 70%, var(--nw-line)); border-radius: 50%; font-size: 1.1rem; line-height: 1; }
+.account-roadmap h3 { margin: 0 0 .85rem; font-size: clamp(1.2rem, 1.5vw, 1.5rem); line-height: 1.3; }
+.account-roadmap p { margin: 0; font-size: 1rem; line-height: 1.75; color: var(--nw-muted); }
+.account-roadmap-note { margin-top: 1.75rem; padding: 1.5rem 1.75rem; border: 1px solid var(--nw-line); border-left: 3px solid var(--nw-orange); border-radius: .75rem; background: var(--nw-surface); }
+.account-roadmap-note h3 { margin-bottom: .6rem; font-size: 1.25rem; }
+.account-roadmap-note p { margin: 0; color: var(--nw-muted); line-height: 1.75; }
+:is(.account-roadmap, .account-roadmap-intro, .account-roadmap-note) a { text-decoration: underline; text-underline-offset: .2em; color: var(--nw-blue); }
+@media (max-width: 1050px) {
+  .account-roadmap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .account-roadmap > li:nth-child(3n)::after { content: ""; position: absolute; top: 3.25rem; right: -1.5rem; width: 1.5rem; height: 2px; background: var(--nw-icon-orange); }
+  .account-roadmap > li:nth-child(2n)::after, .account-roadmap > li:last-child::after { content: none; }
+}
+@media (max-width: 680px) {
+  .account-roadmap { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .account-roadmap > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 1rem; padding: 1.25rem; }
+  .account-roadmap-number { width: 2.25rem; height: 2.25rem; font-size: 1rem; }
+  .account-roadmap > li:not(:last-child)::after { content: ""; top: auto; bottom: -1rem; left: 2.375rem; right: auto; width: 2px; height: 1rem; background: var(--nw-icon-orange); }
+  .account-roadmap > li:last-child::after { content: none; }
+  .account-roadmap h3 { margin-top: .25rem; font-size: 1.2rem; }
+  .account-roadmap p { font-size: .95rem; }
+  .account-roadmap-note { padding: 1.25rem; }
+}
+
+/* One ordered list; the notice shares the unused cells beside step seven. */
+.content-section.account-opening-overview {
+  align-content: center;
+  gap: clamp(1rem, 3svh, 2rem);
+}
+.account-opening-overview .account-journey-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.account-opening-overview .account-journey-title h2 { max-width: none; }
+.account-opening-overview .account-journey-emblem { flex: none; width: 5rem; height: 4rem; object-fit: contain; }
+.account-opening-overview > .content-section-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(8rem, 1fr));
+  gap: 1rem;
+}
+.account-opening-overview .account-roadmap-overview {
+  grid-area: 1 / 1 / -1 / -1;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  gap: inherit;
+  margin: 0;
+  padding: 0;
+}
+.account-opening-overview .account-roadmap-overview > li {
+  display: flex;
+  justify-content: center;
+  padding: .75rem;
+  border-radius: 1rem;
+}
+.account-opening-overview .account-step-heading {
+  --step-art-size: 6.5rem;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--step-art-size);
+  align-items: center;
+  gap: .75rem;
+}
+.account-opening-overview .account-roadmap-number { width: 1.5rem; height: 1.5rem; font-size: 1rem; }
+.account-opening-overview .account-step-heading > img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: var(--step-art-size);
+  height: 100%;
+  object-fit: contain;
+}
+.account-opening-overview .account-step-copy { min-width: 0; font-size: 1rem; }
+.account-opening-overview .account-step-copy h3 {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 .35rem;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  text-wrap: initial;
+}
+.account-opening-overview .account-step-copy p { margin: 0; font-size: 1rem; line-height: 1.35; }
+.account-opening-overview .account-pretrade-notice {
+  grid-area: 3 / 2 / 4 / -1;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--nw-icon-orange) 35%, var(--nw-line));
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--nw-warm) 88%, transparent);
+}
+.account-opening-overview .account-pretrade-notice p { max-width: 65ch; margin: 0; font-size: 1rem; line-height: 1.5; }
+.account-opening-overview .account-pretrade-notice strong { color: var(--nw-ink); }
+
+@media (min-width: 701px) and (max-width: 999px) {
+  .account-opening-overview > .content-section-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(7rem, 1fr));
+    gap: .75rem;
+  }
+  .account-opening-overview .account-roadmap-overview > li { padding: .5rem; }
+  .account-opening-overview .account-step-heading { --step-art-size: 6rem; gap: .625rem; }
+  .account-opening-overview .account-roadmap-number { width: 1.5rem; height: 1.5rem; }
+  .account-opening-overview .account-pretrade-notice { grid-area: 4 / 2 / 5 / 3; padding: .875rem; }
+  .account-opening-overview .account-pretrade-notice p { line-height: 1.35; }
+}
+@media (max-width: 700px) {
+  .content-section.account-opening-overview { gap: 1rem; padding-block: 1rem 4.5rem; }
+  .account-opening-overview .account-journey-title { gap: .625rem; }
+  .account-opening-overview .account-journey-title h2 { font-size: 1.6rem; }
+  .account-opening-overview .account-journey-emblem { width: 3rem; height: 2.5rem; }
+  .account-opening-overview > .content-section-body { display: flex; flex-direction: column; gap: .75rem; }
+  .account-opening-overview .account-roadmap-overview { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-rows: 1fr; gap: .5rem; }
+  .account-opening-overview .account-roadmap-overview > li { padding: .25rem .5rem; border-radius: .75rem; }
+  .account-opening-overview .account-roadmap-overview > li > .account-step-heading { --step-art-size: 3.5rem; display: grid; grid-template-columns: minmax(0, 1fr) var(--step-art-size); gap: .5rem; }
+  .account-opening-overview .account-roadmap-number { width: 1.125rem; height: 1.125rem; font-size: .875rem; }
+  .account-opening-overview .account-step-copy { line-height: 1.15; }
+  .account-opening-overview .account-step-copy h3 { margin: 0 0 .125rem; gap: .375rem; font-size: 1rem; line-height: inherit; }
+  .account-opening-overview .account-step-copy p { font-size: 1rem; line-height: inherit; }
+  .account-opening-overview .account-pretrade-notice { padding: .75rem; border-radius: .75rem; }
+  .account-opening-overview .account-pretrade-notice p { line-height: 1.25; }
+}
+@media (max-width: 700px) and (max-height: 740px) {
+  .content-section.account-opening-overview { gap: .5rem; padding-block: .5rem 4.5rem; }
+  .account-opening-overview .account-journey-title h2 { font-size: 1.4rem; }
+  .account-opening-overview .account-journey-emblem { display: none; }
+  .account-opening-overview > .content-section-body { gap: .5rem; }
+  .account-opening-overview .account-roadmap-overview { gap: .25rem; }
+  .account-opening-overview .account-roadmap-overview > li { padding: .375rem .5rem; }
+  .account-opening-overview .account-roadmap-overview > li > .account-step-heading { --step-art-size: 2.25rem; gap: .375rem; }
+  .account-opening-overview .account-roadmap-number { width: 1rem; height: 1rem; }
+  .account-opening-overview .account-step-copy { line-height: 1.15; }
+  .account-opening-overview .account-step-copy h3 { display: inline-flex; margin: 0 .25rem 0 0; gap: .25rem; vertical-align: baseline; }
+  .account-opening-overview .account-step-copy p { display: inline; margin: 0; }
+  .account-opening-overview .account-pretrade-notice { padding: 0; border: 0; background: transparent; }
+  .account-opening-overview .account-pretrade-notice p { line-height: 1.15; }
+}
+@media (max-width: 700px) and (max-height: 620px) {
+  .content-section.account-opening-overview { padding-top: .25rem; }
+  .account-opening-overview .account-roadmap-overview { gap: .125rem; }
+  .account-opening-overview .account-roadmap-overview > li { padding-block: .0625rem; }
+}
+
+/* A landscape phone uses the desktop arrangement with compact reading rows. */
+@media (min-width: 701px) and (max-height: 600px) {
+  .content-section.account-opening-overview { gap: .5rem; padding-block: .5rem 4.5rem; }
+  .account-opening-overview .account-journey-title { gap: .625rem; }
+  .account-opening-overview .account-journey-title h2 { font-size: 1.5rem; }
+  .account-opening-overview .account-journey-emblem { width: 2.5rem; height: 2rem; }
+  .account-opening-overview > .content-section-body {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(3.25rem, 1fr));
+    gap: .375rem;
+  }
+  .account-opening-overview .account-roadmap-overview > li { padding: .25rem; border-radius: .625rem; }
+  .account-opening-overview .account-step-heading { --step-art-size: 2rem; gap: .25rem; }
+  .account-opening-overview .account-roadmap-number { width: 1rem; height: 1rem; font-size: .875rem; }
+  .account-opening-overview .account-step-copy { line-height: 1.15; }
+  .account-opening-overview .account-step-copy h3 { display: inline-flex; margin: 0 .25rem 0 0; gap: .25rem; font-size: 1rem; line-height: inherit; vertical-align: baseline; }
+  .account-opening-overview .account-step-copy p { display: inline; margin: 0; line-height: inherit; }
+  .account-opening-overview .account-pretrade-notice { grid-area: 3 / 2 / 4 / -1; padding: .25rem .75rem; border-radius: .625rem; }
+  .account-opening-overview .account-pretrade-notice p { line-height: 1.15; }
+}

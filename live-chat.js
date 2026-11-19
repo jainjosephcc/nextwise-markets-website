@@ -5,6 +5,10 @@
   const baseUrl = "https://chat.nextwisemarkets.com";
   // Public website inbox identifier; this is not a CRM credential or HMAC key.
   const websiteToken = "f6u5LY37dy78BhwQBPfpNj8q";
+  const lightIcon = "/assets/portal-signature/paperbot-icon-light.png";
+  const darkIcon = "/assets/portal-signature/paperbot-icon-dark.png";
+  // Initialize correctly even when this deferred launcher is added after theme setup.
+  const icon = document.documentElement.dataset.theme === "dark" ? darkIcon : lightIcon;
   const launcher = document.createElement("aside");
   launcher.id = "nextwise-live-chat";
   launcher.setAttribute("aria-label", "Live chat");
@@ -14,7 +18,7 @@
       <a href="/contact/">Contact support</a>
     </div>
     <button type="button" aria-expanded="false" aria-controls="chatwoot_live_chat_widget">
-      <img src="/assets/paperbot-chat-icon.png" width="24" height="24" alt="" aria-hidden="true" />
+      <img src="${icon}" data-theme-light-src="${lightIcon}" data-theme-dark-src="${darkIcon}" width="28" height="28" alt="" aria-hidden="true" />
       <span>Live chat</span>
     </button>`;
   document.body.appendChild(launcher);

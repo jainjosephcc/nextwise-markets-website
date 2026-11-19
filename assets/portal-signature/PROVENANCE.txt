@@ -1,0 +1,24 @@
+NEXTWISE / PORTAL SIGNATURE ASSET PROVENANCE
+
+Source client project: NEXT_CLIENT_AI
+Destination: public website assets/portal-signature and assets/fonts.
+
+The four silk-drape SVGs are exact byte copies of the current dashboard artwork in src/assets/optimized. Their native gradients and paths are retained; website motion is defined in CSS with a reduced-motion fallback. The matching public/assets/portal-artwork copies in the client project have identical bytes.
+
+Boing-Regular.ttf and Boing-Bold.ttf are exact byte copies from the existing client public/fonts directory.
+
+glacier-gloss-background-lossless.webp is an exact copy of the current auth background. Its VP8L codec is lossless; it is not a full UI screenshot.
+
+Icons preserve native Lucide geometry from installed lucide-vue-next v0.294.0. Only SVG envelope/presentation properties were assigned: 24px, viewBox 0 0 24 24, no fill, orange #c94f18 stroke, width1.7 and rounded caps/joins. Vue internal key attributes were omitted. ISC license is retained in LUCIDE-LICENSE.txt.
+
+The current website inlines those paths with currentColor and stroke width2.3, using the portal's #ef7b3d icon colour. The stored source exports above remain unchanged. Boing Regular is mapped to400 and Bold to700. The website uses these original silk ribbons behind glass surfaces in both themes. The lighter heading treatment uses Boing Regular with a small CSS stroke; the source font files remain untouched.
+
+paperbot-icon-light.png and paperbot-icon-dark.png are unchanged copies of src/assets/paperbot/icon-light.png and icon-dark.png in NEXT_CLIENT_AI. Light uses the black/blue mark on a white launcher; dark uses the white/blue mark on a navy launcher.
+
+Fallback: chart-column-increasing.svg uses the native bar-chart-4.js rising-column geometry. Neither requested newer chart-no-axes-combined nor chart-column-increasing filename exists in v0.294.0. No geometry was redrawn.
+
+See provenance.json for every source path and SHA-256 hash.
+
+The boxed MetaTrader 5 mark is an unchanged copy of NEXT_CLIENT_AI/public/mt_icon.webp, as used in Live Accounts. Footer social SVGs preserve the installed Lucide LinkedIn, Facebook, Instagram and YouTube geometry.
+
+glacier-dark-floor-1025-lossless.webp is an unchanged copy of the CRM dark reflective floor. The public website uses it only as dark-theme hero atmosphere, beneath CSS reading scrims. It adds no repeated bull/bear illustration; the original source and light-theme artwork remain unchanged.

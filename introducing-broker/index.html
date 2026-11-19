@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/assets/fonts/Boing-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/assets/fonts/Boing-Bold.ttf" as="font" type="font/ttf" crossorigin />
+    <script src="/theme.js?v=4"></script>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="The NEXTWISE MARKETS Ltd." />
     <meta name="theme-color" content="#ff4d10" />
@@ -34,8 +37,7 @@
     <meta name="twitter:image" content="https://imagedelivery.net/rOThsJwRI2L_FvAzE6eQ4A/3c30bab4-a81c-4bf8-3d5a-863078110500/public" />
     <meta name="twitter:image:alt" content="NEXTWISE MARKETS — Markets move fast. Trade with clarity." />
     <!-- SEO structured data -->
-    <script type="application/ld+json">
-{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -57,109 +59,190 @@
         "width": 1200,
         "height": 630
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://nextwisemarkets.com/introducing-broker/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "NEXTWISE MARKETS",
-          "item": "https://nextwisemarkets.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Introducing Broker",
-          "item": "https://nextwisemarkets.com/introducing-broker/"
-        }
-      ]
     }
   ]
-}
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="/analytics.css?v=3" />
-    <script src="/analytics.js?v=1" defer></script>
-    <link rel="stylesheet" href="/live-chat.css?v=1" />
-    <script src="/live-chat.js?v=1" defer></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="../content.css?v=6" />
-    <link rel="stylesheet" href="/site-header.css?v=1" />
-    <script src="../content.js?v=2" defer></script>
-  </head>
-  <body>
+}</script>
+    <link rel="stylesheet" href="/analytics.css?v=4" />
+    <script src="/analytics.js?v=2" defer></script>
+    <link rel="stylesheet" href="/live-chat.css?v=2" />
+    <script src="/live-chat.js?v=2" defer></script>
+    <link rel="stylesheet" href="../content.css?v=9" />
+    <link rel="stylesheet" href="/horizon.css?v=6" />
+    <link rel="stylesheet" href="/site-header.css?v=11" />
+    <link rel="stylesheet" href="/brand-material.css?v=7" />
+    <link rel="stylesheet" href="/site-footer.css?v=10" />
+    <script src="../content.js?v=3" defer></script>
+      <link rel="stylesheet" href="/site-refinement.css?v=9" />
+    <link rel="stylesheet" href="/illustrations.css?v=17" />
+  <script src="/site-interactions.js?v=5" defer></script>
+  <link rel="stylesheet" href="/screen-layout.css?v=2" />
+  <script type="module" src="/screen-layout.js?v=3"></script>
+  <link rel="stylesheet" href="/crm-finish.css?v=8" />
+  <link rel="stylesheet" href="/responsive-art.css?v=3" />
+  <link rel="stylesheet" href="/section-art-layout.css?v=1" />
+  <link rel="stylesheet" href="/hero-visuals.css?v=1" />
+</head>
+  <body data-page="introducing-broker">
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="content-header">
-      <a class="content-brand" href="../" aria-label="NEXTWISE MARKETS home"><img src="../assets/nextwise-logo-gradient.svg" alt="NEXTWISE MARKETS" width="453" height="71" /></a>
+      <a class="content-brand" href="../" aria-label="NEXTWISE MARKETS home"><img src="/assets/nextwise-logo-gradient.svg" alt="NEXTWISE MARKETS" width="453" height="71" /></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="content-primary-nav"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="content-primary-nav" class="content-primary-nav" aria-label="Primary navigation"><a href="../about-us/">About</a><a href="../trading-platform/">Platform</a><a href="../account-types/">Accounts</a><a href="../#markets">Markets</a><a href="../introducing-broker/" aria-current="page">Partners</a><a href="../contact/">Contact</a></nav>
-      <a class="header-return" href="https://client.nextwisemarkets.com/">Sign Up / Login <span aria-hidden="true">↗</span></a>
+      <nav id="content-primary-nav" class="content-primary-nav" aria-label="Primary navigation"><a href="../about-us/">About</a><a href="../trading-platform/">Platform</a><a href="../account-types/">Accounts</a><a href="../#markets">Markets</a><a href="../introducing-broker/" aria-current="page">Partners</a><a href="../contact/">Contact</a><a class="mobile-portal-link" href="https://client.nextwisemarkets.com/" data-cta-tone="blue">Sign Up / Login </a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle role="switch" aria-label="Dark mode" aria-checked="false" title="Use dark theme"><span class="theme-switch-track" aria-hidden="true"><svg class="theme-switch-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="theme-switch-icon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><span class="theme-switch-thumb"></span></span></button>
+      <a class="header-return" href="https://client.nextwisemarkets.com/" data-cta-tone="blue"><svg class="header-portal-arrow" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg><span><small>Wanna trade?</small>Sign Up / Login</span></a>
     </header>
 
     <main>
-      <section class="content-hero" data-page="introducing-broker" aria-labelledby="page-title">
+      <section class="content-hero illustrated-hero" data-managed-screen data-page="introducing-broker" aria-labelledby="page-title">
         <div class="content-hero-shell">
+          <div class="hero-art" aria-hidden="true"><img class="hero-art-image" src="/assets/hero-art/introducing-broker.webp" alt="" width="1448" height="1086" fetchpriority="high" decoding="async" srcset="/assets/optimized/introducing-broker-480.03b307c13001.webp 480w, /assets/optimized/introducing-broker-768.9cf534bf91e5.webp 768w, /assets/optimized/introducing-broker-1024.1a69569b3fde.webp 1024w, /assets/hero-art/introducing-broker.webp 1448w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1100px) calc((100vw - 72px) / 2), 47vw" data-image-original="/assets/hero-art/introducing-broker.webp" /></div>
           <div class="content-hero-copy">
-            <nav class="content-breadcrumbs" aria-label="Breadcrumb"><a href="../">NEXTWISE MARKETS</a><span aria-hidden="true">/</span><span>Introducing Broker</span></nav>
-            <h1 id="page-title">Build a Clearer Partnership with NEXTWISE MARKETS.</h1>
+            <h1 id="page-title">A clearer path to partnership.</h1>
             <p>Refer eligible clients, access performance reporting and understand how commissions are calculated before you begin.</p>
-            
-            <div class="content-hero-actions"><a class="content-action" href="https://client.nextwisemarkets.com/">Sign Up / Login <span aria-hidden="true">→</span></a><a class="content-text-link" href="#content">Explore this page ↓</a></div>
+
+            <div class="content-hero-actions"><a class="content-action" href="https://client.nextwisemarkets.com/" data-cta-tone="blue">Sign Up / Login</a><a class="content-text-link" href="#content" data-cta-tone="orange">Explore this page</a></div>
           </div>
-          <div class="content-hero-media" aria-hidden="true"><img src="../assets/nextwise-story-funding-gateway-v1.webp" alt="" width="1254" height="1254" fetchpriority="high" /></div>
         </div>
       </section>
-      <div class="content-main" id="content"><section class="content-section" aria-labelledby="why-become-a-nextwise-introducing-broker"><header class="content-section-heading"><h2 id="why-become-a-nextwise-introducing-broker">Why partner with NEXTWISE MARKETS?</h2></header><div class="content-section-body"><p>The Introducing Broker programme gives approved partners a structured way to refer eligible clients and monitor qualifying activity. Terms, rates and regional availability are confirmed during onboarding.</p>
+      <div class="hero-overview-band">
+        <aside class="hero-summary partner-hero-summary" aria-label="Page overview">
+            <ul class="hero-summary-list">
+              <li><div class="hero-summary-symbol"><img class="hero-summary-icon" src="/assets/illustrations/themed/light/icons/document.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/document.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/document.svg" alt="" aria-hidden="true" width="100" height="100" decoding="async" /></div><div class="hero-summary-text"><strong>Documented commission structure</strong><p>Review the commission terms that apply to your partner agreement and qualifying client activity.</p></div></li>
+              <li><div class="hero-summary-symbol"><img class="hero-summary-icon" src="/assets/illustrations/themed/light/icons/people.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/people.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/people.svg" alt="" aria-hidden="true" width="100" height="100" decoding="async" /></div><div class="hero-summary-text"><strong>Client onboarding support</strong><p>Help referred clients reach the correct registration and verification steps.</p></div></li>
+              <li><div class="hero-summary-symbol"><img class="hero-summary-icon" src="/assets/illustrations/themed/light/icons/chart.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/chart.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/chart.svg" alt="" aria-hidden="true" width="100" height="100" decoding="async" /></div><div class="hero-summary-text"><strong>Advanced performance reporting</strong><p>Monitor referrals, qualifying activity and commission information from one view.</p></div></li>
+            </ul>
+          </aside>
+      </div>
+      <div class="content-main" id="content"><section class="content-section" aria-labelledby="why-become-a-nextwise-introducing-broker"><header class="content-section-heading"><h2 id="why-become-a-nextwise-introducing-broker">Why partner with <span class="brand-name-accent">Nextwise Markets</span>?</h2></header><div class="content-section-body"><p>The Introducing Broker programme gives approved partners a structured way to refer eligible clients and monitor qualifying activity. Terms, rates and regional availability are confirmed during onboarding.</p>
 <div class="content-grid">
-<article class="content-grid-item"><h3>Documented commission structure</h3><p>Review the commission terms that apply to your partner agreement and qualifying client activity.</p></article>
-<article class="content-grid-item"><h3>Scheduled payouts</h3><p>Track eligible balances and payout status through the available partner workflow.</p></article>
-<article class="content-grid-item"><h3>Client onboarding support</h3><p>Help referred clients reach the correct registration and verification steps.</p></article>
-<article class="content-grid-item"><h3>Advanced performance reporting</h3><p>Monitor referrals, qualifying activity and commission information from one view.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/document.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/document.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/document.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Documented commission structure</h3><p>Review the commission terms that apply to your partner agreement and qualifying client activity.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/calendar.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/calendar.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/calendar.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Scheduled payouts</h3><p>Track eligible balances and payout status through the available partner workflow.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/people.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/people.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/people.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Client onboarding support</h3><p>Help referred clients reach the correct registration and verification steps.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/chart.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/chart.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/chart.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Advanced performance reporting</h3><p>Monitor referrals, qualifying activity and commission information from one view.</p></article>
 </div>
 <p>Need help? Contact our partnership team to discuss eligibility, terms and onboarding.</p></div></section>
-<section class="content-section" aria-labelledby="safe-and-flexible-payment-methods"><header class="content-section-heading"><h2 id="safe-and-flexible-payment-methods">Payment-method availability</h2></header><div class="content-section-body"><p>Payment methods, currencies, processing times and provider restrictions vary by region and account. Available options are shown to each eligible client in the client portal.</p></div></section>
-<section class="content-section" aria-labelledby="how-our-introducing-broker-program-works"><header class="content-section-heading"><h2 id="how-our-introducing-broker-program-works">How the Introducing Broker programme works</h2></header><div class="content-section-body"><ol class="process-list"><li><strong>Apply.</strong> Submit your partnership details for review.</li><li><strong>Agree terms.</strong> Review eligibility, commission terms and permitted marketing activity.</li><li><strong>Refer and monitor.</strong> Use your assigned referral journey and reporting tools to follow qualifying activity.</li></ol><p class="content-disclaimer">Partner approval, commission eligibility and payouts are governed by the applicable agreement.</p></div></section>
-<section class="content-section" aria-labelledby="why-clients-choose-nextwise-markets"><header class="content-section-heading"><h2 id="why-clients-choose-nextwise-markets">A connected experience for referred clients</h2></header><div class="content-section-body"><p>NEXTWISE MARKETS brings account onboarding, supported-market access and client assistance into one connected experience.</p>
+<section class="content-section funding-feature" data-managed-screen id="client-funding" aria-labelledby="safe-and-flexible-payment-methods">
+  <header class="content-section-heading funding-intro">
+    <h2 id="safe-and-flexible-payment-methods">Clear funding options for your clients</h2>
+    <p>Payment methods, currencies, processing times and provider restrictions vary by region and account. Eligible clients can review their available options in the Nextwise client portal.</p>
+  </header>
+  <div class="section-art funding-art" aria-hidden="true"><img class="nw-illustration" src="/assets/illustrations/themed/light/funding-options.svg" data-theme-light-src="/assets/illustrations/themed/light/funding-options.svg" data-theme-dark-src="/assets/illustrations/themed/dark/funding-options.svg" alt="" width="480" height="320" loading="lazy" decoding="async" /></div>
+  <div class="content-section-body">
+    <div class="content-grid funding-checks">
+      <article class="funding-check"><img src="/assets/illustrations/themed/light/icons/wallet.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/wallet.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/wallet.svg" alt="" width="44" height="44" loading="lazy" decoding="async" /><div><h3>Find available methods</h3><p>View the deposit and withdrawal options available for the selected account.</p></div></article>
+      <article class="funding-check"><img src="/assets/illustrations/themed/light/icons/document.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/document.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/document.svg" alt="" width="44" height="44" loading="lazy" decoding="async" /><div><h3>Review the details</h3><p>Check the currency, minimum amount and current payment instructions before continuing.</p></div></article>
+      <article class="funding-check"><img src="/assets/illustrations/themed/light/icons/transfer.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/transfer.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/transfer.svg" alt="" width="44" height="44" loading="lazy" decoding="async" /><div><h3>Follow the status</h3><p>Review transaction history and confirm the credited balance before trading.</p></div></article>
+    </div>
+    <div class="funding-actions"><a class="content-action" href="https://client.nextwisemarkets.com/" data-cta-tone="blue">Open client portal</a><a class="content-action" href="../deposit-withdrawal-policy/" data-cta-tone="orange">Deposit &amp; withdrawal policy</a></div>
+  </div>
+</section>
+<section class="content-section illustrated-section" aria-labelledby="how-our-introducing-broker-program-works"><header class="content-section-heading"><h2 id="how-our-introducing-broker-program-works">How the Introducing Broker programme works</h2><div class="section-art" aria-hidden="true"><img class="nw-illustration" src="/assets/illustrations/themed/light/verification.svg" data-theme-light-src="/assets/illustrations/themed/light/verification.svg" data-theme-dark-src="/assets/illustrations/themed/dark/verification.svg" alt="" width="480" height="320" loading="lazy" decoding="async" /></div></header><div class="content-section-body"><ol class="process-list"><li><strong>Apply.</strong> Submit your partnership details for review.</li><li><strong>Agree terms.</strong> Review eligibility, commission terms and permitted marketing activity.</li><li><strong>Refer and monitor.</strong> Use your assigned referral journey and reporting tools to follow qualifying activity.</li></ol><p class="content-disclaimer">Partner approval, commission eligibility and payouts are governed by the applicable agreement.</p></div></section>
+<section class="content-section referred-client-experience" data-managed-screen aria-labelledby="why-clients-choose-nextwise-markets"><header class="content-section-heading"><h2 id="why-clients-choose-nextwise-markets">A connected experience for referred clients</h2></header><div class="content-section-body"><p><span class="brand-name-accent">Nextwise Markets</span> brings account onboarding, supported-market access and client assistance into one connected experience.</p>
 <div class="content-grid">
-<article class="content-grid-item"><h3>Clear account information</h3><p>Referred clients can review account conditions, available markets and relevant risk information before funding.</p></article>
-<article class="content-grid-item"><h3>Account-dependent leverage</h3><p>Eligible leverage is shown clearly for the client’s account and jurisdiction.</p></article>
-<article class="content-grid-item"><h3>Multiple account choices</h3><p>Clients can compare available account types before selecting an account.</p></article>
-<article class="content-grid-item"><h3>Funding visibility</h3><p>Available deposit and withdrawal methods are presented in the client portal.</p></article>
-<article class="content-grid-item"><h3>Supported market access</h3><p>Eligible clients can access supported CFD markets through MetaTrader 5, subject to account and regional availability.</p></article>
-<article class="content-grid-item"><h3>Dedicated support</h3><p>Client Services can assist with onboarding, account access and general platform questions.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/document.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/document.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/document.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Clear account information</h3><p>Referred clients can review account conditions, available markets and relevant risk information before funding.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/sliders.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/sliders.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/sliders.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Account-dependent leverage</h3><p>Eligible leverage is shown clearly for the client’s account and jurisdiction.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/wallet.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/wallet.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/wallet.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Multiple account choices</h3><p>Clients can compare available account types before selecting an account.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/transfer.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/transfer.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/transfer.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Funding visibility</h3><p>Available deposit and withdrawal methods are presented in the client portal.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/globe.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/globe.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/globe.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Supported market access</h3><p>Eligible clients can access supported CFD markets through MetaTrader5, subject to account and regional availability.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/chat.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/chat.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/chat.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Dedicated support</h3><p>Client Services can assist with onboarding, account access and general platform questions.</p></article>
 </div></div></section>
-<section class="content-section" aria-labelledby="about-the-nextwise-partner-program"><header class="content-section-heading"><h2 id="about-the-nextwise-partner-program">About the NEXTWISE MARKETS partner programme</h2></header><div class="content-section-body"><p>The programme gives approved Introducing Brokers a documented referral path, activity reporting and access to partnership support. Eligibility, permitted marketing activity, commission terms and regional availability are confirmed in the applicable agreement.</p></div></section>
-<section class="content-section" aria-labelledby="frequently-asked-questions"><header class="content-section-heading"><h2 id="frequently-asked-questions">Frequently asked questions</h2></header><div class="content-section-body"><details class="faq-item"><summary>What is an Introducing Broker (IB)?</summary><div class="faq-answer"><p>An Introducing Broker is an approved partner who refers eligible clients to NEXTWISE MARKETS under a written partnership agreement.</p></div></details>
-<details class="faq-item"><summary>How are IB commissions calculated?</summary><div class="faq-answer"><p>Commission depends on the terms of your agreement and the qualifying activity of referred clients. The partnership team will explain rates, exclusions and the payout process before approval.</p></div></details></div></section>
-<section class="content-section" aria-labelledby="build-a-scalable-partnership"><header class="content-section-heading"><h2 id="build-a-scalable-partnership">Build a scalable partnership with NEXTWISE MARKETS.</h2></header><div class="content-section-body"><p>Apply to discuss programme eligibility, permitted promotional activity, reporting access and commission terms.</p><a class="content-action content-action-dark" href="https://client.nextwisemarkets.com/">Start your application <span aria-hidden="true">→</span></a></div></section></div>
-    </main>
+<section data-managed-screen class="content-section illustrated-section illustrated-feature portal-feature" aria-labelledby="about-the-nextwise-partner-program"><header class="content-section-heading"><h2 id="about-the-nextwise-partner-program">About the <span class="brand-name-accent">Nextwise Markets</span> partner programme</h2></header><div class="content-section-body"><p>The programme gives approved Introducing Brokers a documented referral path, activity reporting and access to partnership support. Eligibility, permitted marketing activity, commission terms and regional availability are confirmed in the applicable agreement.</p><p>Your referred clients use the Nextwise client portal to access their trading accounts and manage their funds.</p></div><div class="section-art" aria-hidden="true"><img class="nw-illustration" src="/assets/illustrations/themed/light/partner-network.svg" data-theme-light-src="/assets/illustrations/themed/light/partner-network.svg" data-theme-dark-src="/assets/illustrations/themed/dark/partner-network.svg" alt="" width="480" height="320" loading="lazy" decoding="async" /></div></section>
+<section data-managed-screen class="content-section faq-section" aria-labelledby="frequently-asked-questions"><header class="content-section-heading faq-intro"><div class="faq-heading-label"><img class="section-emblem" src="/assets/illustrations/themed/light/icons/chat.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/chat.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/chat.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h2 id="frequently-asked-questions">Frequently asked questions</h2></div><img class="faq-illustration" src="/assets/illustrations/themed/light/partnership-connect.svg" data-theme-light-src="/assets/illustrations/themed/light/partnership-connect.svg" data-theme-dark-src="/assets/illustrations/themed/dark/partnership-connect.svg" alt="" aria-hidden="true" width="480" height="320" loading="lazy" decoding="async" /></header><div class="content-section-body faq-list"><details class="faq-item"><summary>What is an Introducing Broker (IB)?</summary><div class="faq-answer"><p>An Introducing Broker is an approved partner who refers eligible clients to <span class="brand-name-accent">Nextwise Markets</span> under a written partnership agreement.</p></div></details>
+<details class="faq-item"><summary>How are IB commissions calculated?</summary><div class="faq-answer"><p>Commission depends on the terms of your agreement and the qualifying activity of referred clients. The partnership team will explain rates, exclusions and the payout process before approval.</p></div></details>
+<details class="faq-item"><summary>How do I apply to become an Introducing Broker?</summary><div class="faq-answer"><p>Submit your partnership details for review. The partnership team will confirm eligibility, regional availability, commission terms and permitted marketing activity. Review and agree the applicable terms before starting your referral activity.</p></div></details>
+<details class="faq-item"><summary>How can I monitor my referrals?</summary><div class="faq-answer"><p>Approved partners use the assigned referral journey and reporting tools to monitor referrals, qualifying client activity and commission information. The available reporting access is confirmed during partner onboarding.</p></div></details>
+<details class="faq-item"><summary>Where can I check commission payout information?</summary><div class="faq-answer"><p>Use the available partner workflow to review eligible balances and payout status. Commission eligibility and payouts are governed by your partnership agreement; the partnership team can clarify the terms and payout process.</p></div></details></div></section>
+<section data-managed-screen class="content-section partnership-invitation" id="partner-invitation" aria-labelledby="build-a-scalable-partnership">
+  <header class="content-section-heading partnership-intro">
+    <h2 id="build-a-scalable-partnership">Build a scalable partnership with <span class="brand-name-accent">Nextwise Markets</span>.</h2>
+    <p>Bring your client relationships and referral plans. Explore a partnership with clear terms, an agreed referral journey and access to reporting.</p>
+  </header>
+  <aside class="content-section-body partnership-discussion" aria-labelledby="partnership-discussion-title">
+    <div class="partnership-discussion-heading">
+      <img class="partnership-connect-art" src="/assets/illustrations/themed/light/partnership-connect.svg" data-theme-light-src="/assets/illustrations/themed/light/partnership-connect.svg" data-theme-dark-src="/assets/illustrations/themed/dark/partnership-connect.svg" alt="" aria-hidden="true" width="480" height="320" loading="lazy" decoding="async" />
+      <h3 id="partnership-discussion-title">What we’ll cover together</h3>
+    </div>
+    <ul class="content-grid partnership-topics">
+      <li><img src="/assets/illustrations/themed/light/icons/globe.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/globe.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/globe.svg" alt="" width="40" height="40" loading="lazy" decoding="async" /><div><h4>Your eligibility</h4><p>Regional availability and permitted promotional activity.</p></div></li>
+      <li><img src="/assets/illustrations/themed/light/icons/document.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/document.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/document.svg" alt="" width="40" height="40" loading="lazy" decoding="async" /><div><h4>Your commercial terms</h4><p>Qualifying activity, commission terms and the payout process.</p></div></li>
+      <li><img src="/assets/illustrations/themed/light/icons/chart.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/chart.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/chart.svg" alt="" width="40" height="40" loading="lazy" decoding="async" /><div><h4>Your referral tools</h4><p>Your assigned referral journey and available reporting access.</p></div></li>
+    </ul>
+  </aside>
+  <div class="content-section-body partnership-next-step">
+    <div class="partnership-actions"><a class="content-action" href="https://client.nextwisemarkets.com/" data-cta-tone="orange">Start your application</a><a class="content-action" href="../contact/#send-an-enquiry" data-cta-tone="orange">Discuss a partnership</a></div>
+    <p class="partnership-email">Prefer to email? <a href="mailto:support@nextwisemarkets.com?subject=Partnership%20enquiry">support@nextwisemarkets.com</a></p>
+    <p class="partnership-note">Partner approval, commission eligibility and payouts are governed by the applicable agreement.</p>
+  </div>
+</section></div>
+</main>
 
-    <footer class="content-footer">
-      <div class="content-footer-shell">
-        <div class="content-footer-main">
-          <div class="content-footer-brand"><img src="../assets/nextwise-logo-white.svg" alt="NEXTWISE MARKETS" width="453" height="71" loading="lazy" decoding="async" /><p>Trade smarter with The NEXTWISE MARKETS Ltd. — your all-in-one platform for limitless opportunities.</p></div>
-          <nav class="content-footer-column" aria-label="Explore"><b>Explore</b><a href="../about-us/">About Us</a><a href="../trading-platform/">Platform</a><a href="../account-types/">Accounts</a><a href="../introducing-broker/" aria-current="page">Introducing Broker</a><a href="../contact/">Contact</a></nav>
-          <nav class="content-footer-column" aria-label="Markets"><b>Markets</b><a href="../forex/">Forex</a><a href="../crypto/">Crypto</a><a href="../metals-energy/">Metals &amp; Energy</a><a href="../indices/">Indices</a></nav>
-          <address class="content-footer-column"><b>Contact</b><a href="tel:+17585720778">+1-758-572-0778</a><a href="tel:+442039966589">+442039966589</a><a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a><a href="../contact/">Saint Lucia registered office</a></address>
+    <footer id="site-footer" class="nw-footer" aria-label="NEXTWISE MARKETS footer">
+      <div class="nw-footer-shell">
+        <div class="nw-footer-main">
+          <details class="nw-footer-group nw-footer-policy-group" open>
+            <summary>Legal &amp; policies</summary>
+            <nav class="nw-footer-policies" aria-label="Legal and policies">
+              <a href="/privacy-policy/">Privacy Policy</a>
+              <a href="/terms-and-conditions/">Terms And Conditions</a>
+              <a href="/aml-policy/">AML Policy</a>
+              <a href="/deposit-withdrawal-policy/">Deposit Withdrawal Policy</a>
+              <a href="/restricted-countries/">Restricted Countries</a>
+              <a href="/risk-disclosure/">Risk Disclosure</a>
+              <a href="/client-services-agreement/">Client Services Agreement</a>
+              <a href="/trading-activity-compliance-policy/">Trading Activity Compliance Policy</a>
+
+            </nav>
+          </details>
+          <details class="nw-footer-group" open>
+            <summary>Explore</summary>
+            <nav class="nw-footer-column" aria-label="Explore Nextwise">
+              <a href="/">Home</a>
+              <a href="/about-us/">About Us</a>
+              <a href="/trading-platform/">Platform</a>
+              <a href="/account-types/">Accounts</a>
+              <a href="/introducing-broker/" aria-current="page">Introducing Broker</a>
+              <a href="/contact/">Contact</a>
+          </nav>
+          </details>
+          <details class="nw-footer-group" open>
+            <summary>Markets</summary>
+            <nav class="nw-footer-column" aria-label="Explore markets">
+              <a href="/forex/">Forex</a>
+              <a href="/crypto/">Crypto</a>
+              <a href="/metals-energy/">Metals &amp; Energy</a>
+              <a href="/indices/">Indices</a>
+          </nav>
+          </details>
+          <details class="nw-footer-group" open>
+            <summary>Contact</summary>
+            <address class="nw-footer-column nw-footer-contact">
+            <a href="tel:+17585720778">+1-758-572-0778</a>
+            <a href="tel:+442039966589">+442039966589</a>
+            <a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a>
+            <p><strong>Registration Number</strong>2025-00221</p>
+            <p><strong>Reg Address</strong>Ground Floor, The Sotheby Building, Rodney Village, Rodney Bay, Gros-Islet, Saint Lucia</p>
+          </address>
+          </details>
+          <div class="nw-footer-brand">
+            <a class="nw-footer-logo" href="/" aria-label="NEXTWISE MARKETS home"><img src="/assets/nextwise-logo-gradient.svg" alt="NEXTWISE MARKETS" width="453" height="71" loading="lazy" decoding="async" /></a>
+            <p class="nw-footer-intro">Trade smarter with The <span class="brand-name-accent">Nextwise Markets</span> Ltd. — your all-in-one platform for limitless opportunities.</p>
+            <nav class="nw-footer-socials" aria-label="NEXTWISE MARKETS social channels">
+                <a href="https://www.facebook.com/nextwise.markets" aria-label="NEXTWISE MARKETS on Facebook (opens in a new tab)" title="Facebook" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="https://www.instagram.com/nextwise.markets/" aria-label="NEXTWISE MARKETS on Instagram (opens in a new tab)" title="Instagram" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                <a href="https://www.linkedin.com/company/nextwise-markets/about/" aria-label="NEXTWISE MARKETS on LinkedIn (opens in a new tab)" title="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="https://www.youtube.com/@nextwise.markets" aria-label="NEXTWISE MARKETS on YouTube (opens in a new tab)" title="YouTube" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+            </nav>
+          </div>
         </div>
-        <div class="footer-disclosures">
-          <article>
-            <span>01</span>
-            <h2>Risk Warning</h2>
-            <p>Please note that forex trading and trading in other leveraged products involves a significant level of risk and is not suitable for all investors. Trading in financial instruments may result in losses as well as profits and your losses can be greater than your initial invested capital. Before undertaking any such transactions, you should ensure that you fully understand the risks involved and seek independent advice if necessary.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h2>Restricted Regions</h2>
-            <p>The NEXTWISE MARKETS Ltd. does not provide services for citizens/residents of the USA, UAE, Cuba, Iraq, India, Myanmar, North Korea, Sudan. The services of The NEXTWISE MARKETS Ltd. are not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.</p>
-          </article>
+        <div class="nw-footer-disclosures">
+          <details class="nw-footer-group nw-footer-disclosure" open><summary>Risk Warning</summary><div class="nw-footer-disclosure-body"><p>Please note that forex trading and trading in other leveraged products involves a significant level of risk and is not suitable for all investors. Trading in financial instruments may result in losses as well as profits and your losses can be greater than your initial invested capital. Before undertaking any such transactions, you should ensure that you fully understand the risks involved and seek independent advice if necessary.</p></div></details>
+          <details class="nw-footer-group nw-footer-disclosure" open><summary>Restricted Regions</summary><div class="nw-footer-disclosure-body"><p>The <span class="brand-name-accent">Nextwise Markets</span> Ltd. does not provide services for citizens/residents of the USA, UAE, Cuba, Iraq, India, Myanmar, North Korea, Sudan. The services of The <span class="brand-name-accent">Nextwise Markets</span> Ltd. are not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.</p></div></details>
         </div>
-<nav class="content-footer-legal" aria-label="Legal policies"><a href="../privacy-policy/">Privacy Policy</a><a href="../terms-and-conditions/">Terms And Conditions</a><a href="../aml-policy/">AML Policy</a><a href="../deposit-withdrawal-policy/">Deposit Withdrawal Policy</a><a href="../restricted-countries/">Restricted Countries</a><a href="../risk-disclosure/">Risk Disclosure</a><a href="../client-services-agreement/">Client Services Agreement</a><a href="../trading-activity-compliance-policy/">Trading Activity Compliance Policy</a></nav>
-        <div class="content-footer-bottom"><span>Copyright © <span data-current-year>2026</span> The NEXTWISE MARKETS Ltd. All Rights Reserved.</span><a href="#content">Back to top <span aria-hidden="true">↑</span></a></div>
+        <div class="nw-footer-bottom">
+          <p>Copyright © <span id="year" data-current-year>2026</span> <a href="/">The <span class="brand-name-accent">Nextwise Markets</span> Ltd.</a> All Rights Reserved.</p>
+          <a href="#content">Back to top</a>
+        </div>
       </div>
     </footer>
   </body>

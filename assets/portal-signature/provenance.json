@@ -1,0 +1,174 @@
+{
+  "purpose": "Public website Portal Signature assets reused from the existing Nextwise client portal; CRM source unchanged.",
+  "lucide_version": "0.294.0",
+  "icon_aliases": {
+    "chart-column-increasing.svg": "bar-chart-4.js; requested newer chart-no-axes-combined and chart-column-increasing names are not in installed v0.294.0."
+  },
+  "files": [
+    {
+      "file": "assets/portal-signature/silk-drape-v2.svg",
+      "source": "NEXT_CLIENT_AI/src/assets/optimized/silk-drape-v2.svg",
+      "sha256": "54cdcbfedcfe2dac0ea4822cbae02b5c3d444604ca39ece795f8baca261a1c41",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/silk-drape-wave-v2.svg",
+      "source": "NEXT_CLIENT_AI/src/assets/optimized/silk-drape-wave-v2.svg",
+      "sha256": "4a6f89ca7962ced0335508454778cd89f3df3580e5d1109e0bb0c767c19f2db1",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/silk-drape-curl-v2.svg",
+      "source": "NEXT_CLIENT_AI/src/assets/optimized/silk-drape-curl-v2.svg",
+      "sha256": "82abb8c001133821400470b8c44f74769e5562c3451eb0870376c12c7bd61f7b",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/silk-drape-fan-v2.svg",
+      "source": "NEXT_CLIENT_AI/src/assets/optimized/silk-drape-fan-v2.svg",
+      "sha256": "fe4be3717144aca9c3209e1b319cd6e6f3224eaac912eac18705c08f458a63d3",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/fonts/Boing-Regular.ttf",
+      "source": "NEXT_CLIENT_AI/public/fonts/Boing-Regular.ttf",
+      "sha256": "18abe10fb0d766528f72e19ff460b276b437f4912666b23851c86c06da5e0356",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/fonts/Boing-Bold.ttf",
+      "source": "NEXT_CLIENT_AI/public/fonts/Boing-Bold.ttf",
+      "sha256": "a2abc468c04e2e67b7d122a2b06345b2d522361b5b3f419ef2006659b470cc6b",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/glacier-gloss-background-lossless.webp",
+      "source": "NEXT_CLIENT_AI/src/assets/optimized/glacier-gloss-background-lossless.webp",
+      "sha256": "12be021bf16c6aa229433f71ead2b9865b5d6b848beeb770dc5525ad3c091be1",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/icons/arrow-right-left.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/arrow-right-left.js",
+      "source_sha256": "d25b8fe826a702df9cb54590d3254bf6e44a7abbd52040584572fbf5de37ffab",
+      "sha256": "759bf2103de662047881465becf5a3759d43b1df11fbbc5a1935a4d0d0929463",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/bitcoin.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/bitcoin.js",
+      "source_sha256": "85f3d380fb1097bcd32dece9f59c53ea132e1797a4afe4f26b0e67aa7742bbf8",
+      "sha256": "a37b3aa7db7799ee463d232627469736a7c5d1494a232c8c3747781c403e8b6b",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/gem.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/gem.js",
+      "source_sha256": "cbc38d4aa79fe5f7049f43139426dd0cf0dd042c6388707150730dca3082e50e",
+      "sha256": "549b388f05e89fa4decba9f027561ec3fd60993beb3d5ca299d5b33f13a062f5",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/globe.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/globe.js",
+      "source_sha256": "e6089efe46df112b1fed2cb2fac73cad8a11558ad2e2cf4c1c328f9b1f59646a",
+      "sha256": "eec8afc8609eb2861411901e9ad23927b50d26ddccedf9c65e7259062d113e14",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/layers.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/layers.js",
+      "source_sha256": "0850f4756605945903d561b4a0afa2c08b8c00c2e1f9fca603b834d11b1f14e5",
+      "sha256": "a4ee64a9408e2668a6a37659e777887776f3a8fbe629d1da34cf83fd0624f48d",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/monitor.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/monitor.js",
+      "source_sha256": "7b6de539faeec1f5b76b0434055600ae5f284e42922d07ef21da2f838aa14aaa",
+      "sha256": "c6ab6c793b2d8b986abbf3c8591e7c4e47d2a38080dca162ca805c9e8bca5ee2",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/wallet.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/wallet.js",
+      "source_sha256": "d3e4364d0da9233b6b3e68257db48e23ce33e650108021cebc89249924ae69f4",
+      "sha256": "5471b7998de555290a2fd168cf1242a73358d5ec0c1c56ce50281988e38b0875",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/shield-check.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/shield-check.js",
+      "source_sha256": "f1f951c1acb66e436404a74c91ee29027616c43d259f5723493223515896eb9f",
+      "sha256": "2ef8adf01a35ada095bde3e3fa6a2538a0cfd01f8cc58213b2399297a0e50aec",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/life-buoy.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/life-buoy.js",
+      "source_sha256": "70cb78de8926ab0d09bfed804b73cce61df8593ffbc835ff028d78500b4db0d8",
+      "sha256": "5ba4e2a2dbe10ee73520ad75cea39c68019e768e03f8d28bf92341ed6a243007",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/smartphone.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/smartphone.js",
+      "source_sha256": "799f55fcc2f57c5b30dc61f71e9d881ae2ed9801887175395784b9e844ab24cc",
+      "sha256": "ba38ff774d1f72d4fce4173e52a1d35557aad10cec70f4e5ae45f09671569a66",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/arrow-up-right.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/arrow-up-right.js",
+      "source_sha256": "bd80f004bfecc5414756fedf7a0b71fcb5cd493d00ce3c9de200f23b395ac481",
+      "sha256": "3b6571ed66e5e98b9b850a9b666aa2f6ff6e7d4b5356f25224b71302425bfa4e",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/building-2.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/building-2.js",
+      "source_sha256": "573f9527dde057022e206c0ed01265bb4f5a6dd24d348cb892c8a57e774bfe51",
+      "sha256": "f873ecd098bf7e6b9c03825d1d6b9560ad6e81b3a0fa89c2918f8689acc69080",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/users.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/users.js",
+      "source_sha256": "6a83ab22a24e3e0b061527e551673aca6e16734f6162f1088ccbd76168126702",
+      "sha256": "1b26d89bbcfe9cea3439093516590504b7f72eafdb69bdafc769813572534138",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/mail.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/mail.js",
+      "source_sha256": "e8c1609bad9bec63a7f0b6621d15d9546f8dded50ca60e15f2e5b3a155e5b30c",
+      "sha256": "eec0d6f0e5cb7713767bc2bb55578c4e605ac8b0513577ab44365f0b731f7362",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/icons/chart-column-increasing.svg",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/dist/esm/icons/bar-chart-4.js",
+      "source_sha256": "881a9b959c0596d02bf9972af0e03e3bebe94ff0b200363cb9202e02e5ed47f3",
+      "sha256": "fd6b106fa3276a9e29e0895017589db92b40f67302cc787105eccf33aa8e0afa",
+      "geometry_preserved": true
+    },
+    {
+      "file": "assets/portal-signature/LUCIDE-LICENSE.txt",
+      "source": "NEXT_CLIENT_AI/node_modules/lucide-vue-next/LICENSE",
+      "sha256": "1e7290b35280a048667bbf0ebabac1c7fd52a75300e8b2946ac165715997f2bc",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/mt_icon.webp",
+      "source": "NEXT_CLIENT_AI/public/mt_icon.webp",
+      "sha256": "ecfd2b654eef6d9eba1f3c5921dbc7c5e8d436c7d5b4eb32de973c2f8028375f",
+      "copied_unchanged": true
+    },
+    {
+      "file": "assets/portal-signature/glacier-dark-floor-1025-lossless.webp",
+      "source": "NEXT_CLIENT_AI/src/assets/optimized/glacier-dark-floor-1025-lossless.webp",
+      "sha256": "570bf9ef73c5994139dd34b2028e5a0d1759cdb6e8f55099fc4761154601099e",
+      "copied_unchanged": true
+    }
+  ]
+}

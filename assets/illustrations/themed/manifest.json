@@ -1,0 +1,306 @@
+{
+  "/assets/illustrations/account-comparison.svg": {
+    "light": "/assets/illustrations/themed/light/account-comparison.svg",
+    "dark": "/assets/illustrations/themed/dark/account-comparison.svg"
+  },
+  "/assets/illustrations/account-options.svg": {
+    "light": "/assets/illustrations/themed/light/account-options.svg",
+    "dark": "/assets/illustrations/themed/dark/account-options.svg"
+  },
+  "/assets/illustrations/account-support-dark.svg": {
+    "light": "/assets/illustrations/themed/light/account-support-dark.svg",
+    "dark": "/assets/illustrations/themed/dark/account-support-dark.svg"
+  },
+  "/assets/illustrations/account-support-light.svg": {
+    "light": "/assets/illustrations/themed/light/account-support-light.svg",
+    "dark": "/assets/illustrations/themed/dark/account-support-light.svg"
+  },
+  "/assets/illustrations/client-support.svg": {
+    "light": "/assets/illustrations/themed/light/client-support.svg",
+    "dark": "/assets/illustrations/themed/dark/client-support.svg"
+  },
+  "/assets/illustrations/commodity-terminal.svg": {
+    "light": "/assets/illustrations/themed/light/commodity-terminal.svg",
+    "dark": "/assets/illustrations/themed/dark/commodity-terminal.svg"
+  },
+  "/assets/illustrations/company-guide.svg": {
+    "light": "/assets/illustrations/themed/light/company-guide.svg",
+    "dark": "/assets/illustrations/themed/dark/company-guide.svg"
+  },
+  "/assets/illustrations/company-journey.svg": {
+    "light": "/assets/illustrations/themed/light/company-journey.svg",
+    "dark": "/assets/illustrations/themed/dark/company-journey.svg"
+  },
+  "/assets/illustrations/crypto-chain.svg": {
+    "light": "/assets/illustrations/themed/light/crypto-chain.svg",
+    "dark": "/assets/illustrations/themed/dark/crypto-chain.svg"
+  },
+  "/assets/illustrations/crypto-market.svg": {
+    "light": "/assets/illustrations/themed/light/crypto-market.svg",
+    "dark": "/assets/illustrations/themed/dark/crypto-market.svg"
+  },
+  "/assets/illustrations/crypto-network.svg": {
+    "light": "/assets/illustrations/themed/light/crypto-network.svg",
+    "dark": "/assets/illustrations/themed/dark/crypto-network.svg"
+  },
+  "/assets/illustrations/crypto-token-pair.svg": {
+    "light": "/assets/illustrations/themed/light/crypto-token-pair.svg",
+    "dark": "/assets/illustrations/themed/dark/crypto-token-pair.svg"
+  },
+  "/assets/illustrations/data-vault.svg": {
+    "light": "/assets/illustrations/themed/light/data-vault.svg",
+    "dark": "/assets/illustrations/themed/dark/data-vault.svg"
+  },
+  "/assets/illustrations/documents.svg": {
+    "light": "/assets/illustrations/themed/light/documents.svg",
+    "dark": "/assets/illustrations/themed/dark/documents.svg"
+  },
+  "/assets/illustrations/energy-instruments.svg": {
+    "light": "/assets/illustrations/themed/light/energy-instruments.svg",
+    "dark": "/assets/illustrations/themed/dark/energy-instruments.svg"
+  },
+  "/assets/illustrations/forex-banknotes.svg": {
+    "light": "/assets/illustrations/themed/light/forex-banknotes.svg",
+    "dark": "/assets/illustrations/themed/dark/forex-banknotes.svg"
+  },
+  "/assets/illustrations/forex-exchange-routes.svg": {
+    "light": "/assets/illustrations/themed/light/forex-exchange-routes.svg",
+    "dark": "/assets/illustrations/themed/dark/forex-exchange-routes.svg"
+  },
+  "/assets/illustrations/forex-market.svg": {
+    "light": "/assets/illustrations/themed/light/forex-market.svg",
+    "dark": "/assets/illustrations/themed/dark/forex-market.svg"
+  },
+  "/assets/illustrations/forex-pair-terminal.svg": {
+    "light": "/assets/illustrations/themed/light/forex-pair-terminal.svg",
+    "dark": "/assets/illustrations/themed/dark/forex-pair-terminal.svg"
+  },
+  "/assets/illustrations/forward-compass.svg": {
+    "light": "/assets/illustrations/themed/light/forward-compass.svg",
+    "dark": "/assets/illustrations/themed/dark/forward-compass.svg"
+  },
+  "/assets/illustrations/funding-options.svg": {
+    "light": "/assets/illustrations/themed/light/funding-options.svg",
+    "dark": "/assets/illustrations/themed/dark/funding-options.svg"
+  },
+  "/assets/illustrations/global-markets.svg": {
+    "light": "/assets/illustrations/themed/light/global-markets.svg",
+    "dark": "/assets/illustrations/themed/dark/global-markets.svg"
+  },
+  "/assets/illustrations/icons/automation.svg": {
+    "light": "/assets/illustrations/themed/light/icons/automation.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/automation.svg"
+  },
+  "/assets/illustrations/icons/book.svg": {
+    "light": "/assets/illustrations/themed/light/icons/book.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/book.svg"
+  },
+  "/assets/illustrations/icons/calendar.svg": {
+    "light": "/assets/illustrations/themed/light/icons/calendar.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/calendar.svg"
+  },
+  "/assets/illustrations/icons/chart.svg": {
+    "light": "/assets/illustrations/themed/light/icons/chart.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/chart.svg"
+  },
+  "/assets/illustrations/icons/chat.svg": {
+    "light": "/assets/illustrations/themed/light/icons/chat.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/chat.svg"
+  },
+  "/assets/illustrations/icons/check.svg": {
+    "light": "/assets/illustrations/themed/light/icons/check.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/check.svg"
+  },
+  "/assets/illustrations/icons/compass.svg": {
+    "light": "/assets/illustrations/themed/light/icons/compass.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/compass.svg"
+  },
+  "/assets/illustrations/icons/devices.svg": {
+    "light": "/assets/illustrations/themed/light/icons/devices.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/devices.svg"
+  },
+  "/assets/illustrations/icons/document.svg": {
+    "light": "/assets/illustrations/themed/light/icons/document.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/document.svg"
+  },
+  "/assets/illustrations/icons/globe.svg": {
+    "light": "/assets/illustrations/themed/light/icons/globe.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/globe.svg"
+  },
+  "/assets/illustrations/icons/journey-route.svg": {
+    "light": "/assets/illustrations/themed/light/icons/journey-route.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/journey-route.svg"
+  },
+  "/assets/illustrations/icons/mail.svg": {
+    "light": "/assets/illustrations/themed/light/icons/mail.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/mail.svg"
+  },
+  "/assets/illustrations/icons/people.svg": {
+    "light": "/assets/illustrations/themed/light/icons/people.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/people.svg"
+  },
+  "/assets/illustrations/icons/phone.svg": {
+    "light": "/assets/illustrations/themed/light/icons/phone.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/phone.svg"
+  },
+  "/assets/illustrations/icons/search.svg": {
+    "light": "/assets/illustrations/themed/light/icons/search.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/search.svg"
+  },
+  "/assets/illustrations/icons/shield.svg": {
+    "light": "/assets/illustrations/themed/light/icons/shield.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/shield.svg"
+  },
+  "/assets/illustrations/icons/sliders.svg": {
+    "light": "/assets/illustrations/themed/light/icons/sliders.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/sliders.svg"
+  },
+  "/assets/illustrations/icons/step-balance.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-balance.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-balance.svg"
+  },
+  "/assets/illustrations/icons/step-deposit.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-deposit.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-deposit.svg"
+  },
+  "/assets/illustrations/icons/step-identity.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-identity.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-identity.svg"
+  },
+  "/assets/illustrations/icons/step-live-account.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-live-account.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-live-account.svg"
+  },
+  "/assets/illustrations/icons/step-metatrader.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-metatrader.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-metatrader.svg"
+  },
+  "/assets/illustrations/icons/step-register.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-register.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-register.svg"
+  },
+  "/assets/illustrations/icons/step-trade-review.svg": {
+    "light": "/assets/illustrations/themed/light/icons/step-trade-review.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/step-trade-review.svg"
+  },
+  "/assets/illustrations/icons/transfer.svg": {
+    "light": "/assets/illustrations/themed/light/icons/transfer.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/transfer.svg"
+  },
+  "/assets/illustrations/icons/wallet.svg": {
+    "light": "/assets/illustrations/themed/light/icons/wallet.svg",
+    "dark": "/assets/illustrations/themed/dark/icons/wallet.svg"
+  },
+  "/assets/illustrations/identity-review.svg": {
+    "light": "/assets/illustrations/themed/light/identity-review.svg",
+    "dark": "/assets/illustrations/themed/dark/identity-review.svg"
+  },
+  "/assets/illustrations/indices-benchmark.svg": {
+    "light": "/assets/illustrations/themed/light/indices-benchmark.svg",
+    "dark": "/assets/illustrations/themed/dark/indices-benchmark.svg"
+  },
+  "/assets/illustrations/indices-exchange-towers.svg": {
+    "light": "/assets/illustrations/themed/light/indices-exchange-towers.svg",
+    "dark": "/assets/illustrations/themed/dark/indices-exchange-towers.svg"
+  },
+  "/assets/illustrations/indices-market-board.svg": {
+    "light": "/assets/illustrations/themed/light/indices-market-board.svg",
+    "dark": "/assets/illustrations/themed/dark/indices-market-board.svg"
+  },
+  "/assets/illustrations/indices-market.svg": {
+    "light": "/assets/illustrations/themed/light/indices-market.svg",
+    "dark": "/assets/illustrations/themed/dark/indices-market.svg"
+  },
+  "/assets/illustrations/jurisdiction-check.svg": {
+    "light": "/assets/illustrations/themed/light/jurisdiction-check.svg",
+    "dark": "/assets/illustrations/themed/dark/jurisdiction-check.svg"
+  },
+  "/assets/illustrations/margin-controls.svg": {
+    "light": "/assets/illustrations/themed/light/margin-controls.svg",
+    "dark": "/assets/illustrations/themed/dark/margin-controls.svg"
+  },
+  "/assets/illustrations/market-assistance.svg": {
+    "light": "/assets/illustrations/themed/light/market-assistance.svg",
+    "dark": "/assets/illustrations/themed/dark/market-assistance.svg"
+  },
+  "/assets/illustrations/metals-energy.svg": {
+    "light": "/assets/illustrations/themed/light/metals-energy.svg",
+    "dark": "/assets/illustrations/themed/dark/metals-energy.svg"
+  },
+  "/assets/illustrations/onboarding-assistance.svg": {
+    "light": "/assets/illustrations/themed/light/onboarding-assistance.svg",
+    "dark": "/assets/illustrations/themed/dark/onboarding-assistance.svg"
+  },
+  "/assets/illustrations/onboarding-path.svg": {
+    "light": "/assets/illustrations/themed/light/onboarding-path.svg",
+    "dark": "/assets/illustrations/themed/dark/onboarding-path.svg"
+  },
+  "/assets/illustrations/order-history.svg": {
+    "light": "/assets/illustrations/themed/light/order-history.svg",
+    "dark": "/assets/illustrations/themed/dark/order-history.svg"
+  },
+  "/assets/illustrations/partner-network.svg": {
+    "light": "/assets/illustrations/themed/light/partner-network.svg",
+    "dark": "/assets/illustrations/themed/dark/partner-network.svg"
+  },
+  "/assets/illustrations/partnership-connect.svg": {
+    "light": "/assets/illustrations/themed/light/partnership-connect.svg",
+    "dark": "/assets/illustrations/themed/dark/partnership-connect.svg"
+  },
+  "/assets/illustrations/partnership.svg": {
+    "light": "/assets/illustrations/themed/light/partnership.svg",
+    "dark": "/assets/illustrations/themed/dark/partnership.svg"
+  },
+  "/assets/illustrations/payment-flow.svg": {
+    "light": "/assets/illustrations/themed/light/payment-flow.svg",
+    "dark": "/assets/illustrations/themed/dark/payment-flow.svg"
+  },
+  "/assets/illustrations/platform-assistance.svg": {
+    "light": "/assets/illustrations/themed/light/platform-assistance.svg",
+    "dark": "/assets/illustrations/themed/dark/platform-assistance.svg"
+  },
+  "/assets/illustrations/platform-toolkit.svg": {
+    "light": "/assets/illustrations/themed/light/platform-toolkit.svg",
+    "dark": "/assets/illustrations/themed/dark/platform-toolkit.svg"
+  },
+  "/assets/illustrations/policy-library.svg": {
+    "light": "/assets/illustrations/themed/light/policy-library.svg",
+    "dark": "/assets/illustrations/themed/dark/policy-library.svg"
+  },
+  "/assets/illustrations/precious-metals.svg": {
+    "light": "/assets/illustrations/themed/light/precious-metals.svg",
+    "dark": "/assets/illustrations/themed/dark/precious-metals.svg"
+  },
+  "/assets/illustrations/pricing-breakdown.svg": {
+    "light": "/assets/illustrations/themed/light/pricing-breakdown.svg",
+    "dark": "/assets/illustrations/themed/dark/pricing-breakdown.svg"
+  },
+  "/assets/illustrations/privacy-controls.svg": {
+    "light": "/assets/illustrations/themed/light/privacy-controls.svg",
+    "dark": "/assets/illustrations/themed/dark/privacy-controls.svg"
+  },
+  "/assets/illustrations/research-assistance.svg": {
+    "light": "/assets/illustrations/themed/light/research-assistance.svg",
+    "dark": "/assets/illustrations/themed/dark/research-assistance.svg"
+  },
+  "/assets/illustrations/risk-analysis.svg": {
+    "light": "/assets/illustrations/themed/light/risk-analysis.svg",
+    "dark": "/assets/illustrations/themed/dark/risk-analysis.svg"
+  },
+  "/assets/illustrations/risk-guide.svg": {
+    "light": "/assets/illustrations/themed/light/risk-guide.svg",
+    "dark": "/assets/illustrations/themed/dark/risk-guide.svg"
+  },
+  "/assets/illustrations/trade-audit.svg": {
+    "light": "/assets/illustrations/themed/light/trade-audit.svg",
+    "dark": "/assets/illustrations/themed/dark/trade-audit.svg"
+  },
+  "/assets/illustrations/trading-specifications.svg": {
+    "light": "/assets/illustrations/themed/light/trading-specifications.svg",
+    "dark": "/assets/illustrations/themed/dark/trading-specifications.svg"
+  },
+  "/assets/illustrations/verification.svg": {
+    "light": "/assets/illustrations/themed/light/verification.svg",
+    "dark": "/assets/illustrations/themed/dark/verification.svg"
+  }
+}

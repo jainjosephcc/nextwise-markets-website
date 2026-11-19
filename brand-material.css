@@ -1,0 +1,245 @@
+/* Portal materials: original silk vectors, glazed surfaces and native Boing. */
+:root {
+  --nw-canvas: #f5fbff;
+  --nw-glass-edge: rgba(255, 255, 255, .94);
+  --nw-glass-panel: linear-gradient(135deg, rgba(255,255,255,.94), rgba(237,248,255,.72) 58%, rgba(163,218,249,.44));
+  --nw-card-panel: linear-gradient(145deg, #fff, rgba(250,253,255,.94) 65%, rgba(219,237,251,.76));
+  --nw-material-shadow: 0 18px 52px rgba(40,108,158,.10), inset 0 1px 0 rgba(255,255,255,.95);
+  --nw-silk-opacity: .88;
+  --nw-silk-veil: rgba(245,251,255,.22);
+}
+html[data-theme="dark"] {
+  --nw-canvas: #061426;
+  --nw-glass-edge: rgba(163,218,249,.3);
+  --nw-glass-panel: linear-gradient(135deg, rgba(28,61,88,.9), rgba(12,32,53,.82) 65%, rgba(40,108,158,.35));
+  --nw-card-panel: linear-gradient(145deg, rgba(23,51,76,.98), rgba(12,32,53,.95) 75%, rgba(40,108,158,.25));
+  --nw-material-shadow: 0 20px 48px rgba(0,0,0,.23), inset 0 1px 0 rgba(163,218,249,.17);
+  --nw-silk-opacity: .6;
+  --nw-silk-veil: rgba(6,20,38,.2);
+}
+body { background: var(--nw-canvas); }
+/* Native Regular keeps large headings lighter without synthetic outlines. */
+:root body :is(h1,h2,h3,h4),
+.hero-summary-text strong, .workspace-option strong {
+  font-weight: 400;
+  -webkit-text-stroke: 0;
+  letter-spacing: -.018em;
+}
+body :is(h1,h2) { line-height: 1.13; }
+.brand-name-accent {
+  color: var(--nw-action);
+  font-weight: 400;
+  -webkit-text-stroke: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+.nw-hero h1 { max-width: 15ch; }
+.content-hero h1 { line-height: 1.08; }
+.nw-hero h1 span { color: var(--nw-blue); }
+
+/* Silk belongs to the page composition, behind the reading surfaces. */
+:is(.nw-hero,.content-hero,.policy-hero) {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: radial-gradient(ellipse at 90% 5%, color-mix(in srgb,var(--nw-vivid-blue) 55%,transparent), transparent 55%),
+    linear-gradient(125deg,var(--nw-surface) 5%,var(--nw-canvas) 54%,color-mix(in srgb,var(--nw-surface-alt) 70%,var(--nw-surface)));
+}
+:is(.nw-hero,.content-hero,.policy-hero)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: min(80rem,87vw);
+  aspect-ratio: 1.4;
+  right: -10rem;
+  top: -5rem;
+  background: url('/assets/portal-signature/silk-drape-curl-v2.svg') center top / 100% auto no-repeat;
+  opacity: var(--nw-silk-opacity);
+}
+:is(.nw-hero,.content-hero,.policy-hero)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg,var(--nw-canvas),color-mix(in srgb,var(--nw-canvas) 92%,transparent) 27%,var(--nw-silk-veil) 64%,transparent);
+}
+.nw-hero::before { width: min(94rem,93vw); top: 3rem; right: -13rem; }
+.nw-hero-grid { gap: clamp(2.5rem,5vw,5rem); }
+.nw-hero-copy { position: relative; z-index: 1; }
+.workspace-overview, .hero-summary {
+  position: relative;
+  background: var(--nw-glass-panel);
+  border: 1px solid var(--nw-glass-edge);
+  border-radius: 1.5rem;
+  box-shadow: var(--nw-material-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.workspace-overview { padding: clamp(1.5rem,2.5vw,2.5rem); }
+.workspace-option {
+  background: var(--nw-card-panel);
+  border-color: color-mix(in srgb,var(--nw-line) 64%,var(--nw-glass-edge));
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(40,108,158,.05), inset 0 1px 0 var(--nw-glass-edge);
+}
+.workspace-option-icon, .market-link-icon, .capability-icon, .hero-summary-symbol:not(.mt5-mark) {
+  border-radius: .8rem;
+  background: linear-gradient(140deg,color-mix(in srgb,var(--nw-surface) 85%,var(--nw-surface-alt)),color-mix(in srgb,var(--nw-icon-orange) 12%,var(--nw-surface)));
+  box-shadow: inset 0 1px 0 var(--nw-glass-edge), 0 4px 12px rgba(40,108,158,.05);
+  border: 1px solid color-mix(in srgb,var(--nw-icon-orange) 16%,var(--nw-line));
+}
+.workspace-option-icon { width: 2.75rem; height: 2.75rem; }
+.workspace-option-icon .nw-icon { width: 1.75rem; height: 1.75rem; }
+.hero-summary-symbol:not(.mt5-mark) .hero-summary-icon { width: 1.85rem; height: 1.85rem; }
+.hero-summary-list > li { border-color: color-mix(in srgb,var(--nw-line) 70%,transparent); }
+.mt5-mark { width: 3.25rem; height: 3.25rem; min-height: 0; padding: 0; overflow: hidden; border: 0; border-radius: 10px; background: transparent; box-shadow: none; }
+.mt5-mark img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Blue is light and depth, rather than a solid slab behind every section. */
+.nw-accounts, .nw-confidence, .nw-closing {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: linear-gradient(140deg,var(--nw-canvas),var(--nw-surface-alt) 68%,var(--nw-canvas));
+}
+.nw-accounts::before, .nw-closing::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 68rem;
+  height: 46rem;
+  right: -31rem;
+  top: -7rem;
+  background: url('/assets/portal-signature/silk-drape-wave-v2.svg') center / contain no-repeat;
+  opacity: .35;
+}
+.nw-closing::before { right: auto; left: -27rem; top: -12rem; }
+.nw-platform { background: linear-gradient(170deg,var(--nw-surface),var(--nw-canvas)); }
+.nw-hero .market-link, .platform-capabilities article, .account-card, .confidence-grid > a,
+.content-grid-item, .stat-item, .instrument-item, .contact-method, .contact-form,
+.content-section-body .platform-link, .comparison-cards article {
+  background: var(--nw-card-panel);
+  border: 1px solid color-mix(in srgb,var(--nw-line) 70%,var(--nw-glass-edge));
+  border-radius: 1.1rem;
+  box-shadow: 0 12px 30px rgba(40,108,158,.055), inset 0 1px 0 var(--nw-glass-edge);
+}
+.account-card-featured { border-color: color-mix(in srgb,var(--nw-orange) 65%,var(--nw-glass-edge)); }
+.content-main { position: relative; isolation: isolate; }
+.content-main::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: min(80rem,100%);
+  height: 62rem;
+  right: 0;
+  top: 30rem;
+  opacity: .13;
+  background: url('/assets/portal-signature/silk-drape-wave-v2.svg') right center / contain no-repeat;
+}
+.comparison-wrap { border-radius: 1.2rem; box-shadow: var(--nw-material-shadow); }
+.comparison-table thead th { background: var(--nw-glass-panel); }
+.comparison-table thead th:nth-child(4) { background: color-mix(in srgb,var(--nw-orange) 9%,var(--nw-surface)); }
+.policy-hero::before { width: 57rem; top: -7rem; right: -13rem; opacity: .34; }
+.policy-hero::after { background: linear-gradient(90deg,var(--nw-canvas) 15%,color-mix(in srgb,var(--nw-canvas) 85%,transparent) 46%,transparent); }
+.policy-document, .policy-switcher { box-shadow: var(--nw-material-shadow); }
+
+/* Preserve the portal control colours with a subtle glass highlight. */
+.nw-button-primary, .content-action, .content-action-dark, .header-cta, .header-return, .back-link {
+  background: linear-gradient(160deg,var(--nw-surface),color-mix(in srgb,var(--nw-orange) 6%,var(--nw-surface)));
+  border-color: var(--nw-action);
+  box-shadow: inset 0 1px 0 var(--nw-glass-edge), 0 4px 12px rgba(40,108,158,.045);
+}
+.nw-button-primary:hover, .content-action:hover, .content-action-dark:hover,
+.header-cta:hover, .header-return:hover, .back-link:hover { background: var(--nw-orange-hover); color: #26292d; }
+.workspace-destinations a { border-color: color-mix(in srgb,var(--nw-blue) 40%,var(--nw-line)); background: var(--nw-card-panel); border-radius: .65rem; }
+
+@media (min-width:1800px) {
+  :is(.nw-hero,.content-hero)::before { right: -14rem; }
+}
+@media (max-width:1000px) {
+  .nw-hero::before { width: 70rem; top: 19rem; right: -24rem; }
+  .nw-hero::after { background: linear-gradient(180deg,var(--nw-canvas) 10%,transparent 44%,var(--nw-silk-veil)); }
+}
+@media (max-width:820px) {
+  .content-hero::before { width: 65rem; right: -25rem; top: 16rem; }
+  .content-hero::after { background: linear-gradient(180deg,var(--nw-canvas),color-mix(in srgb,var(--nw-canvas) 95%,transparent) 30%,var(--nw-silk-veil) 65%,transparent); }
+}
+@media (max-width:600px) {
+  :is(.nw-hero,.content-hero)::before { width: 53rem; top: 20rem; right: -24rem; opacity: .72; }
+  html[data-theme="dark"] :is(.nw-hero,.content-hero)::before { opacity: .5; }
+  .workspace-overview, .hero-summary { border-radius: 1.25rem; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .hero-summary-symbol:not(.mt5-mark) .hero-summary-icon { width: 1.65rem; height: 1.65rem; }
+  .mt5-mark { width: 2.75rem; height: 2.75rem; }
+  .policy-hero::before { width: 38rem; top: -1rem; right: -20rem; opacity: .2; }
+}
+@media print {
+  :is(.nw-hero,.content-hero,.policy-hero,.nw-accounts,.nw-closing,.content-main)::before,
+  :is(.nw-hero,.content-hero,.policy-hero)::after { display: none; }
+  body :is(h1,h2,h3,h4) { -webkit-text-stroke: 0; font-weight: 700; }
+}
+
+/* A deeper glacier blue, with a quiet reading area behind the headline. */
+@media screen {
+  .nw-hero {
+    background: radial-gradient(ellipse at 82% 18%, #a7d7fa, transparent 65%),
+      linear-gradient(135deg, #e7f4ff, #bfdff7 52%, #79b6df);
+  }
+  .nw-hero::after {
+    background: linear-gradient(110deg, #eaf6ff 0%, #eaf6ffb3 30%, transparent 68%);
+  }
+  html[data-theme="dark"] .nw-hero {
+    background: radial-gradient(ellipse at 80% 20%, #204f7b, transparent 65%),
+      linear-gradient(135deg, #061426, #102d49 60%, #123856);
+  }
+  html[data-theme="dark"] .nw-hero::after {
+    background: linear-gradient(110deg, #061426 0%, #061426b3 30%, transparent 68%);
+  }
+}
+
+@media screen {
+  :is(.content-hero-shell, .content-main, .policy-hero-inner, .policy-layout) {
+    width: calc(100% - 2 * var(--nw-page-gutter));
+  }
+}
+
+/* Keep card spacing proportional to the portal's readable type sizes. */
+.nw-hero { --nw-silk-opacity: 1; }
+.nw-hero::before { filter: saturate(1.65) contrast(1.12); }
+html[data-theme="dark"] .nw-hero { --nw-silk-opacity: .87; }
+@media screen {
+  .nw-hero {
+    background: radial-gradient(ellipse at 79% 12%, #84c1eb, transparent 60%),
+      linear-gradient(135deg, #d4eafd, #a3d0ee 50%, #4c91c4);
+  }
+  .nw-hero::after {
+    background: linear-gradient(110deg, #d8edff 0%, #d8edff85 37%, transparent 63%);
+  }
+  html[data-theme="dark"] .nw-hero {
+    background: radial-gradient(ellipse at 80% 20%, #245d91, transparent 62%),
+      linear-gradient(135deg, #061426, #0c2540 56%, #123f65);
+  }
+}
+.nw-hero .market-link { padding: .75rem .85rem; }
+.market-link h3 { font-size: 1.12rem; }
+.market-link p { font-size: .95rem; }
+.platform-capabilities article,
+.confidence-grid > a,
+.content-grid-item,
+.contact-method,
+.stat-item,
+.instrument-item { padding: clamp(1rem, 2vw, 1.5rem); }
+.platform-capabilities article { gap: .75rem; }
+.platform-capabilities p,
+.confidence-grid p,
+.account-card dl,
+.content-grid-item p,
+.instrument-item span { font-size: 1rem; line-height: 1.55; }
+.confidence-grid { gap: clamp(.9rem, 2vw, 1.5rem); }
+.confidence-grid h3 { font-size: 1.25rem; margin-bottom: .65rem; }
+.content-section-body .platform-link { min-height: 6rem; padding-block: 1rem; }
+.account-card { padding: clamp(1rem, 2vw, 1.5rem); }
+.account-card h3, .account-card .amount { margin-bottom: 1rem; }

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="54" height="61" viewBox="24 20 54 61" fill="none">
+<defs>
+ <linearGradient id="blue" x1="22" y1="24" x2="75" y2="77" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e0f5ff"/><stop offset="0.075" stop-color="#69bdff"/><stop offset="0.24" stop-color="#1265cf"/><stop offset="0.49" stop-color="#073a8c"/><stop offset="0.61" stop-color="#2188e4"/><stop offset="0.78" stop-color="#094aab"/><stop offset="1" stop-color="#03265e"/></linearGradient>
+ <linearGradient id="orange" x1="30" y1="28" x2="72" y2="73" gradientUnits="userSpaceOnUse"><stop stop-color="#ffa05f"/><stop offset=".5" stop-color="#ff7546"/><stop offset="1" stop-color="#d95724"/></linearGradient>
+ <filter id="depth" x="-20%" y="-20%" width="150%" height="155%"><feDropShadow dx="0" dy="1.7" stdDeviation=".8" flood-color="#032557" flood-opacity=".28"/></filter>
+</defs>
+<g filter="url(#depth)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<g stroke="url(#blue)"><path d="M31 25h27l14 14v34H31ZM58 25v14h14M40 49h23M40 59h17"/></g>
+<g stroke="url(#orange)"><path d="M58 25v14h14"/></g>
+</g>
+<g transform="translate(-.45 -.6)" fill="none" stroke="#dcf6ff" stroke-opacity=".7" stroke-width=".85" stroke-linecap="round" stroke-linejoin="round"><path d="M31 25h27l14 14v34H31ZM58 25v14h14M40 49h23M40 59h17"/><path d="M58 25v14h14"/></g>
+</svg>

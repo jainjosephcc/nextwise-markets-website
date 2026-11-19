@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#f5faff" />
+  <title>Nextwise Markets — Local preview</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    @font-face{font-family:Boing;src:url('/assets/fonts/Boing-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+    @font-face{font-family:Boing;src:url('/assets/fonts/Boing-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+    *{box-sizing:border-box}body{margin:0;background:#f5faff;color:#172c43;font-family:Boing,Arial,sans-serif}button,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}a{color:inherit;text-decoration:none}:focus-visible{outline:3px solid #286c9e;outline-offset:3px}
+    .review{height:100dvh;min-height:32rem;display:grid;grid-template-rows:auto minmax(0,1fr)}
+    .review-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.5rem}.review-brand{display:flex;align-items:center;min-height:44px}.review-brand img{display:block;width:11rem;height:auto}.preview-label{display:inline-flex;align-items:center;gap:.55rem;color:#4e6377;font-size:.85rem}.preview-label::before{content:'';width:.5rem;height:.5rem;border-radius:50%;background:#f86135;box-shadow:0 0 0 4px #fff3ed}
+    .review-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:.75rem;min-height:0;padding:0 1.5rem 1.5rem}.page-navigation{display:flex;min-width:0;align-items:center;gap:.65rem;overflow-x:auto;padding:.25rem 0 .65rem;scrollbar-width:thin}.page-navigation h2{flex:none;margin:0 .25rem;color:#58718b;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700}.page-navigation h2:not(:first-child){margin-left:.75rem}.page-list{display:flex;flex:none;gap:.25rem}.page-link{white-space:nowrap;display:flex;align-items:center;gap:.65rem;min-height:44px;padding:.7rem .75rem;border:0;border-radius:.65rem;text-align:left;background:transparent;color:#38536e;font-size:.9rem;line-height:1.35}.page-link:hover{background:#e4f1ff}.page-link[aria-current="page"]{background:#286c9e;color:#fff;box-shadow:0 5px 15px #286c9e18}.page-number{flex:none;width:1.3rem;opacity:.68;font-size:.7rem;font-variant-numeric:tabular-nums}
+    .preview-main{min-width:0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);background:#fff;border-radius:1rem;box-shadow:0 8px 35px #286c9e0a;overflow:hidden}.preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem}.page-heading{min-width:0}.page-heading h1{font-size:1.15rem;font-weight:400;line-height:1.3;margin:0;overflow-wrap:anywhere}.page-heading p{margin:.35rem 0 0;font-size:.75rem;color:#5d7389}.preview-controls{display:flex;align-items:center;gap:.75rem;flex:none}.view-toggle{display:flex;gap:.2rem;padding:.2rem;background:#edf5fd;border-radius:.7rem}.view-toggle button{min-height:44px;min-width:5.5rem;border:0;border-radius:.5rem;padding:.6rem .85rem;background:transparent;color:#3b5874;font-size:.85rem}.view-toggle button[aria-pressed="true"]{background:#fff;color:#286c9e;box-shadow:0 3px 10px #286c9e10}.open-page{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;min-height:44px;padding:.6rem .95rem;border:1px solid #f5a36b;border-radius:.65rem;background:#fff1e5;color:#9a330b;font-size:.85rem;white-space:nowrap}.open-page:hover{background:#fff3ed}.mobile-picker{display:none}
+    .preview-stage{min-height:0;min-width:0;overflow:auto;display:flex;align-items:stretch;padding:0 1rem 1rem;background:linear-gradient(#fff,#e7f3ff)}.preview-frame{display:block;flex:none;width:100%;height:100%;min-height:20rem;margin-inline:auto;border:0;border-radius:.65rem;background:#fff;box-shadow:0 3px 20px #286c9e12}.preview-stage[data-view="phone"] .preview-frame{width:min(390px,100%);box-shadow:0 8px 35px #286c9e20}
+    @media(max-width:1050px){.review-layout{gap:.75rem;padding-inline:1rem}.preview-toolbar{align-items:flex-start;flex-direction:column;gap:.8rem}.preview-controls{width:100%;justify-content:space-between}.page-link{font-size:.85rem}.review-header{padding-inline:1rem}}
+    @media(max-width:700px){.review{min-height:36rem}.review-header{padding:.65rem 1rem}.review-brand img{width:9rem}.preview-label{font-size:.75rem}.review-layout{grid-template-columns:minmax(0,1fr);padding:0 .65rem .65rem}.review-layout{grid-template-rows:minmax(0,1fr)}.page-navigation{display:none}.preview-toolbar{padding:.8rem}.page-heading{display:none}.mobile-picker{display:grid;gap:.35rem;width:100%}.mobile-picker label{font-size:.75rem;color:#526c84}.mobile-picker select{width:100%;min-height:44px;border:1px solid #c4dcef;border-radius:.6rem;padding:.6rem .7rem;color:#172c43;background:#fff;font-size:1rem}.preview-controls{gap:.5rem}.view-toggle button{min-width:4.6rem;padding-inline:.6rem}.open-page{padding-inline:.75rem}.preview-stage{padding:0 .5rem .5rem}.preview-frame{border-radius:.5rem}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="review">
+    <header class="review-header">
+      <a class="review-brand" href="/" target="_blank" rel="noopener" aria-label="Open Nextwise Markets home in a new tab"><img src="/assets/nextwise-logo-gradient.svg" alt="Nextwise Markets" width="453" height="71" /></a>
+      <span class="preview-label">Local preview · 18 pages</span>
+    </header>
+    <div class="review-layout">
+      <nav class="page-navigation" aria-label="Choose a page"></nav>
+      <main class="preview-main">
+        <div class="preview-toolbar">
+          <div class="page-heading"><h1 id="page-title">Home</h1><p id="view-description">Desktop preview</p></div>
+          <div class="mobile-picker"><label for="page-select">Choose a page</label><select id="page-select"></select></div>
+          <div class="preview-controls">
+            <div class="view-toggle" role="group" aria-label="Preview size"><button type="button" data-view="desktop" aria-pressed="true">Desktop</button><button type="button" data-view="phone" aria-pressed="false">Phone</button></div>
+            <a class="open-page" id="open-page" href="/" target="_blank" rel="noopener" aria-label="Open Home in a new tab">Open page <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+        <div class="preview-stage" data-view="desktop"><iframe class="preview-frame" id="page-preview" src="/" title="Home — desktop preview"></iframe></div>
+      </main>
+    </div>
+  </div>
+  <script>
+    const pageGroups = [
+      ['Website', [
+        ['Home', '/'], ['About us', '/about-us/'], ['Account types', '/account-types/'], ['Trading platform', '/trading-platform/'], ['Introducing broker', '/introducing-broker/'], ['Contact', '/contact/'], ['Forex', '/forex/'], ['Crypto', '/crypto/'], ['Metals & energy', '/metals-energy/'], ['Indices', '/indices/']
+      ]],
+      ['Legal', [
+        ['Privacy policy', '/privacy-policy/'], ['Terms & conditions', '/terms-and-conditions/'], ['AML policy', '/aml-policy/'], ['Deposit & withdrawal policy', '/deposit-withdrawal-policy/'], ['Restricted countries', '/restricted-countries/'], ['Risk disclosure', '/risk-disclosure/'], ['Client services agreement', '/client-services-agreement/'], ['Trading activity compliance policy', '/trading-activity-compliance-policy/']
+      ]]
+    ];
+    const pages = new Map(pageGroups.flatMap(([, entries]) => entries.map(([label, route]) => [route, label])));
+    const navigation = document.querySelector('.page-navigation');
+    const select = document.querySelector('#page-select');
+    const frame = document.querySelector('#page-preview');
+    const stage = document.querySelector('.preview-stage');
+    const openPage = document.querySelector('#open-page');
+    let currentRoute = '/';
+    let currentView = 'desktop';
+    let pageNumber = 0;
+    for (const [group, entries] of pageGroups) {
+      const heading = document.createElement('h2');
+      heading.textContent = group;
+      const list = document.createElement('div');
+      list.className = 'page-list';
+      const options = document.createElement('optgroup');
+      options.label = group;
+      for (const [label, route] of entries) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'page-link';
+        button.dataset.route = route;
+        const number = document.createElement('span');
+        number.className = 'page-number';
+        number.setAttribute('aria-hidden', 'true');
+        number.textContent = String(++pageNumber).padStart(2, '0');
+        button.append(number, document.createTextNode(label));
+        button.addEventListener('click', () => choosePage(route));
+        list.append(button);
+        const option = document.createElement('option');
+        option.value = route;
+        option.textContent = label;
+        options.append(option);
+      }
+      navigation.append(heading, list);
+      select.append(options);
+    }
+    function updateControls() {
+      const label = pages.get(currentRoute);
+      document.querySelector('#page-title').textContent = label;
+      document.querySelector('#view-description').textContent = currentView === 'phone' ? 'Phone preview' : 'Desktop preview';
+      frame.title = `${label} — ${currentView} preview`;
+      select.value = currentRoute;
+      openPage.href = currentRoute;
+      openPage.setAttribute('aria-label', `Open ${label} in a new tab`);
+      for (const button of navigation.querySelectorAll('[data-route]')) {
+        if (button.dataset.route === currentRoute) button.setAttribute('aria-current', 'page');
+        else button.removeAttribute('aria-current');
+      }
+    }
+    function choosePage(route) {
+      if (!pages.has(route)) return;
+      currentRoute = route;
+      frame.src = route;
+      updateControls();
+    }
+    select.addEventListener('change', () => choosePage(select.value));
+    document.querySelectorAll('.view-toggle button').forEach(button => button.addEventListener('click', () => {
+      currentView = button.dataset.view;
+      stage.dataset.view = currentView;
+      document.querySelectorAll('.view-toggle button').forEach(control => control.setAttribute('aria-pressed', String(control === button)));
+      updateControls();
+    }));
+    frame.addEventListener('load', () => {
+      try {
+        const route = frame.contentWindow.location.pathname;
+        if (pages.has(route)) { currentRoute = route; updateControls(); }
+      } catch { /* External destinations do not change the page picker. */ }
+    });
+    updateControls();
+  </script>
+</body>
+</html>

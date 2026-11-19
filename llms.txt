@@ -1,6 +1,6 @@
 # NEXTWISE MARKETS
 
-> The NEXTWISE MARKETS Ltd. provides access to forex, metals, energy, indices and selected cryptocurrency markets through a MetaTrader 5 trading experience. Trading leveraged products carries significant risk and is not suitable for every investor.
+> The NEXTWISE MARKETS Ltd. provides access to forex, metals, energy, indices and selected cryptocurrency markets through a MetaTrader5 trading experience. Trading leveraged products carries significant risk and is not suitable for every investor.
 
 Official website: https://nextwisemarkets.com/
 Client portal: https://client.nextwisemarkets.com/

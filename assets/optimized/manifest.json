@@ -1,0 +1,684 @@
+{
+  "assets": {
+    "/assets/hero-art/about-us.webp": {
+      "alpha": true,
+      "bytes": 274304,
+      "category": "hero",
+      "encoding_source": "exec-781a18b5-d9ef-4523-8307-061bef70dd33.png",
+      "encoding_source_sha256": "c094e349f926b8f3196ecb3812e41f8e53e0d0a8ffe2d0bea7d0f6070f6cabe2",
+      "full_size_savings_bytes": 0,
+      "height": 1086,
+      "sha256": "4518f3e3583ee489e803780c691309069b8b37e817c7f9b8637bb3082e987275",
+      "smallest_variant_savings_bytes": 222334,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 51970,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "c42e8510ebbb094cea08bd35ff61e69d34f581723bb069681bedd9f9735c52bd",
+          "src": "/assets/optimized/about-us-480.c42e8510ebbb.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 105546,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "5fab3a198e7147c7a310a3428dc60b8ffd6a72ea5b050e1f9833ad6a3f6615c8",
+          "src": "/assets/optimized/about-us-768.5fab3a198e71.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 164800,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "9ee5e19d67d520f827f4a04eb3a652429cd1b6ff050f8a216e7779710775ebdd",
+          "src": "/assets/optimized/about-us-1024.9ee5e19d67d5.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 274304,
+          "height": 1086,
+          "quality": null,
+          "reused_original": true,
+          "sha256": "4518f3e3583ee489e803780c691309069b8b37e817c7f9b8637bb3082e987275",
+          "src": "/assets/hero-art/about-us.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/account-types.webp": {
+      "alpha": true,
+      "bytes": 269368,
+      "category": "hero",
+      "encoding_source": "exec-d3749708-564d-4b4d-84f7-f7dd2ec2cd29.png",
+      "encoding_source_sha256": "5947db16987ed90fd364e9de6190c021da69c92e544b98878d86c5332918d1e9",
+      "full_size_savings_bytes": 0,
+      "height": 1086,
+      "sha256": "b90e3516b9a2739057ca2c9b321069f73ecc2ead43621a1f41c284deb897ad06",
+      "smallest_variant_savings_bytes": 220516,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 48852,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "47f52afc6dc88434d466fa555e10a7647d7416ffc77f39a9b99f01ac518c2ac1",
+          "src": "/assets/optimized/account-types-480.47f52afc6dc8.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 100644,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "ae7e7f53c4049afffeb9af1460eaaf43ab119212a9ae5ff9553b932e1d29f954",
+          "src": "/assets/optimized/account-types-768.ae7e7f53c404.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 159228,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "3ff82187dd103c5e232c125c4436b1b25a44cc99be45ff2017276d95f1465f99",
+          "src": "/assets/optimized/account-types-1024.3ff82187dd10.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 269368,
+          "height": 1086,
+          "quality": null,
+          "reused_original": true,
+          "sha256": "b90e3516b9a2739057ca2c9b321069f73ecc2ead43621a1f41c284deb897ad06",
+          "src": "/assets/hero-art/account-types.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/crypto.webp": {
+      "alpha": true,
+      "bytes": 406844,
+      "category": "hero",
+      "encoding_source": "exec-51d4931d-0466-48df-bcc4-7c99d830e3c9.png",
+      "encoding_source_sha256": "6dc13183460a8b41e46b467c90ed9c05bb9251708ebda90d82076f882f0685d3",
+      "full_size_savings_bytes": 0,
+      "height": 1086,
+      "sha256": "f2a228157afe3f952014b2c105c3808fb9bbe73849cda840965d486d5bb52094",
+      "smallest_variant_savings_bytes": 343146,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 63698,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "8685d7b9dc33a9fe6739725b1d25849c8f4ff00fc9149472e9ac7a10ad82d231",
+          "src": "/assets/optimized/crypto-480.8685d7b9dc33.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 135536,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "63bbc783ab8c8585722a1772d15a9f61ae499e6af644e21195df93d7bdc0b290",
+          "src": "/assets/optimized/crypto-768.63bbc783ab8c.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 222528,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "21d3177a2174cbf5848d242a90892d5959a2d29b960aadfc954cc38331a92059",
+          "src": "/assets/optimized/crypto-1024.21d3177a2174.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 406844,
+          "height": 1086,
+          "quality": null,
+          "reused_original": true,
+          "sha256": "f2a228157afe3f952014b2c105c3808fb9bbe73849cda840965d486d5bb52094",
+          "src": "/assets/hero-art/crypto.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/forex.webp": {
+      "alpha": true,
+      "bytes": 319556,
+      "category": "hero",
+      "encoding_source": "exec-c6e5ee50-d54c-41a7-9c3b-d0843d2fc271.png",
+      "encoding_source_sha256": "d2ac9dd8e0a1eed3747322d9d42d9a616d228708815da42e2e78c0d35470c5b0",
+      "full_size_savings_bytes": 3368,
+      "height": 1086,
+      "sha256": "94c9700a39c199ffc35cede727c696b9dc29104ffc95611ae9bc33975f63c9f2",
+      "smallest_variant_savings_bytes": 266430,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 53126,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "67b78c73327462c18bda72df386a5d521be169e12bfd9e596858c3985e6b034d",
+          "src": "/assets/optimized/forex-480.67b78c733274.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 109656,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "654abec2b125818e9aa2a07708c848c68ebca8cf86d69d353abd2e3dd6c473db",
+          "src": "/assets/optimized/forex-768.654abec2b125.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 175634,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "10f98485464949399dd556a5433a37d4a1f990c73745849fc66680b83da10d95",
+          "src": "/assets/optimized/forex-1024.10f984854649.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 316188,
+          "height": 1086,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "1ad84e79bbce898b3dc9c009b00ef5068749b44afb2d27622ccba401c6a0906a",
+          "src": "/assets/optimized/forex-1448.1ad84e79bbce.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/indices.webp": {
+      "alpha": true,
+      "bytes": 262894,
+      "category": "hero",
+      "encoding_source": "exec-cd2caf71-702f-4d7d-8e52-925f17e91ca4.png",
+      "encoding_source_sha256": "4d8472a281b7e7d0b9c4334f244ab25ef00d2c32009f89c886f953f8d5edcf04",
+      "full_size_savings_bytes": 0,
+      "height": 1086,
+      "sha256": "10fa2f38825feb31f38f8f97184192c52010e65c0fd3906be4ed1ed0eee4c57f",
+      "smallest_variant_savings_bytes": 216536,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 46358,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "75bdaa0268b16c30f69fdcfd57895b48d381d08c5428fc56d2e08c053a4d946e",
+          "src": "/assets/optimized/indices-480.75bdaa0268b1.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 94838,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "7f246d1f5014c617ac0651541aef9c03449ae8620159c5a58181dd3a3bd15458",
+          "src": "/assets/optimized/indices-768.7f246d1f5014.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 148228,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "711514389067c278ad8984be38680a6129e45950b1864c26b8025854961829ef",
+          "src": "/assets/optimized/indices-1024.711514389067.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 262894,
+          "height": 1086,
+          "quality": null,
+          "reused_original": true,
+          "sha256": "10fa2f38825feb31f38f8f97184192c52010e65c0fd3906be4ed1ed0eee4c57f",
+          "src": "/assets/hero-art/indices.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/introducing-broker.webp": {
+      "alpha": true,
+      "bytes": 279916,
+      "category": "hero",
+      "encoding_source": "exec-1ed58794-2982-4eb5-a535-76e07561cf53.png",
+      "encoding_source_sha256": "1bedd3d26d55b007a0119464feb7078537d1563c9d8a0503c9eb85055f071fb1",
+      "full_size_savings_bytes": 0,
+      "height": 1086,
+      "sha256": "40d2a038852dac3503fa4bd110e6bae30c2351e4633d761af7c8d10851ef55bf",
+      "smallest_variant_savings_bytes": 231572,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 48344,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "03b307c1300175cb875197721ffb6aee752789c7229904c6d48954af2c83b41a",
+          "src": "/assets/optimized/introducing-broker-480.03b307c13001.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 102084,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "9cf534bf91e53e8aa9fec6a7c5a5670643b42541e5e2125b3313e312fdd2ab26",
+          "src": "/assets/optimized/introducing-broker-768.9cf534bf91e5.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 162664,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "1a69569b3fded203359a314905693cd4506b30eb364108ae61a6aa5c635608f9",
+          "src": "/assets/optimized/introducing-broker-1024.1a69569b3fde.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 279916,
+          "height": 1086,
+          "quality": null,
+          "reused_original": true,
+          "sha256": "40d2a038852dac3503fa4bd110e6bae30c2351e4633d761af7c8d10851ef55bf",
+          "src": "/assets/hero-art/introducing-broker.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/metals-energy.webp": {
+      "alpha": true,
+      "bytes": 246796,
+      "category": "hero",
+      "encoding_source": "exec-da6b361a-746b-4ef6-ba9d-1d850b77baa0.png",
+      "encoding_source_sha256": "d4e2d06d6524d50b4a208cb22e63a6e90bb250f12922063ad819e3c92250cfb4",
+      "full_size_savings_bytes": 5128,
+      "height": 1086,
+      "sha256": "2917e9790fff4e9b76e6bffeadac31260e6aa263972f40032f75cdc721428b54",
+      "smallest_variant_savings_bytes": 204474,
+      "uses_original_png_master": true,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 42322,
+          "height": 360,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "eb7b1e70b6e5aa79250ffb52c3e0290f1f79a991f99c7889bb539edecf027e03",
+          "src": "/assets/optimized/metals-energy-480.eb7b1e70b6e5.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 86530,
+          "height": 576,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "15587b20e4143940af5ef7993e1677d733ba9c07b8ca343f81962d4498170f0a",
+          "src": "/assets/optimized/metals-energy-768.15587b20e414.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 135546,
+          "height": 768,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "fd1e06fe8d809768d5d2f9c4832623558736ba19483c5d2dd6dfafc516fd50aa",
+          "src": "/assets/optimized/metals-energy-1024.fd1e06fe8d80.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 241668,
+          "height": 1086,
+          "quality": 90,
+          "reused_original": false,
+          "sha256": "9f7aef009dfd6fb014dff1528e65a494f36081e422cf68ea67213bf02acb5728",
+          "src": "/assets/optimized/metals-energy-1448.9f7aef009dfd.webp",
+          "width": 1448
+        }
+      ],
+      "width": 1448
+    },
+    "/assets/hero-art/metatrader5-terminal.png": {
+      "alpha": false,
+      "bytes": 137512,
+      "category": "screenshot",
+      "encoding_source": "/assets/hero-art/metatrader5-terminal.png",
+      "encoding_source_sha256": "674a4ede3d899175eba65a65459aff4f64951c75688fb5a21405901aa0a292e2",
+      "full_size_savings_bytes": 0,
+      "height": 1536,
+      "sha256": "674a4ede3d899175eba65a65459aff4f64951c75688fb5a21405901aa0a292e2",
+      "smallest_variant_savings_bytes": 97450,
+      "uses_original_png_master": false,
+      "variants": [
+        {
+          "alpha": false,
+          "bytes": 40062,
+          "height": 313,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "3cd353e8673b13bf17aa8e7fc88c294cff963d025ff9ffbd7200d1b026605b36",
+          "src": "/assets/optimized/metatrader5-terminal-480.3cd353e8673b.webp",
+          "width": 480
+        },
+        {
+          "alpha": false,
+          "bytes": 84026,
+          "height": 500,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "80711e2d389bfd192bbe8cd5fe5d00e4de38d39948d30c52b2c1d9b98170526d",
+          "src": "/assets/optimized/metatrader5-terminal-768.80711e2d389b.webp",
+          "width": 768
+        },
+        {
+          "alpha": false,
+          "bytes": 125788,
+          "height": 667,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "074b61268985bc120a2eda734a54b2c9b6ca0a0232e019e8b791ed65e08cb2ed",
+          "src": "/assets/optimized/metatrader5-terminal-1024.074b61268985.webp",
+          "width": 1024
+        },
+        {
+          "alpha": false,
+          "bytes": 137512,
+          "height": 1536,
+          "quality": null,
+          "reused_original": true,
+          "sha256": "674a4ede3d899175eba65a65459aff4f64951c75688fb5a21405901aa0a292e2",
+          "src": "/assets/hero-art/metatrader5-terminal.png",
+          "width": 2360
+        }
+      ],
+      "width": 2360
+    },
+    "/assets/portal-signature/glacier-dark-floor-1025-lossless.webp": {
+      "alpha": false,
+      "bytes": 899994,
+      "category": "background",
+      "encoding_source": "/assets/portal-signature/glacier-dark-floor-1025-lossless.webp",
+      "encoding_source_sha256": "570bf9ef73c5994139dd34b2028e5a0d1759cdb6e8f55099fc4761154601099e",
+      "full_size_savings_bytes": 781712,
+      "height": 1025,
+      "sha256": "570bf9ef73c5994139dd34b2028e5a0d1759cdb6e8f55099fc4761154601099e",
+      "smallest_variant_savings_bytes": 863328,
+      "uses_original_png_master": false,
+      "variants": [
+        {
+          "alpha": false,
+          "bytes": 36666,
+          "height": 470,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "08ab8a465967cee1a60e33fb63eb079e1834c5ddd48293a6830974a8ea17ec26",
+          "src": "/assets/optimized/glacier-dark-floor-1025-lossless-480.08ab8a465967.webp",
+          "width": 480
+        },
+        {
+          "alpha": false,
+          "bytes": 72104,
+          "height": 752,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "2a59215e21e4719eb87b714f0778a71b79ffba875307df96241a93330c0250c0",
+          "src": "/assets/optimized/glacier-dark-floor-1025-lossless-768.2a59215e21e4.webp",
+          "width": 768
+        },
+        {
+          "alpha": false,
+          "bytes": 103726,
+          "height": 1002,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "9551c2e62c36dcb4f85a19d0f117d4bcc1debcba47fae3987a7af2c8e5fe5ce5",
+          "src": "/assets/optimized/glacier-dark-floor-1025-lossless-1024.9551c2e62c36.webp",
+          "width": 1024
+        },
+        {
+          "alpha": false,
+          "bytes": 118282,
+          "height": 1025,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "73b1194eb16a1a0c6a5e78afc72e0919056c00b10ddb40652b1b0b0fe2f82cdd",
+          "src": "/assets/optimized/glacier-dark-floor-1025-lossless-1048.73b1194eb16a.webp",
+          "width": 1048
+        }
+      ],
+      "width": 1048
+    },
+    "/assets/portal-signature/glacier-gloss-background-lossless.webp": {
+      "alpha": false,
+      "bytes": 880500,
+      "category": "background",
+      "encoding_source": "/assets/portal-signature/glacier-gloss-background-lossless.webp",
+      "encoding_source_sha256": "12be021bf16c6aa229433f71ead2b9865b5d6b848beeb770dc5525ad3c091be1",
+      "full_size_savings_bytes": 830520,
+      "height": 887,
+      "sha256": "12be021bf16c6aa229433f71ead2b9865b5d6b848beeb770dc5525ad3c091be1",
+      "smallest_variant_savings_bytes": 872178,
+      "uses_original_png_master": false,
+      "variants": [
+        {
+          "alpha": false,
+          "bytes": 8322,
+          "height": 240,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "0b620794e93b75d368501ad00e3072f8183ad245098562bcb3db2fe24a067cbd",
+          "src": "/assets/optimized/glacier-gloss-background-lossless-480.0b620794e93b.webp",
+          "width": 480
+        },
+        {
+          "alpha": false,
+          "bytes": 15518,
+          "height": 384,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "0c1882ec884d418dff8993c24f4a5679ed0402c2d8e04191078ec40dab64e90c",
+          "src": "/assets/optimized/glacier-gloss-background-lossless-768.0c1882ec884d.webp",
+          "width": 768
+        },
+        {
+          "alpha": false,
+          "bytes": 23086,
+          "height": 512,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "bf55c069ba41d9a40ae25371cfcfbe3f5196558633e48d9b5ea17e68f609c4de",
+          "src": "/assets/optimized/glacier-gloss-background-lossless-1024.bf55c069ba41.webp",
+          "width": 1024
+        },
+        {
+          "alpha": false,
+          "bytes": 49980,
+          "height": 887,
+          "quality": 88,
+          "reused_original": false,
+          "sha256": "cad66aa606ab1af999f0cc1d29d441a848d4723ee684091de559d3c88cac8789",
+          "src": "/assets/optimized/glacier-gloss-background-lossless-1774.cad66aa606ab.webp",
+          "width": 1774
+        }
+      ],
+      "width": 1774
+    },
+    "/assets/product/mt5-web-devices.png": {
+      "alpha": true,
+      "bytes": 469514,
+      "category": "screenshot",
+      "encoding_source": "/assets/product/mt5-web-devices.png",
+      "encoding_source_sha256": "06ccda62b87e8acd2f87ac383dd2e449d4e018ec069422625d7d6146deb23699",
+      "full_size_savings_bytes": 381010,
+      "height": 514,
+      "sha256": "06ccda62b87e8acd2f87ac383dd2e449d4e018ec069422625d7d6146deb23699",
+      "smallest_variant_savings_bytes": 440992,
+      "uses_original_png_master": false,
+      "variants": [
+        {
+          "alpha": true,
+          "bytes": 28522,
+          "height": 232,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "327045733cafcbebf110b745a3a730c6283cde3a4d39ce55045d4dfdf3a0f7d7",
+          "src": "/assets/optimized/mt5-web-devices-480.327045733caf.webp",
+          "width": 480
+        },
+        {
+          "alpha": true,
+          "bytes": 54528,
+          "height": 370,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "498fc26a1f377a8349ce984a09ee9bf5f88c9067dc489fb8b7adb8361f0aa82d",
+          "src": "/assets/optimized/mt5-web-devices-768.498fc26a1f37.webp",
+          "width": 768
+        },
+        {
+          "alpha": true,
+          "bytes": 81084,
+          "height": 493,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "f32c388da635b6bfc98211dff6935025dc1a5d5e17be453d7fa5c6cc2f3c8f5e",
+          "src": "/assets/optimized/mt5-web-devices-1024.f32c388da635.webp",
+          "width": 1024
+        },
+        {
+          "alpha": true,
+          "bytes": 88504,
+          "height": 514,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "ffa1ea103205793b3209d7917aa6b8ff22d628df069f17c349b045e8f5fc2c7e",
+          "src": "/assets/optimized/mt5-web-devices-1068.ffa1ea103205.webp",
+          "width": 1068
+        }
+      ],
+      "width": 1068
+    },
+    "/assets/product/nextwise-crm-original.png": {
+      "alpha": true,
+      "bytes": 798447,
+      "category": "screenshot",
+      "encoding_source": "/assets/product/nextwise-crm-original.png",
+      "encoding_source_sha256": "b1dc62240f92ec8c376a56040b389f4b4c110d2ecf27e514628baf4f9ea98d21",
+      "full_size_savings_bytes": 683673,
+      "height": 1354,
+      "sha256": "b1dc62240f92ec8c376a56040b389f4b4c110d2ecf27e514628baf4f9ea98d21",
+      "smallest_variant_savings_bytes": 784395,
+      "uses_original_png_master": false,
+      "variants": [
+        {
+          "alpha": false,
+          "bytes": 14052,
+          "height": 264,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "a9317ef88c5bf7a63e79a65233dfb0fcb816fce10c620cd4ddf369feaa886481",
+          "src": "/assets/optimized/nextwise-crm-original-480.a9317ef88c5b.webp",
+          "width": 480
+        },
+        {
+          "alpha": false,
+          "bytes": 26006,
+          "height": 423,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "566373b28ad1d739490923dcdd7f4b5218bdb105a16a86a956193d6726674d1b",
+          "src": "/assets/optimized/nextwise-crm-original-768.566373b28ad1.webp",
+          "width": 768
+        },
+        {
+          "alpha": false,
+          "bytes": 37838,
+          "height": 564,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "db220e9919b908678867577bd7656315fbafe3c7bf6722fb1b8157a0f5dd6ca2",
+          "src": "/assets/optimized/nextwise-crm-original-1024.db220e9919b9.webp",
+          "width": 1024
+        },
+        {
+          "alpha": false,
+          "bytes": 114774,
+          "height": 1354,
+          "quality": 92,
+          "reused_original": false,
+          "sha256": "811e39b472b645f9379df943c4c6f4c180f964688b381ad32cae41ad28cfbd4f",
+          "src": "/assets/optimized/nextwise-crm-original-2462.811e39b472b6.webp",
+          "width": 2462
+        }
+      ],
+      "width": 2462
+    }
+  },
+  "encoder": "cwebp 1.6.0",
+  "generator": "scripts/optimize-images.py",
+  "schema_version": 1,
+  "settings": {
+    "alpha_quality": 100,
+    "background_quality": 88,
+    "hero_quality": 90,
+    "method": 6,
+    "screenshot_quality": 92,
+    "sharp_yuv": true
+  },
+  "totals": {
+    "full_size_savings_bytes": 2685411,
+    "full_size_savings_percent": 51.19,
+    "full_size_variant_bytes": 2560234,
+    "note": "Totals compare one candidate per source across the collection, not a single page load; browsers select a responsive candidate.",
+    "original_bytes": 5245645,
+    "smallest_variant_bytes": 482294,
+    "smallest_variant_savings_percent": 90.81
+  }
+}

@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 const source = readFileSync(new URL("../live-chat.js", import.meta.url), "utf8");
 const flush = () => new Promise(setImmediate);
 
-function fixture({ withBanner = false } = {}) {
+function fixture({ withBanner = false, theme = "light" } = {}) {
   const element = () => ({
     attributes: {}, disabled: false, hidden: false, handlers: {}, focused: false,
     style: { values: {}, setProperty(key, value) { this.values[key] = value; } },
@@ -28,6 +28,7 @@ function fixture({ withBanner = false } = {}) {
   };
   const emit = name => [...(listeners.get(name) || [])].forEach(callback => callback());
   const document = {
+    documentElement: { dataset: { theme } },
     getElementById(id) { return id === "chatwoot_live_chat_widget" ? frame : nodes.find(node => node.id === id); },
     createElement(tag) { return tag === "aside" ? launcher : element(); },
     querySelector() { return banner; },
@@ -65,6 +66,15 @@ test("initial page shows one launcher without loading the support service", () =
   assert.equal(f.nodes.length, 1);
   assert.equal(f.scripts.length, 0);
   assert.match(f.launcher.innerHTML, /Live chat/);
+  assert.match(f.launcher.innerHTML, /<img src="\/assets\/portal-signature\/paperbot-icon-light\.png"/);
+  assert.match(f.launcher.innerHTML, /data-theme-light-src="\/assets\/portal-signature\/paperbot-icon-light\.png"/);
+  assert.match(f.launcher.innerHTML, /data-theme-dark-src="\/assets\/portal-signature\/paperbot-icon-dark\.png"/);
+});
+
+test("launcher starts with the dark brand icon when the saved theme is already applied", () => {
+  const f = fixture({ theme: "dark" });
+  assert.match(f.launcher.innerHTML, /<img src="\/assets\/portal-signature\/paperbot-icon-dark\.png"/);
+  assert.equal(f.scripts.length, 0);
 });
 
 test("loads once on demand, opens the public inbox and restores focus on close", async () => {

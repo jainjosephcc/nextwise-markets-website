@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/assets/fonts/Boing-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/assets/fonts/Boing-Bold.ttf" as="font" type="font/ttf" crossorigin />
+    <script src="/theme.js?v=4"></script>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="The NEXTWISE MARKETS Ltd." />
     <meta name="theme-color" content="#ff4d10" />
@@ -34,8 +37,7 @@
     <meta name="twitter:image" content="https://imagedelivery.net/rOThsJwRI2L_FvAzE6eQ4A/3c30bab4-a81c-4bf8-3d5a-863078110500/public" />
     <meta name="twitter:image:alt" content="NEXTWISE MARKETS — Markets move fast. Trade with clarity." />
     <!-- SEO structured data -->
-    <script type="application/ld+json">
-{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -94,106 +96,178 @@
           "availableLanguage": "English"
         }
       ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://nextwisemarkets.com/contact/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "NEXTWISE MARKETS",
-          "item": "https://nextwisemarkets.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Contact",
-          "item": "https://nextwisemarkets.com/contact/"
-        }
-      ]
     }
   ]
-}
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="/analytics.css?v=3" />
-    <script src="/analytics.js?v=1" defer></script>
-    <link rel="stylesheet" href="/live-chat.css?v=1" />
-    <script src="/live-chat.js?v=1" defer></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Kanit:wght@500;600;700&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="../content.css?v=6" />
-    <link rel="stylesheet" href="/site-header.css?v=1" />
-    <script src="../content.js?v=2" defer></script>
-  </head>
-  <body>
+}</script>
+    <link rel="stylesheet" href="/analytics.css?v=4" />
+    <script src="/analytics.js?v=2" defer></script>
+    <link rel="stylesheet" href="/live-chat.css?v=2" />
+    <script src="/live-chat.js?v=2" defer></script>
+    <link rel="stylesheet" href="../content.css?v=9" />
+    <link rel="stylesheet" href="/horizon.css?v=6" />
+    <link rel="stylesheet" href="/site-header.css?v=11" />
+    <link rel="stylesheet" href="/brand-material.css?v=7" />
+    <link rel="stylesheet" href="/site-footer.css?v=10" />
+    <script src="../content.js?v=4" defer></script>
+      <link rel="stylesheet" href="/site-refinement.css?v=7" />
+    <link rel="stylesheet" href="/illustrations.css?v=7" />
+  <script src="/site-interactions.js?v=5" defer></script>
+  <link rel="stylesheet" href="/screen-layout.css?v=2" />
+  <script type="module" src="/screen-layout.js?v=2"></script>
+  <link rel="stylesheet" href="/contact/enquiry.css?v=5" />
+  <script type="module" src="/contact/enquiry.js?v=2"></script>
+  <link rel="stylesheet" href="/crm-finish.css?v=8" />
+  <link rel="stylesheet" href="/responsive-art.css?v=3" />
+  <link rel="stylesheet" href="/section-art-layout.css?v=1" />
+</head>
+  <body data-page="contact">
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="content-header">
-      <a class="content-brand" href="../" aria-label="NEXTWISE MARKETS home"><img src="../assets/nextwise-logo-gradient.svg" alt="NEXTWISE MARKETS" width="453" height="71" /></a>
+      <a class="content-brand" href="../" aria-label="NEXTWISE MARKETS home"><img src="/assets/nextwise-logo-gradient.svg" alt="NEXTWISE MARKETS" width="453" height="71" /></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="content-primary-nav"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="content-primary-nav" class="content-primary-nav" aria-label="Primary navigation"><a href="../about-us/">About</a><a href="../trading-platform/">Platform</a><a href="../account-types/">Accounts</a><a href="../#markets">Markets</a><a href="../introducing-broker/">Partners</a><a href="../contact/" aria-current="page">Contact</a></nav>
-      <a class="header-return" href="https://client.nextwisemarkets.com/">Sign Up / Login <span aria-hidden="true">↗</span></a>
+      <nav id="content-primary-nav" class="content-primary-nav" aria-label="Primary navigation"><a href="../about-us/">About</a><a href="../trading-platform/">Platform</a><a href="../account-types/">Accounts</a><a href="../#markets">Markets</a><a href="../introducing-broker/">Partners</a><a href="../contact/" aria-current="page">Contact</a><a class="mobile-portal-link" href="https://client.nextwisemarkets.com/" data-cta-tone="blue">Sign Up / Login </a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle role="switch" aria-label="Dark mode" aria-checked="false" title="Use dark theme"><span class="theme-switch-track" aria-hidden="true"><svg class="theme-switch-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="theme-switch-icon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><span class="theme-switch-thumb"></span></span></button>
+      <a class="header-return" href="https://client.nextwisemarkets.com/" data-cta-tone="blue"><svg class="header-portal-arrow" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg><span><small>Wanna trade?</small>Sign Up / Login</span></a>
     </header>
 
     <main>
       <section class="content-hero" data-page="contact" aria-labelledby="page-title">
         <div class="content-hero-shell">
           <div class="content-hero-copy">
-            <nav class="content-breadcrumbs" aria-label="Breadcrumb"><a href="../">NEXTWISE MARKETS</a><span aria-hidden="true">/</span><span>Contact</span></nav>
-            <h1 id="page-title">Talk to Us — We’re Available to Help.</h1>
+            <h1 id="page-title">Let’s get you to the right team.</h1>
             <p>Contact Client Services for help with onboarding, account access, platform setup and general enquiries.</p>
-            
-            <div class="content-hero-actions"><a class="content-action" href="https://client.nextwisemarkets.com/">Sign Up / Login <span aria-hidden="true">→</span></a><a class="content-text-link" href="#content">Explore this page ↓</a></div>
+
+            <div class="content-hero-actions"><a class="content-action" href="https://client.nextwisemarkets.com/" data-cta-tone="blue">Sign Up / Login</a><a class="content-text-link" href="#content" data-cta-tone="orange">Explore this page</a></div>
           </div>
-          <div class="content-hero-media" aria-hidden="true"><img src="../assets/nextwise-cinematic-clouds-v1.jpg" alt="" width="1672" height="941" fetchpriority="high" /></div>
+          <aside class="hero-summary" aria-label="Page overview">
+            <ul class="hero-summary-list">
+              <li><div class="hero-summary-symbol"><img class="hero-summary-icon" src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/phone.svg" alt="" aria-hidden="true" width="100" height="100" decoding="async" /></div><div class="hero-summary-text"><strong>Call Client Services</strong><p>For enquiries, call <a href="tel:+17585720778">+1-758-572-0778</a>.</p></div></li>
+              <li><div class="hero-summary-symbol"><img class="hero-summary-icon" src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/mail.svg" alt="" aria-hidden="true" width="100" height="100" decoding="async" /></div><div class="hero-summary-text"><strong>Email Client Services</strong><p>Send your enquiry to <a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a>. Include your registered email address when asking about an existing account.</p></div></li>
+              <li><div class="hero-summary-symbol"><img class="hero-summary-icon" src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/phone.svg" alt="" aria-hidden="true" width="100" height="100" decoding="async" /></div><div class="hero-summary-text"><strong>Call the registered office</strong><p>For general enquiries, call <a href="tel:+442039966589">+442039966589</a>.</p></div></li>
+            </ul>
+          </aside>
         </div>
       </section>
-      <div class="content-main" id="content"><section class="content-section" aria-labelledby="contact-options"><header class="content-section-heading"><h2 id="contact-options">Contact options</h2></header><div class="content-section-body"><div class="content-grid">
-<article class="content-grid-item"><h3>Call Client Services</h3><p>For enquiries, call <a href="tel:+17585720778">+1-758-572-0778</a>.</p></article>
-<article class="content-grid-item"><h3>Email Client Services</h3><p>Send your enquiry to <a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a>. Include your registered email address when asking about an existing account.</p></article>
-<article class="content-grid-item"><h3>Call the registered office</h3><p>For general enquiries, call <a href="tel:+442039966589">+442039966589</a>.</p></article>
+      <div class="content-main" id="content"><section class="content-section illustrated-section contact-options" data-managed-screen aria-labelledby="contact-options"><header class="content-section-heading"><h2 id="contact-options">Contact Us</h2><div class="section-art" aria-hidden="true"><img class="nw-illustration" src="/assets/illustrations/themed/light/client-support.svg" data-theme-light-src="/assets/illustrations/themed/light/client-support.svg" data-theme-dark-src="/assets/illustrations/themed/dark/client-support.svg" alt="" width="420" height="180" loading="lazy" decoding="async" /></div></header><div class="content-section-body"><div class="content-grid">
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/phone.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Call Client Services</h3><p>For enquiries, call <a href="tel:+17585720778">+1-758-572-0778</a>.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/mail.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Email Client Services</h3><p>Send your enquiry to <a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a>. Include your registered email address when asking about an existing account.</p></article>
+<article class="content-grid-item graphic-card"><img class="card-emblem" src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/phone.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" /><h3>Call the registered office</h3><p>For general enquiries, call <a href="tel:+442039966589">+442039966589</a>.</p></article>
 </div></div></section>
-<section class="content-section" aria-labelledby="send-an-enquiry"><header class="content-section-heading"><h2 id="send-an-enquiry">Send an enquiry</h2></header><div class="content-section-body"><p>Complete the form to prepare a message in your email application. You can review it before sending.</p>
-      <form class="contact-form" data-contact-form>
-        <div class="form-field"><label for="first-name">First Name</label><input id="first-name" name="first-name" autocomplete="given-name" required /></div>
-        <div class="form-field"><label for="last-name">Last Name</label><input id="last-name" name="last-name" autocomplete="family-name" required /></div>
-        <div class="form-field"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
-        <div class="form-field"><label for="country">Country</label><select id="country" name="country" autocomplete="country-name" required><option value="—Please choose an option—">—Please choose an option—</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Cape Verde">Cape Verde</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Costa Rica">Costa Rica</option><option value="Croatia">Croatia</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Equatorial Guinea">Equatorial Guinea</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Eswatini">Eswatini</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guinea-Bissau">Guinea-Bissau</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Ivory Coast">Ivory Coast</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Micronesia">Micronesia</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nauru">Nauru</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Korea">North Korea</option><option value="North Macedonia">North Macedonia</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palau">Palau</option><option value="Panama">Panama</option><option value="Papua New Guinea">Papua New Guinea</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Republic of the Congo">Republic of the Congo</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Rwanda">Rwanda</option><option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option><option value="Saint Lucia">Saint Lucia</option><option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option><option value="Samoa">Samoa</option><option value="San Marino">San Marino</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Solomon Islands">Solomon Islands</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="South Sudan">South Sudan</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudan">Sudan</option><option value="Suriname">Suriname</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor-Leste">Timor-Leste</option><option value="Togo">Togo</option><option value="Tonga">Tonga</option><option value="Trinidad and Tobago">Trinidad and Tobago</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Turkmenistan">Turkmenistan</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vanuatu">Vanuatu</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option></select></div>
-        <div class="form-field"><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" /></div>
-        <div class="form-field"><label for="phone">Phone No.</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
-        <div class="form-field form-field-wide"><label for="subject">Subject</label><input id="subject" name="subject" required /></div>
-        <div class="form-field form-field-wide"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
-        <p class="contact-form-note">By submitting this form, you confirm that you have read and agree to NEXTWISE MARKETS’ <a href="../terms-and-conditions/">Terms of Service</a> and <a href="../privacy-policy/">Privacy Statement</a>.</p>
-        <button type="submit">Open in Email App</button>
-        <p class="contact-form-status" role="status" aria-live="polite" data-form-status></p>
-      </form></div></section>
 </div>
-    </main>
+<section class="content-section enquiry-section" id="send-an-enquiry" aria-labelledby="enquiry-title" data-managed-screen>
+  <div class="enquiry-shell">
+  <header class="content-section-heading enquiry-intro">
+    <img class="enquiry-art" src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/mail.svg" alt="" aria-hidden="true" width="100" height="100" loading="lazy" decoding="async" />
+    <h2 id="enquiry-title">Send an enquiry</h2>
+    <div class="enquiry-aside-details">
+      <p>Questions about your account or the platform? Share the details with our Client Services team.</p>
+      <address class="enquiry-contacts">
+        <a href="mailto:support@nextwisemarkets.com"><img src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/mail.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/mail.svg" alt="" width="32" height="32" /><span>support@nextwisemarkets.com</span></a>
+        <a href="tel:+17585720778"><img src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-light-src="/assets/illustrations/themed/light/icons/phone.svg" data-theme-dark-src="/assets/illustrations/themed/dark/icons/phone.svg" alt="" width="32" height="32" /><span>+1-758-572-0778</span></a>
+      </address>
+      <p class="enquiry-email-explanation">The form opens a draft in your email app for you to review and send.</p>
+    </div>
+  </header>
+  <div class="content-section-body enquiry-panel">
+    <form class="contact-form" data-contact-form aria-label="Client Services enquiry">
+      <div class="enquiry-fields">
+      <div class="enquiry-group" data-enquiry-group="details">
 
-    <footer class="content-footer">
-      <div class="content-footer-shell">
-        <div class="content-footer-main">
-          <div class="content-footer-brand"><img src="../assets/nextwise-logo-white.svg" alt="NEXTWISE MARKETS" width="453" height="71" loading="lazy" decoding="async" /><p>Trade smarter with The NEXTWISE MARKETS Ltd. — your all-in-one platform for limitless opportunities.</p></div>
-          <nav class="content-footer-column" aria-label="Explore"><b>Explore</b><a href="../about-us/">About Us</a><a href="../trading-platform/">Platform</a><a href="../account-types/">Accounts</a><a href="../introducing-broker/">Introducing Broker</a><a href="../contact/" aria-current="page">Contact</a></nav>
-          <nav class="content-footer-column" aria-label="Markets"><b>Markets</b><a href="../forex/">Forex</a><a href="../crypto/">Crypto</a><a href="../metals-energy/">Metals &amp; Energy</a><a href="../indices/">Indices</a></nav>
-          <address class="content-footer-column"><b>Contact</b><a href="tel:+17585720778">+1-758-572-0778</a><a href="tel:+442039966589">+442039966589</a><a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a><a href="../contact/">Saint Lucia registered office</a></address>
+        <div class="form-field"><label for="first-name">First name</label><input id="first-name" name="first-name" autocomplete="given-name" required /></div>
+        <div class="form-field"><label for="last-name">Last name</label><input id="last-name" name="last-name" autocomplete="family-name" required /></div>
+        <div class="form-field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+      </div>
+      <div class="enquiry-group" data-enquiry-group="location">
+        <div class="form-field"><label for="country">Country</label><select id="country" name="country" autocomplete="country-name" required><option value="" disabled selected>Select</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Cape Verde">Cape Verde</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Costa Rica">Costa Rica</option><option value="Croatia">Croatia</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Equatorial Guinea">Equatorial Guinea</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Eswatini">Eswatini</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guinea-Bissau">Guinea-Bissau</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Ivory Coast">Ivory Coast</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Micronesia">Micronesia</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nauru">Nauru</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Korea">North Korea</option><option value="North Macedonia">North Macedonia</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palau">Palau</option><option value="Panama">Panama</option><option value="Papua New Guinea">Papua New Guinea</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Republic of the Congo">Republic of the Congo</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Rwanda">Rwanda</option><option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option><option value="Saint Lucia">Saint Lucia</option><option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option><option value="Samoa">Samoa</option><option value="San Marino">San Marino</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Solomon Islands">Solomon Islands</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="South Sudan">South Sudan</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudan">Sudan</option><option value="Suriname">Suriname</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor-Leste">Timor-Leste</option><option value="Togo">Togo</option><option value="Tonga">Tonga</option><option value="Trinidad and Tobago">Trinidad and Tobago</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Turkmenistan">Turkmenistan</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vanuatu">Vanuatu</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option></select></div>
+        <div class="form-field"><label for="city">City <span>(optional)</span></label><input id="city" name="city" autocomplete="address-level2" /></div>
+        <div class="form-field"><label for="phone">Phone <span>(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+      </div>
+      <div class="enquiry-group" data-enquiry-group="message">
+        <div class="form-field form-field-wide"><label for="subject">Subject</label><input id="subject" name="subject" required /></div>
+        <div class="form-field form-field-wide"><label for="message">Message</label><textarea id="message" name="message" rows="3" required></textarea></div>
+      </div>
+      <div class="enquiry-group enquiry-finish" data-enquiry-group="finish">
+        <p class="contact-form-note">By continuing, you confirm you have read and agree to our <a href="../terms-and-conditions/">Terms of Service</a> and <a href="../privacy-policy/">Privacy Statement</a>.</p>
+      </div>
+      </div>
+      <div class="enquiry-actions">
+        <button type="submit" class="content-action" data-cta-tone="orange">Open email draft</button>
+        <p class="enquiry-draft-note">Review before sending.</p>
+      </div>
+      <p class="contact-form-status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+  </div>
+  </div>
+</section>
+</main>
+
+    <footer id="site-footer" class="nw-footer" aria-label="NEXTWISE MARKETS footer">
+      <div class="nw-footer-shell">
+        <div class="nw-footer-main">
+          <details class="nw-footer-group nw-footer-policy-group" open>
+            <summary>Legal &amp; policies</summary>
+            <nav class="nw-footer-policies" aria-label="Legal and policies">
+              <a href="/privacy-policy/">Privacy Policy</a>
+              <a href="/terms-and-conditions/">Terms And Conditions</a>
+              <a href="/aml-policy/">AML Policy</a>
+              <a href="/deposit-withdrawal-policy/">Deposit Withdrawal Policy</a>
+              <a href="/restricted-countries/">Restricted Countries</a>
+              <a href="/risk-disclosure/">Risk Disclosure</a>
+              <a href="/client-services-agreement/">Client Services Agreement</a>
+              <a href="/trading-activity-compliance-policy/">Trading Activity Compliance Policy</a>
+
+            </nav>
+          </details>
+          <details class="nw-footer-group" open>
+            <summary>Explore</summary>
+            <nav class="nw-footer-column" aria-label="Explore Nextwise">
+              <a href="/">Home</a>
+              <a href="/about-us/">About Us</a>
+              <a href="/trading-platform/">Platform</a>
+              <a href="/account-types/">Accounts</a>
+              <a href="/introducing-broker/">Introducing Broker</a>
+              <a href="/contact/" aria-current="page">Contact</a>
+          </nav>
+          </details>
+          <details class="nw-footer-group" open>
+            <summary>Markets</summary>
+            <nav class="nw-footer-column" aria-label="Explore markets">
+              <a href="/forex/">Forex</a>
+              <a href="/crypto/">Crypto</a>
+              <a href="/metals-energy/">Metals &amp; Energy</a>
+              <a href="/indices/">Indices</a>
+          </nav>
+          </details>
+          <details class="nw-footer-group" open>
+            <summary>Contact</summary>
+            <address class="nw-footer-column nw-footer-contact">
+            <a href="tel:+17585720778">+1-758-572-0778</a>
+            <a href="tel:+442039966589">+442039966589</a>
+            <a href="mailto:support@nextwisemarkets.com">support@nextwisemarkets.com</a>
+            <p><strong>Registration Number</strong>2025-00221</p>
+            <p><strong>Reg Address</strong>Ground Floor, The Sotheby Building, Rodney Village, Rodney Bay, Gros-Islet, Saint Lucia</p>
+          </address>
+          </details>
+          <div class="nw-footer-brand">
+            <a class="nw-footer-logo" href="/" aria-label="NEXTWISE MARKETS home"><img src="/assets/nextwise-logo-gradient.svg" alt="NEXTWISE MARKETS" width="453" height="71" loading="lazy" decoding="async" /></a>
+            <p class="nw-footer-intro">Trade smarter with The <span class="brand-name-accent">Nextwise Markets</span> Ltd. — your all-in-one platform for limitless opportunities.</p>
+            <nav class="nw-footer-socials" aria-label="NEXTWISE MARKETS social channels">
+                <a href="https://www.facebook.com/nextwise.markets" aria-label="NEXTWISE MARKETS on Facebook (opens in a new tab)" title="Facebook" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="https://www.instagram.com/nextwise.markets/" aria-label="NEXTWISE MARKETS on Instagram (opens in a new tab)" title="Instagram" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                <a href="https://www.linkedin.com/company/nextwise-markets/about/" aria-label="NEXTWISE MARKETS on LinkedIn (opens in a new tab)" title="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="https://www.youtube.com/@nextwise.markets" aria-label="NEXTWISE MARKETS on YouTube (opens in a new tab)" title="YouTube" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+            </nav>
+          </div>
         </div>
-        <div class="footer-disclosures">
-          <article>
-            <span>01</span>
-            <h2>Risk Warning</h2>
-            <p>Please note that forex trading and trading in other leveraged products involves a significant level of risk and is not suitable for all investors. Trading in financial instruments may result in losses as well as profits and your losses can be greater than your initial invested capital. Before undertaking any such transactions, you should ensure that you fully understand the risks involved and seek independent advice if necessary.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h2>Restricted Regions</h2>
-            <p>The NEXTWISE MARKETS Ltd. does not provide services for citizens/residents of the USA, UAE, Cuba, Iraq, India, Myanmar, North Korea, Sudan. The services of The NEXTWISE MARKETS Ltd. are not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.</p>
-          </article>
+        <div class="nw-footer-disclosures">
+          <details class="nw-footer-group nw-footer-disclosure" open><summary>Risk Warning</summary><div class="nw-footer-disclosure-body"><p>Please note that forex trading and trading in other leveraged products involves a significant level of risk and is not suitable for all investors. Trading in financial instruments may result in losses as well as profits and your losses can be greater than your initial invested capital. Before undertaking any such transactions, you should ensure that you fully understand the risks involved and seek independent advice if necessary.</p></div></details>
+          <details class="nw-footer-group nw-footer-disclosure" open><summary>Restricted Regions</summary><div class="nw-footer-disclosure-body"><p>The <span class="brand-name-accent">Nextwise Markets</span> Ltd. does not provide services for citizens/residents of the USA, UAE, Cuba, Iraq, India, Myanmar, North Korea, Sudan. The services of The <span class="brand-name-accent">Nextwise Markets</span> Ltd. are not intended for distribution to, or use by, any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.</p></div></details>
         </div>
-<nav class="content-footer-legal" aria-label="Legal policies"><a href="../privacy-policy/">Privacy Policy</a><a href="../terms-and-conditions/">Terms And Conditions</a><a href="../aml-policy/">AML Policy</a><a href="../deposit-withdrawal-policy/">Deposit Withdrawal Policy</a><a href="../restricted-countries/">Restricted Countries</a><a href="../risk-disclosure/">Risk Disclosure</a><a href="../client-services-agreement/">Client Services Agreement</a><a href="../trading-activity-compliance-policy/">Trading Activity Compliance Policy</a></nav>
-        <div class="content-footer-bottom"><span>Copyright © <span data-current-year>2026</span> The NEXTWISE MARKETS Ltd. All Rights Reserved.</span><a href="#content">Back to top <span aria-hidden="true">↑</span></a></div>
+        <div class="nw-footer-bottom">
+          <p>Copyright © <span id="year" data-current-year>2026</span> <a href="/">The <span class="brand-name-accent">Nextwise Markets</span> Ltd.</a> All Rights Reserved.</p>
+          <a href="#content">Back to top</a>
+        </div>
       </div>
     </footer>
   </body>

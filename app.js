@@ -1,110 +1,71 @@
-const dubaiWeekday = new Intl.DateTimeFormat("en-US", {
-  timeZone: "Asia/Dubai",
-  weekday: "short",
-}).format(new Date());
-const isWeekend = dubaiWeekday === "Sat" || dubaiWeekday === "Sun";
-const defaultMarket = isWeekend
-  ? { symbol: "BINANCE:BTCUSDT", label: "BTC/USDT" }
-  : { symbol: "OANDA:XAUUSD", label: "XAU/USD" };
-const state = { ...defaultMarket, interval: "60" };
+const isDark = () => document.documentElement.dataset.theme === "dark";
+const dubaiWeekday = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Dubai", weekday: "short" }).format(new Date());
+const isWeekend = ["Sat", "Sun"].includes(dubaiWeekday);
+const state = { symbol: isWeekend ? "BINANCE:BTCUSDT" : "OANDA:XAUUSD", label: isWeekend ? "Bitcoin / USDT" : "Gold / USD", interval: "60" };
 const chart = document.querySelector("[data-chart]");
 const iframe = document.querySelector("#trading-chart");
-const chartRetryButton = document.querySelector("[data-chart-retry]");
-let chartLoadTimer = 0;
-let heroChartReady = false;
-let marketWidgetRequested = false;
-let marketWidgetReleaseTimer = 0;
-let primaryChartReleaseTimer = 0;
-let primaryChartScheduled = false;
+let chartTimer;
+let chartRequested = false;
 
 function chartUrl() {
-  const params = new URLSearchParams({
-    symbol: state.symbol,
-    interval: state.interval,
-    hidetoptoolbar: "1",
-    hidelegend: "1",
-    saveimage: "0",
-    toolbarbg: "0B0E12",
-    theme: "dark",
-    style: "1",
-    timezone: "Etc/UTC",
-    locale: "en",
-    withdateranges: "0",
+  const config = {
+    symbol: state.symbol, interval: state.interval, theme: isDark() ? "dark" : "light",
+    style: "1", timezone: "Etc/UTC", locale: "en", autosize: true,
+    hide_top_toolbar: true, hide_side_toolbar: true, hide_legend: true, hide_volume: true,
+    allow_symbol_change: false, save_image: false, withdateranges: false,
+    // Custom ranges preserve the selected interval and avoid a dense month of candles.
+    range: state.interval === "D" ? "2M" : state.interval === "240" ? "8D" : "2D",
+    backgroundColor: isDark() ? "#111a2b" : "#ffffff",
+  };
+  const colors = {};
+  for (const [side, color] of [["Up", "#288cce"], ["Down", "#f86135"]]) {
+    for (const key of [`${side.toLowerCase()}Color`, `border${side}Color`, `wick${side}Color`]) {
+      colors[`mainSeriesProperties.candleStyle.${key}`] = color;
+    }
+  }
+  const overrides = JSON.stringify({
+    ...colors,
+    "scalesProperties.fontSize": 14,
   });
-  return `https://s.tradingview.com/widgetembed/?${params.toString()}`;
+  // Put changing controls in the query too: a hash-only URL change does not
+  // reload the embedded chart, leaving its market, interval or theme stale.
+  const params = new URLSearchParams({ locale: "en", symbol: state.symbol,
+    interval: state.interval, theme: config.theme, overrides });
+  return `https://www.tradingview-widget.com/embed-widget/advanced-chart/?${params}#${encodeURIComponent(JSON.stringify(config))}`;
 }
-
-function setChartState(nextState) {
-  if (!chart) return;
-  chart.classList.toggle("loaded", nextState === "ready");
-  chart.classList.toggle("is-slow", nextState === "slow");
-  chart.setAttribute("aria-busy", String(nextState === "loading"));
+function setChartState(next) {
+  chart?.classList.toggle("loaded", next === "ready");
+  chart?.classList.toggle("is-slow", next === "slow");
+  chart?.setAttribute("aria-busy", String(next === "loading"));
 }
-
 function loadChart({ force = false } = {}) {
   if (!iframe) return;
-  const nextUrl = chartUrl();
-  if (!force && iframe.dataset.chartUrl === nextUrl) return;
-
-  window.clearTimeout(chartLoadTimer);
+  chartRequested = true;
+  const next = chartUrl();
+  if (!force && iframe.dataset.chartUrl === next) return;
+  window.clearTimeout(chartTimer);
   setChartState("loading");
-  iframe.dataset.chartUrl = nextUrl;
+  iframe.dataset.chartUrl = next;
   iframe.title = `Chart for ${state.label}, ${state.interval === "D" ? "1 day" : `${state.interval} minutes`}`;
-  iframe.src = nextUrl;
-  chartLoadTimer = window.setTimeout(() => setChartState("slow"), 10000);
+  iframe.src = next;
+  chartTimer = window.setTimeout(() => setChartState("slow"), 15000);
 }
-
 iframe?.addEventListener("load", () => {
-  window.clearTimeout(chartLoadTimer);
+  if (!chartRequested) return;
+  window.clearTimeout(chartTimer);
   setChartState("ready");
-  if (heroChartReady) return;
-  heroChartReady = true;
-  window.clearTimeout(marketWidgetReleaseTimer);
-  marketWidgetReleaseTimer = window.setTimeout(() => {
-    if (marketWidgetRequested) loadMarketOverviewWidget();
-  }, 700);
 });
-
-chartRetryButton?.addEventListener("click", () => loadChart({ force: true }));
-
-/*
- * The TradingView iframe is kept alive while device previews move around the
- * hero. Only an actual symbol or timeframe change gets a new URL.
- */
-function updateHeroChart() {
-  loadChart();
+document.querySelector("[data-chart-retry]")?.addEventListener("click", () => loadChart({ force: true }));
+if (chart) {
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadChart();
+    }, { rootMargin: "250px 0px" });
+    observer.observe(chart);
+  } else loadChart();
 }
-
-function releasePrimaryChart() {
-  if (primaryChartScheduled) return;
-  primaryChartScheduled = true;
-  window.clearTimeout(primaryChartReleaseTimer);
-  window.removeEventListener("pointerdown", releasePrimaryChart);
-  window.removeEventListener("scroll", releasePrimaryChart);
-  window.removeEventListener("keydown", releasePrimaryChart);
-  chart?.removeEventListener("pointerenter", releasePrimaryChart);
-  chart?.removeEventListener("focusin", releasePrimaryChart);
-  loadChart();
-}
-
-function schedulePrimaryChart() {
-  if (!iframe) return;
-  window.addEventListener("pointerdown", releasePrimaryChart, { passive: true });
-  window.addEventListener("scroll", releasePrimaryChart, { passive: true });
-  window.addEventListener("keydown", releasePrimaryChart);
-  chart?.addEventListener("pointerenter", releasePrimaryChart, { passive: true });
-  chart?.addEventListener("focusin", releasePrimaryChart);
-
-  // Keep the live chart automatic for visitors who pause on the hero while
-  // preventing its large third-party runtime from blocking initial rendering.
-  primaryChartReleaseTimer = window.setTimeout(releasePrimaryChart, 20000);
-}
-
-// Preserve the live preview while giving the branded hero art first access to
-// the network and main thread during the initial render.
-setInitialMarket();
-schedulePrimaryChart();
-
 function activateTab(button, selector) {
   document.querySelectorAll(selector).forEach((tab) => {
     const selected = tab === button;
@@ -113,106 +74,71 @@ function activateTab(button, selector) {
     tab.tabIndex = selected ? 0 : -1;
   });
 }
-
-function setInitialMarket() {
-  const button = [...document.querySelectorAll(".symbol-tabs button")]
-    .find((tab) => tab.dataset.symbol === state.symbol);
-  if (!button) return;
+const initial = [...document.querySelectorAll(".symbol-tabs button")].find((button) => button.dataset.symbol === state.symbol);
+if (initial) {
+  activateTab(initial, ".symbol-tabs button");
+  const marketSelect = document.querySelector("[data-phone-market]");
+  if (marketSelect) marketSelect.value = state.symbol;
+  document.querySelector("#active-market-name").textContent = state.label;
+}
+document.querySelectorAll(".symbol-tabs button").forEach((button) => button.addEventListener("click", () => {
   activateTab(button, ".symbol-tabs button");
-  document.querySelector("#active-market-name").textContent = button.dataset.label;
-  document.querySelector("#market-price").textContent = button.dataset.price;
-}
-
-document.querySelectorAll(".symbol-tabs button").forEach((button) => {
-  button.addEventListener("click", () => {
-    activateTab(button, ".symbol-tabs button");
-    state.symbol = button.dataset.symbol;
-    state.label = button.textContent.trim();
-    document.querySelector("#active-market-name").textContent = button.dataset.label;
-    document.querySelector("#market-price").textContent = button.dataset.price;
-    updateHeroChart();
-  });
+  state.symbol = button.dataset.symbol;
+  state.label = button.dataset.label;
+  const marketSelect = document.querySelector("[data-phone-market]");
+  if (marketSelect) marketSelect.value = state.symbol;
+  document.querySelector("#active-market-name").textContent = state.label;
+  loadChart();
+}));
+document.querySelector("[data-phone-market]")?.addEventListener("change", (event) => {
+  document.querySelector(`.symbol-tabs button[data-symbol="${event.target.value}"]`)?.click();
 });
-
-document.querySelectorAll(".timeframe-tabs button").forEach((button) => {
-  button.addEventListener("click", () => {
-    activateTab(button, ".timeframe-tabs button");
-    state.interval = button.dataset.interval;
-    updateHeroChart();
-  });
+document.querySelector("[data-chart-interval]")?.addEventListener("change", (event) => {
+  document.querySelector(`.timeframe-tabs button[data-interval="${event.target.value}"]`)?.click();
 });
-
+document.querySelectorAll(".timeframe-tabs button").forEach((button) => button.addEventListener("click", () => {
+  activateTab(button, ".timeframe-tabs button");
+  state.interval = button.dataset.interval;
+  const intervalSelect = document.querySelector("[data-chart-interval]");
+  if (intervalSelect) intervalSelect.value = state.interval;
+  loadChart();
+}));
 function enableArrowNavigation(containerSelector, buttonSelector) {
-  document.querySelectorAll(containerSelector).forEach((container) => {
-    container.addEventListener("keydown", (event) => {
-      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-      const buttons = [...container.querySelectorAll(buttonSelector)];
-      const current = buttons.indexOf(document.activeElement);
-      let next = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1 : current + (event.key === "ArrowRight" ? 1 : -1);
-      next = (next + buttons.length) % buttons.length;
-      event.preventDefault();
-      buttons[next].focus();
-      buttons[next].click();
-    });
-  });
+  document.querySelectorAll(containerSelector).forEach((container) => container.addEventListener("keydown", (event) => {
+    const arrowKeys = container.getAttribute("aria-orientation") === "vertical"
+      ? ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
+      : ["ArrowLeft", "ArrowRight"];
+    if (![...arrowKeys, "Home", "End"].includes(event.key)) return;
+    const buttons = [...container.querySelectorAll(buttonSelector)];
+    if (!buttons.length) return;
+    const current = buttons.indexOf(document.activeElement);
+    let next = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1 : current + (["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : -1);
+    next = (next + buttons.length) % buttons.length;
+    event.preventDefault(); buttons[next].focus(); buttons[next].click();
+  }));
 }
-
 enableArrowNavigation(".symbol-tabs", "button");
 enableArrowNavigation(".timeframe-tabs", "button");
-
-const deviceStage = document.querySelector("[data-device-stage]");
-const liveScreen = document.querySelector("[data-live-screen]");
-const deviceButtons = [...document.querySelectorAll("[data-device-option]")];
-const devicePanels = [...document.querySelectorAll(".device-panel")];
-const deviceNames = { phone: "phone", tablet: "iPad", laptop: "MacBook" };
-let deviceSwapTimer = 0;
-
-function selectDevice(button) {
-  if (!deviceStage || !liveScreen || button.classList.contains("active")) return;
-  const device = button.dataset.deviceOption;
-  const target = document.querySelector(`#device-panel-${device}`);
-  if (!target) return;
-
-  const targetArtwork = target.querySelector("img[data-src]");
-  if (targetArtwork && !targetArtwork.getAttribute("src")) {
-    targetArtwork.src = targetArtwork.dataset.src;
-    targetArtwork.removeAttribute("data-src");
-  }
-
-  clearTimeout(deviceSwapTimer);
-  deviceStage.classList.add("switching");
-  deviceButtons.forEach((item) => {
-    const selected = item === button;
-    item.classList.toggle("active", selected);
-    item.setAttribute("aria-selected", String(selected));
-    item.tabIndex = selected ? 0 : -1;
-  });
-
-  const finishSwap = () => {
-    devicePanels.forEach((panel) => {
-      const selected = panel === target;
-      panel.classList.toggle("active", selected);
-      panel.setAttribute("aria-hidden", String(!selected));
-    });
-    target.append(liveScreen);
-    deviceStage.dataset.device = device;
-    liveScreen.setAttribute("aria-label", `Interactive NEXTWISE MARKETS chart on ${deviceNames[device]}`);
-    requestAnimationFrame(() => deviceStage.classList.remove("switching"));
-  };
-
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) finishSwap();
-  else deviceSwapTimer = window.setTimeout(finishSwap, 130);
-}
-
-deviceButtons.forEach((button) => button.addEventListener("click", () => selectDevice(button)));
-enableArrowNavigation(".device-switcher", "button");
+window.addEventListener("nextwise:themechange", () => {
+  if (chartRequested) loadChart();
+});
 
 const marketWidgetShell = document.querySelector("[data-live-market-widget]");
 const marketWidgetStatus = document.querySelector("[data-market-feed-status]");
 const marketDataWidget = document.querySelector("[data-market-overview-widget]");
-const marketPanelName = document.querySelector("[data-market-panel-name]");
 const marketCategoryButtons = [...document.querySelectorAll("[data-market-category]")];
 const marketWidgetRetry = document.querySelector("[data-market-widget-retry]");
+// TradingView exposes compact/normal/large chart sizes. Reserve usable space
+// for its symbol list as well as the graph on shorter screens.
+const marketWidgetStage = document.querySelector(".market-widget-stage");
+if (marketDataWidget && marketWidgetStage && "ResizeObserver" in window) {
+  const marketSizeObserver = new ResizeObserver(([entry]) => {
+    const height = entry.contentRect.height;
+    const size = height >= 500 ? "large" : height >= 300 ? "normal" : "compact";
+    if (marketDataWidget.getAttribute("chart-size") !== size) marketDataWidget.setAttribute("chart-size", size);
+  });
+  marketSizeObserver.observe(marketWidgetStage);
+}
 const liveMarketGroups = {
   forex: [{ sectionName: "Forex", symbols: ["FX:EURUSD", "FX:GBPUSD", "FX:USDJPY", "FX:USDCHF", "FX:AUDUSD", "FX:USDCAD"] }],
   crypto: [{ sectionName: "Crypto", symbols: ["BINANCE:BTCUSDT", "BINANCE:ETHUSDT", "BINANCE:SOLUSDT", "BINANCE:XRPUSDT", "BINANCE:BNBUSDT", "BINANCE:ADAUSDT"] }],
@@ -238,11 +164,11 @@ function setMarketWidgetState(state, message) {
 function markMarketWidgetReady() {
   marketWidgetReady = true;
   window.clearTimeout(marketWidgetTimer);
-  setMarketWidgetState("ready", "Market data available");
+  setMarketWidgetState("ready", "Market board ready");
 }
 
-function markMarketWidgetUnavailable() {
-  if (marketWidgetReady) return;
+function markMarketWidgetUnavailable(attempt) {
+  if (attempt !== marketWidgetAttempt || marketWidgetReady) return;
   window.clearTimeout(marketWidgetTimer);
   setMarketWidgetState("error", "Market data unavailable");
 }
@@ -258,6 +184,7 @@ function loadMarketOverviewWidget({ retry = false } = {}) {
   marketWidgetLoadStarted = true;
   marketWidgetReady = false;
   marketWidgetAttempt += 1;
+  const attempt = marketWidgetAttempt;
   setMarketWidgetState("loading", "Connecting to market data");
 
   document.querySelector("[data-market-widget-script]")?.remove();
@@ -265,21 +192,16 @@ function loadMarketOverviewWidget({ retry = false } = {}) {
   script.type = "module";
   script.src = `https://widgets.tradingview-widget.com/w/en/tv-market-overview.js${retry ? `?retry=${marketWidgetAttempt}` : ""}`;
   script.dataset.marketWidgetScript = "";
-  script.addEventListener("error", markMarketWidgetUnavailable, { once: true });
+  script.addEventListener("error", () => markMarketWidgetUnavailable(attempt), { once: true });
   document.head.append(script);
 
   customElements.whenDefined("tv-market-overview").then(markMarketWidgetReady);
   window.clearTimeout(marketWidgetTimer);
-  marketWidgetTimer = window.setTimeout(markMarketWidgetUnavailable, 15000);
+  marketWidgetTimer = window.setTimeout(() => markMarketWidgetUnavailable(attempt), 15000);
 }
 
 function requestMarketOverviewWidget() {
-  marketWidgetRequested = true;
-  if (heroChartReady) {
-    loadMarketOverviewWidget();
-    return;
-  }
-  setMarketWidgetState("loading", "Waiting for primary chart");
+  loadMarketOverviewWidget();
 }
 
 if (marketWidgetShell) {
@@ -303,145 +225,11 @@ marketCategoryButtons.forEach((button) => {
     if (!group || !marketDataWidget) return;
     activateTab(button, "[data-market-category]");
     marketDataWidget.setAttribute("symbol-sectors", JSON.stringify(group));
-    const marketLabel = button.dataset.marketLabel || button.textContent.trim();
-    document.querySelector("#market-data-panel")?.setAttribute("aria-label", `${marketLabel} market data and interactive chart`);
-    if (marketPanelName) marketPanelName.textContent = marketLabel;
+    document.querySelector("#market-data-panel")?.setAttribute("aria-labelledby", button.id);
   });
 });
 enableArrowNavigation(".market-category-tabs", "button");
 
-const signalMarketCard = document.querySelector("[data-signal-market-card]");
-const signalLiveChart = document.querySelector("[data-signal-live-chart]");
-const signalMiniChart = document.querySelector("[data-signal-mini-chart]");
-const signalFeedState = document.querySelector("[data-signal-feed-state]");
-const signalMarketButtons = [...document.querySelectorAll("[data-signal-market]")];
-const signalWidgetRetry = document.querySelector("[data-signal-widget-retry]");
-const signalMarkets = [
-  { id: "xau", symbol: "OANDA:XAUUSD", name: "XAU/USD", description: "Gold / U.S. Dollar", icon: "Au" },
-  { id: "eur", symbol: "OANDA:EURUSD", name: "EUR/USD", description: "Euro / U.S. Dollar", icon: "FX" },
-  { id: "nas", symbol: "OANDA:NAS100USD", name: "NAS100", description: "Nasdaq 100 Index", icon: "NQ" },
-  { id: "btc", symbol: "BINANCE:BTCUSDT", name: "BTC/USDT", description: "Bitcoin / Tether", icon: "₿" },
-];
-let signalMarketIndex = 0;
-let signalMarketTimer = 0;
-let signalWidgetTimer = 0;
-let signalWidgetAttempt = 0;
-let signalWidgetLoadStarted = false;
-let signalWidgetReady = false;
-let signalRotationPaused = false;
-
-function setSignalMarket(index) {
-  const market = signalMarkets[index];
-  if (!market || !signalMarketCard || !signalMiniChart) return;
-  signalMarketIndex = index;
-  signalMarketButtons.forEach((button) => {
-    const active = button.dataset.signalMarket === market.id;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
-  });
-  const icon = signalMarketCard.querySelector("[data-signal-symbol-icon]");
-  const name = signalMarketCard.querySelector("[data-signal-symbol-name]");
-  const description = signalMarketCard.querySelector("[data-signal-symbol-description]");
-  if (icon) icon.textContent = market.icon;
-  if (name) name.textContent = market.name;
-  if (description) description.textContent = market.description;
-  signalMarketCard.setAttribute("aria-label", `${market.name} live market overview`);
-  signalMiniChart.setAttribute("symbol", market.symbol);
-}
-
-function scheduleSignalMarketRotation() {
-  window.clearTimeout(signalMarketTimer);
-  if (!signalWidgetReady || signalRotationPaused || document.hidden || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  signalMarketTimer = window.setTimeout(() => {
-    setSignalMarket((signalMarketIndex + 1) % signalMarkets.length);
-    scheduleSignalMarketRotation();
-  }, 20000);
-}
-
-function setSignalWidgetState(nextState, message) {
-  signalLiveChart?.classList.toggle("is-ready", nextState === "ready");
-  signalLiveChart?.classList.toggle("has-error", nextState === "error");
-  signalLiveChart?.setAttribute("aria-busy", String(nextState === "loading"));
-  if (signalFeedState) signalFeedState.textContent = message;
-}
-
-function markSignalWidgetReady() {
-  signalWidgetReady = true;
-  window.clearTimeout(signalWidgetTimer);
-  setSignalWidgetState("ready", "TradingView market data");
-  scheduleSignalMarketRotation();
-}
-
-function markSignalWidgetUnavailable() {
-  if (signalWidgetReady) return;
-  window.clearTimeout(signalWidgetTimer);
-  setSignalWidgetState("error", "Market data unavailable");
-}
-
-function loadSignalMarketWidget({ retry = false } = {}) {
-  if (!signalLiveChart || !("customElements" in window)) return;
-  if (customElements.get("tv-mini-chart")) {
-    markSignalWidgetReady();
-    return;
-  }
-  if (signalWidgetLoadStarted && !retry) return;
-  signalWidgetLoadStarted = true;
-  signalWidgetReady = false;
-  signalWidgetAttempt += 1;
-  setSignalWidgetState("loading", "Connecting to market data");
-  document.querySelector("[data-signal-widget-script]")?.remove();
-  const script = document.createElement("script");
-  script.type = "module";
-  script.src = `https://widgets.tradingview-widget.com/w/en/tv-mini-chart.js${retry ? `?retry=${signalWidgetAttempt}` : ""}`;
-  script.dataset.signalWidgetScript = "";
-  script.addEventListener("error", markSignalWidgetUnavailable, { once: true });
-  document.head.append(script);
-  customElements.whenDefined("tv-mini-chart").then(markSignalWidgetReady);
-  window.clearTimeout(signalWidgetTimer);
-  signalWidgetTimer = window.setTimeout(markSignalWidgetUnavailable, 15000);
-}
-
-if (signalLiveChart) {
-  if ("IntersectionObserver" in window) {
-    const signalWidgetObserver = new IntersectionObserver((entries, observer) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      observer.disconnect();
-      loadSignalMarketWidget();
-    }, { rootMargin: "240px 0px" });
-    signalWidgetObserver.observe(signalLiveChart);
-  } else {
-    loadSignalMarketWidget();
-  }
-}
-
-signalMarketButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const index = signalMarkets.findIndex((market) => market.id === button.dataset.signalMarket);
-    if (index < 0) return;
-    setSignalMarket(index);
-    scheduleSignalMarketRotation();
-  });
-});
-enableArrowNavigation(".signal-market-tabs", "button");
-signalWidgetRetry?.addEventListener("click", () => loadSignalMarketWidget({ retry: true }));
-signalMarketCard?.addEventListener("pointerenter", () => {
-  signalRotationPaused = true;
-  window.clearTimeout(signalMarketTimer);
-});
-signalMarketCard?.addEventListener("pointerleave", () => {
-  signalRotationPaused = false;
-  scheduleSignalMarketRotation();
-});
-signalMarketCard?.addEventListener("focusin", () => {
-  signalRotationPaused = true;
-  window.clearTimeout(signalMarketTimer);
-});
-signalMarketCard?.addEventListener("focusout", (event) => {
-  if (signalMarketCard.contains(event.relatedTarget)) return;
-  signalRotationPaused = false;
-  scheduleSignalMarketRotation();
-});
-document.addEventListener("visibilitychange", scheduleSignalMarketRotation);
 
 const menuButton = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".site-nav");
@@ -471,218 +259,54 @@ document.addEventListener("keydown", (event) => {
   menuButton?.focus();
 });
 
-document.querySelectorAll("details").forEach((details) => {
+document.querySelectorAll(".faq details").forEach((details) => {
   details.addEventListener("toggle", () => {
     if (!details.open) return;
-    document.querySelectorAll("details[open]").forEach((other) => {
+    document.querySelectorAll(".faq details[open]").forEach((other) => {
       if (other !== details) other.open = false;
     });
   });
 });
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.style.setProperty("--delay", `${entry.target.dataset.delay || 0}ms`);
-    entry.target.classList.add("visible");
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.12, rootMargin: "0px 0px -30px" });
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-const signalGallery = document.querySelector("[data-signal-gallery]");
-const signalPath = document.querySelector("[data-signal-path]");
-const signalChartLine = document.querySelector("[data-signal-chart-line]");
-const connectedAccess = document.querySelector("[data-connected-access]");
-const connectedRoute = document.querySelector("[data-connected-route]");
-const connectedChartLine = document.querySelector("[data-connected-chart-line]");
-const claritySection = document.querySelector("[data-clarity-section]");
-const clarityRoute = document.querySelector("[data-clarity-route]");
-const clarityCards = [...document.querySelectorAll("[data-clarity-card]")];
-const journeySection = document.querySelector("[data-journey-section]");
-const journeyRoute = document.querySelector("[data-journey-route]");
-const journeySteps = [...document.querySelectorAll("[data-journey-step]")];
-const journeyChart = document.querySelector("[data-journey-chart]");
-const prefersReducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-const storySection = document.querySelector("[data-story-section]");
-const storyCards = [...document.querySelectorAll("[data-story-card]")];
-const storyVideos = [...(storySection?.querySelectorAll("video") || [])];
-const responsiveStoryVideos = [...document.querySelectorAll("[data-responsive-story-video]")];
-const storyCurrent = document.querySelector("[data-story-current]");
-const storyPreviewLogo = document.querySelector(".ribbon-card-logo");
-const mt5Cinematic = document.querySelector(".mt5-cinematic");
-const mt5RollingCoin = document.querySelector("[data-mt5-rolling-coin]");
-let signalAnimationFrame = 0;
-let storyLogoOriginX = 0;
-let storyLogoOriginY = 0;
 
-function syncStoryVideoSources() {
-  const mobile = matchMedia("(max-width: 600px)").matches;
-  responsiveStoryVideos.forEach((video) => {
-    const nextSource = mobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
-    if (!nextSource || video.getAttribute("src") === nextSource) return;
-    const wasPlaying = !video.paused;
-    video.src = nextSource;
-    video.load();
-    if (wasPlaying && !prefersReducedMotion.matches) video.play().catch(() => {});
-  });
-}
-
-function updateSignalAnimation() {
-  signalAnimationFrame = 0;
-  if (signalGallery) {
-    const rect = signalGallery.getBoundingClientRect();
-    const distance = innerHeight + rect.height * 0.62;
-    const progress = prefersReducedMotion.matches
-      ? 1
-      : Math.max(0, Math.min(1, (innerHeight * 0.88 - rect.top) / distance));
-    signalGallery.style.setProperty("--signal-progress", progress.toFixed(3));
-    if (signalPath) signalPath.style.strokeDashoffset = String(1 - progress);
-    if (signalChartLine) signalChartLine.style.strokeDashoffset = String(1 - Math.max(0, Math.min(1, progress * 1.45)));
-  }
-  if (connectedAccess) {
-    const rect = connectedAccess.getBoundingClientRect();
-    const distance = innerHeight * 1.05 + rect.height * 0.72;
-    const progress = prefersReducedMotion.matches
-      ? 1
-      : Math.max(0, Math.min(1, (innerHeight * 0.9 - rect.top) / distance));
-    connectedAccess.style.setProperty("--connected-progress", progress.toFixed(3));
-    connectedAccess.classList.toggle("connected-active", progress > 0.08 && progress < 1);
-    if (connectedRoute) connectedRoute.style.strokeDashoffset = String(1 - progress);
-    if (connectedChartLine) connectedChartLine.style.strokeDashoffset = String(1 - Math.min(1, progress * 1.55));
-  }
-  if (claritySection) {
-    const rect = claritySection.getBoundingClientRect();
-    const distance = innerHeight * 0.9 + rect.height * 0.38;
-    const progress = prefersReducedMotion.matches
-      ? 1
-      : Math.max(0, Math.min(1, (innerHeight * 0.88 - rect.top) / distance));
-    claritySection.style.setProperty("--clarity-progress", progress.toFixed(3));
-    claritySection.classList.toggle("clarity-active", progress > 0.07 && progress < 1);
-    if (clarityRoute) clarityRoute.style.strokeDashoffset = String(1 - progress);
-    clarityCards.forEach((card, index) => {
-      const cardProgress = prefersReducedMotion.matches
-        ? 1
-        : Math.max(0, Math.min(1, (progress - index * 0.17) / 0.3));
-      card.style.setProperty("--card-progress", cardProgress.toFixed(3));
-      card.classList.toggle("card-active", cardProgress > 0.08 && cardProgress < 0.96);
-      card.classList.toggle("card-visited", cardProgress > 0.08);
-      const riskValue = card.querySelector("[data-risk-value]");
-      if (riskValue) riskValue.textContent = String(Math.round(Number(riskValue.dataset.riskValue) * cardProgress));
-    });
-  }
-  if (journeySection) {
-    const rect = journeySection.getBoundingClientRect();
-    const distance = innerHeight * 0.9 + rect.height * 0.48;
-    const progress = prefersReducedMotion.matches
-      ? 1
-      : Math.max(0, Math.min(1, (innerHeight * 0.88 - rect.top) / distance));
-    journeySection.style.setProperty("--journey-progress", progress.toFixed(3));
-    if (journeyRoute) journeyRoute.style.strokeDashoffset = String(1 - progress);
-    journeySteps.forEach((step, index) => {
-      const stepProgress = prefersReducedMotion.matches
-        ? 1
-        : Math.max(0, Math.min(1, (progress - index * 0.18) / 0.28));
-      step.style.setProperty("--step-progress", stepProgress.toFixed(3));
-      step.classList.toggle("step-active", stepProgress > 0.08 && stepProgress < 0.97);
-      step.classList.toggle("step-visited", stepProgress > 0.08);
-      const value = step.querySelector("[data-journey-value]");
-      if (value) value.textContent = `${Math.round(Number(value.dataset.journeyValue) * stepProgress)}%`;
-    });
-    if (journeyChart) {
-      const chartProgress = Math.max(0, Math.min(1, (progress - 0.18) / 0.3));
-      journeyChart.style.strokeDashoffset = String(1 - chartProgress);
-    }
-  }
-  updateStoryAnimation();
-  updateMt5Coin();
-}
-
-const clamp = (value) => Math.max(0, Math.min(1, value));
-const progressBetween = (progress, start, end) => clamp((progress - start) / Math.max(0.001, end - start));
-
-function updateMt5Coin() {
-  if (!mt5Cinematic || !mt5RollingCoin) return;
-  const track = mt5RollingCoin.closest(".mt5-feature-band");
-  const trackTop = track?.getBoundingClientRect().top ?? innerHeight;
-  const progress = prefersReducedMotion.matches
-    ? 0.5
-    : clamp((innerHeight - trackTop) / Math.max(1, innerHeight * 0.9));
-  const coinWidth = mt5RollingCoin.getBoundingClientRect().width || 132;
-  const travel = mt5Cinematic.clientWidth + coinWidth * 1.7;
-  const x = -coinWidth * 1.15 + progress * travel;
-  const rolledDistance = Math.max(0, x + coinWidth * 1.15);
-  const rotation = rolledDistance / Math.max(1, Math.PI * coinWidth) * 360;
-  mt5Cinematic.style.setProperty("--mt5-coin-x", `${x.toFixed(1)}px`);
-  mt5Cinematic.style.setProperty("--mt5-coin-rotation", `${rotation.toFixed(1)}deg`);
-}
-
-function updateStoryAnimation() {
-  if (!storySection || !storyCards.length) return;
-  const rect = storySection.getBoundingClientRect();
-  const visible = rect.bottom > 0 && rect.top < innerHeight;
-  let progress = prefersReducedMotion.matches ? 1 : 0;
-
-  if (!prefersReducedMotion.matches) {
-    const scrollDistance = Math.max(1, storySection.offsetHeight - innerHeight);
-    progress = clamp(-rect.top / scrollDistance);
-  }
-
-  progress = clamp(progress);
-  const railProgress = progressBetween(progress, 0, 0.29);
-  const cardsFade = 1 - progressBetween(progress, 0.36, 0.44);
-  const ribbonProgress = progressBetween(progress, 0.27, 0.52);
-  const logoReveal = progressBetween(progress, 0.255, 0.295);
-  const logoTravel = progressBetween(progress, 0.255, 0.52);
-  const darkModeMix = progressBetween(progress, 0.53, 0.66);
-  const blackout = progressBetween(progress, 0.52, 0.61);
-  const finaleProgress = progressBetween(progress, 0.84, 0.94);
-  const warmLogo = logoReveal * (1 - darkModeMix);
-  const blueLogo = logoReveal * darkModeMix * (1 - finaleProgress);
-
-  if (storyPreviewLogo && progress <= 0.275) {
-    const previewLogoRect = storyPreviewLogo.getBoundingClientRect();
-    if (previewLogoRect.width > 0 && previewLogoRect.height > 0) {
-      storyLogoOriginX = previewLogoRect.left + previewLogoRect.width / 2 - innerWidth / 2;
-      storyLogoOriginY = previewLogoRect.top + previewLogoRect.height / 2 - innerHeight / 2;
-    }
-  }
-
-  const activeCard = Math.min(storyCards.length - 1, Math.floor(railProgress * storyCards.length));
-  storyCards.forEach((card, index) => card.classList.toggle("active", index === activeCard));
-  storyVideos.forEach((video) => {
-    const shouldPlay = visible && progress > 0.16 && progress < 0.62 && !prefersReducedMotion.matches;
-    if (shouldPlay) video.play().catch(() => {});
-    else video.pause();
-  });
-
-  document.querySelector("[data-header]")?.classList.remove("story-blackout");
-  storySection.style.setProperty("--story-progress", progress.toFixed(3));
-  storySection.style.setProperty("--rail-progress", railProgress.toFixed(3));
-  storySection.style.setProperty("--cards-fade", cardsFade.toFixed(3));
-  storySection.style.setProperty("--ribbon-progress", ribbonProgress.toFixed(3));
-  storySection.style.setProperty("--logo-shift-x", `${(storyLogoOriginX * (1 - logoTravel)).toFixed(1)}px`);
-  storySection.style.setProperty("--logo-shift-y", `${(storyLogoOriginY * (1 - logoTravel)).toFixed(1)}px`);
-  storySection.style.setProperty("--warm-logo", warmLogo.toFixed(3));
-  storySection.style.setProperty("--blue-logo", blueLogo.toFixed(3));
-  storySection.style.setProperty("--story-blackout", blackout.toFixed(3));
-  storySection.style.setProperty("--finale-progress", finaleProgress.toFixed(3));
-  const stage = progress < 0.1 ? 1 : progress < 0.2 ? 2 : progress < 0.3 ? 3 : progress < 0.52 ? 4 : progress < 0.86 ? 5 : 6;
-  if (storyCurrent) storyCurrent.textContent = String(stage).padStart(2, "0");
-}
-
-function handlePageMotion() {
-  document.querySelector("[data-header]")?.classList.toggle("scrolled", scrollY > 24);
-  if (!signalAnimationFrame) signalAnimationFrame = requestAnimationFrame(updateSignalAnimation);
-}
-
-window.addEventListener("scroll", handlePageMotion, { passive: true });
-window.addEventListener("resize", () => {
-  syncStoryVideoSources();
-  handlePageMotion();
-}, { passive: true });
-prefersReducedMotion.addEventListener?.("change", updateSignalAnimation);
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
-syncStoryVideoSources();
-if (scrollY > 0 || location.hash) requestAnimationFrame(updateSignalAnimation);
+matchMedia("(min-width: 1161px)").addEventListener?.("change", (event) => {
+  if (!event.matches) return;
+  menu?.classList.remove("open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+});
+
+const heroDevices = document.querySelector("[data-hero-devices]");
+if (heroDevices) {
+  const device = heroDevices.querySelector(".hero-device");
+  const choices = [...heroDevices.querySelectorAll("[data-device-view]")];
+  const narrowScreen = window.matchMedia("(max-width: 600px)");
+  const wideScreen = window.matchMedia("(min-width: 1024px)");
+  let selectedByVisitor = false;
+
+  function showDevice(name) {
+    device.dataset.device = name;
+    for (const choice of choices) {
+      choice.setAttribute("aria-pressed", String(choice.dataset.deviceView === name));
+    }
+  }
+
+  function showDefaultDevice() {
+    if (selectedByVisitor) return;
+    if (narrowScreen.matches) showDevice("phone");
+    else showDevice(wideScreen.matches ? "laptop" : "tablet");
+  }
+
+  for (const choice of choices) {
+    choice.addEventListener("click", () => {
+      selectedByVisitor = true;
+      showDevice(choice.dataset.deviceView);
+    });
+  }
+  narrowScreen.addEventListener("change", showDefaultDevice);
+  wideScreen.addEventListener("change", showDefaultDevice);
+  showDefaultDevice();
+}

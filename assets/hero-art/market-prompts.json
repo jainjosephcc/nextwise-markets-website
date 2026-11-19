@@ -1,0 +1,42 @@
+{
+  "generator": "Built-in image_gen__imagegen",
+  "transparent_background": true,
+  "export": {
+    "format": "WebP",
+    "quality": 92,
+    "alpha_quality": 100,
+    "content_changes": "None; format encoding only",
+    "width": 1448,
+    "height": 1086
+  },
+  "assets": [
+    {
+      "page": "forex",
+      "file": "forex.webp",
+      "original": "/Users/ammuch/.codex/generated_images/01a1f47a-7df4-7d90-bccf-d8fd2ff4626b/exec-c6e5ee50-d54c-41a7-9c3b-d0843d2fc271.png",
+      "prompt": "Use case: stylized-concept. Asset: a premium hero image for the relevant Nextwise Markets trading website page. A single cohesive freestanding sculpture, cinematic high-end physically rendered CGI, landscape 4:3 composition in a three-quarter view, centered with generous transparent margins. Thick deep cobalt blue optical glass with polished bevels, luminous pale cyan internal refraction and crisp white/cyan rim light, tiny tangerine orange accents. Substantial dark blue bodies visible on both bright sky blue and midnight backgrounds. Sharp premium luxury product render, not flat vector, not clipart, not toys. Real transparent alpha background, no floor or environment, only a very soft contact shadow. No text, numbers, logos, watermarks, globe, bull or bear, money piles, app screens, rising arrows or promises of gains. Subject: two elegantly intersecting sculptural currency medallions, one with a sculpted dollar symbol and one with a sculpted euro symbol, symbols in blue glass not printed text. Connected by one slender flowing loop of refractive blue glass with a single subtle orange segment. The exchange loop is balanced and circular, not a growth arrow. Medallions are thick translucent blue crystal with precision beveled rims and visually distinct opposing angles, expressing exchange between currencies. No additional coins.",
+      "review": "Distinct page subject, cohesive cobalt glass material, no unrelated text or logo, transparent background. Visually inspected."
+    },
+    {
+      "page": "metals-energy",
+      "file": "metals-energy.webp",
+      "original": "/Users/ammuch/.codex/generated_images/01a1f47a-7df4-7d90-bccf-d8fd2ff4626b/exec-da6b361a-746b-4ef6-ba9d-1d850b77baa0.png",
+      "prompt": "Use case: stylized-concept. Asset: a premium hero image for the relevant Nextwise Markets trading website page. A single cohesive freestanding sculpture, cinematic high-end physically rendered CGI, landscape 4:3 composition in a three-quarter view, centered with generous transparent margins. Thick deep cobalt blue optical glass with polished bevels, luminous pale cyan internal refraction and crisp white/cyan rim light, tiny tangerine orange accents. Substantial dark blue bodies visible on both bright sky blue and midnight backgrounds. Sharp premium luxury product render, not flat vector, not clipart, not toys. Real transparent alpha background, no floor or environment, only a very soft contact shadow. No text, numbers, logos, watermarks, globe, bull or bear, money piles, app screens, rising arrows or promises of gains. Subject: a carefully art-directed commodity still life: one substantial polished gold ingot, one cool silver ingot, a deep cobalt glass petroleum drum and a floating small amber-orange energy droplet. Each object clear and instantly recognizable. The gold is metallic warm gold rather than orange plastic. All arranged as one low triangular composition around a subtle blue optical glass base, no labels, no coin piles. Strong cobalt unifies the drum and base; tangible materials distinguish metal from energy.",
+      "review": "Distinct page subject, cohesive cobalt glass material, no unrelated text or logo, transparent background. Visually inspected."
+    },
+    {
+      "page": "indices",
+      "file": "indices.webp",
+      "original": "/Users/ammuch/.codex/generated_images/01a1f47a-7df4-7d90-bccf-d8fd2ff4626b/exec-cd2caf71-702f-4d7d-8e52-925f17e91ca4.png",
+      "prompt": "Use case: stylized-concept. Asset: a premium hero image for the relevant Nextwise Markets trading website page. A single cohesive freestanding sculpture, cinematic high-end physically rendered CGI, landscape 4:3 composition in a three-quarter view, centered with generous transparent margins. Thick deep cobalt blue optical glass with polished bevels, luminous pale cyan internal refraction and crisp white/cyan rim light, tiny tangerine orange accents. Substantial dark blue bodies visible on both bright sky blue and midnight backgrounds. Sharp premium luxury product render, not flat vector, not clipart, not toys. Real transparent alpha background, no floor or environment, only a very soft contact shadow. No text, numbers, logos, watermarks, globe, bull or bear, money piles, app screens, rising arrows or promises of gains. Subject: an architectural basket of six thick blue crystal rectangular market columns of varied heights, arranged in a balanced oval cluster at different depths, linked by a broad translucent blue glass benchmark ribbon looping around their middle. Column heights should go up and down, never sequentially ascend. A tiny orange reference marker interrupts the connecting ribbon. Sculpture communicates a collection of companies measured together, not real buildings or a city, not individual currency coins. Elegant minimal precision-cut crystal financial data monument.",
+      "review": "Distinct page subject, cohesive cobalt glass material, no unrelated text or logo, transparent background. Visually inspected."
+    },
+    {
+      "page": "crypto",
+      "file": "crypto.webp",
+      "original": "/Users/ammuch/.codex/generated_images/01a1f47a-7df4-7d90-bccf-d8fd2ff4626b/exec-51d4931d-0466-48df-bcc4-7c99d830e3c9.png",
+      "prompt": "Use case: stylized-concept. Asset: a premium hero image for the relevant Nextwise Markets trading website page. A single cohesive freestanding sculpture, cinematic high-end physically rendered CGI, landscape 4:3 composition in a three-quarter view, centered with generous transparent margins. Thick deep cobalt blue optical glass with polished bevels, luminous pale cyan internal refraction and crisp white/cyan rim light, tiny tangerine orange accents. Substantial dark blue bodies visible on both bright sky blue and midnight backgrounds. Sharp premium luxury product render, not flat vector, not clipart, not toys. Real transparent alpha background, no floor or environment, only a very soft contact shadow. No text, numbers, logos, watermarks, globe, bull or bear, money piles, app screens, rising arrows or promises of gains. Subject: an arresting crystalline blockchain sculpture: one large faceted cobalt blue token with no currency logo at the center, surrounded by a three-dimensional lattice of precisely interlocking translucent glass chain links and five small distinct blue glass nodes. A single thin orange light path traces one connection. Bold clear silhouette, modular and decentralized, not a globe or orbiting planet, not a currency pile. Show substantial depth and refraction with clean negative space between links.",
+      "review": "Distinct page subject, cohesive cobalt glass material, no unrelated text or logo, transparent background. Visually inspected."
+    }
+  ]
+}
