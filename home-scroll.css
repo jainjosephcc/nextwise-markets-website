@@ -26,7 +26,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--nw-screen-height);
+    height: var(--home-panel-height, var(--nw-screen-height));
     z-index: var(--home-panel-order);
     isolation: isolate;
     overflow: clip;
@@ -34,10 +34,10 @@
     scroll-snap-align: none;
     opacity: 0;
     pointer-events: none;
+    transform: var(--home-panel-transform, none);
   }
   .home-scroll-journey.is-pinned .home-scroll-panel.is-visible { opacity: 1; pointer-events: auto; }
   .home-scroll-journey.is-pinned .home-scroll-panel.is-transitioning {
-    transform: var(--home-panel-transform);
     clip-path: var(--home-panel-clip, none);
     will-change: transform, clip-path;
   }

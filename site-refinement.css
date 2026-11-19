@@ -3,7 +3,7 @@
   .content-hero, .policy-hero {
     background: radial-gradient(ellipse at 80% 15%, #a3daf9, transparent 52%),
       linear-gradient(125deg, #c9e9fc, #80bee6 55%, #286c9e);
-    padding-block: 9rem 2.75rem;
+    padding-block: calc(var(--nw-header-height) + clamp(1rem, 3svh, 2rem)) clamp(1rem, 3svh, 2rem);
   }
   .content-hero::after, .policy-hero::after {
     background: linear-gradient(100deg, #d9effbd9, #d9effb55 60%, transparent);
@@ -60,7 +60,7 @@
   .content-section-heading { position: static; }
 }
 @media screen and (max-width: 600px) {
-  .content-hero, .policy-hero { padding-block: 7rem 2rem; }
+  .content-hero, .policy-hero { padding-block: calc(var(--nw-header-height) + 1rem) 1rem; }
   .content-hero h1, .policy-hero h1 { font-size: clamp(2.25rem, 9vw, 3rem); }
   .content-section-body p, .content-section-body li, .policy-content p, .policy-content li { font-size: 1rem; }
   .content-grid-item, .stat-item, .instrument-item, .contact-method, .comparison-cards article { padding: 1.15rem; }
@@ -202,14 +202,16 @@
 .contact-form .nw-select-trigger { grid-column: auto; justify-content: space-between; border-radius: .75rem; border-color: var(--nw-line); background: var(--nw-canvas); color: var(--nw-ink); font-weight: 400; padding: .7rem 1rem; }
 .contact-form .nw-select-trigger:hover { background: var(--nw-surface-alt); color: var(--nw-ink); border-color: var(--nw-blue); }
 
-/* Screen-sized chapters grow with their content instead of clipping it. */
+/* Heroes fill the opening viewport; subsequent sections follow their content.
+   Only the homepage journey uses pinned screen-sized panels. */
 @media screen {
-  :root { --nw-chapter-height: calc(100svh - var(--nw-header-height, 4.5rem)); }
+  .home-scroll-journey { --nw-chapter-height: calc(100svh - var(--nw-header-height, 4.5rem)); }
   .content-hero, .policy-hero { min-height: 100svh; display: grid; align-content: center; }
   .content-main { padding-block: 0; background: transparent; }
-  .content-section { min-height: var(--nw-chapter-height); align-content: center; border-bottom: 0; }
+  .content-section { min-height: 0; align-content: start; border-bottom: 0; }
   .content-section-heading { position: static; }
-  .nw-section, .nw-market-gateway, .nw-closing { min-height: var(--nw-chapter-height); display: grid; align-content: center; }
+  .nw-section, .nw-market-gateway, .nw-closing { min-height: 0; display: grid; align-content: start; }
+  .home-scroll-stage > :is(.nw-section, .nw-market-gateway) { min-height: var(--nw-chapter-height); align-content: center; }
   .nw-section > .nw-shell, .nw-closing > .nw-shell { min-width: 0; }
   .nw-market-gateway { padding-block: 3rem; }
   .nw-market-gateway .workspace-link { margin-top: 1.5rem; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--nw-line); border-radius: 1.25rem; background: var(--nw-glass-panel); }
@@ -217,7 +219,7 @@
   .nw-market-gateway .workspace-link p { margin: 0; font-size: 1.0625rem; line-height: 1.6; }
   .nw-market-gateway .nw-risk-strip { margin-top: 1.5rem; background: transparent; }
   .nw-market-gateway .nw-risk-strip .nw-shell { width: 100%; }
-  .policy-faq { width: calc(100% - 2 * var(--nw-page-gutter)); margin-inline: auto; padding-block: 3rem; min-height: var(--nw-chapter-height); display: flex; flex-direction: column; justify-content: center; }
+  .policy-faq { width: calc(100% - 2 * var(--nw-page-gutter)); margin-inline: auto; padding-block: 3rem; min-height: 0; display: flex; flex-direction: column; }
   .policy-faq h2 { font-size: clamp(2rem,3.2vw,3.25rem); line-height: 1.15; }
   .policy-faq .faq-item { border-top: 1px solid var(--nw-line); }
   .policy-faq summary { padding: 1.25rem 0; cursor: pointer; font-size: 1.125rem; }
@@ -233,19 +235,21 @@
   html[data-theme="dark"] :is(.content-section-heading h2,.content-section-body h3,.workspace-link h3,.policy-faq h2) { color: var(--nw-ink); }
   html[data-theme="dark"] .nw-hero h1 span { color: #a3daf9; }
 }
-@media screen and (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
-  html { scroll-snap-type: y mandatory; scroll-padding-top: var(--nw-header-height, 4.5rem); }
-  .nw-hero, .content-hero, .policy-hero, .nw-section, .nw-market-gateway, .nw-closing, .content-section, .policy-faq { scroll-snap-align: start; scroll-margin-top: 0; }
-  .nw-hero, .content-hero, .policy-hero { scroll-margin-top: calc(-1 * var(--nw-header-height, 4.5rem)); }
-}
 @media (max-width: 600px) {
-  .content-hero, .policy-hero { padding-top: 6rem; }
+  .content-hero, .policy-hero { padding-top: calc(var(--nw-header-height) + 1rem); }
   .nw-market-gateway .workspace-link { display: grid; gap: 1rem; }
   .nw-market-gateway .workspace-link .nw-button { justify-self: start; }
 }
 
 @media screen and (max-width: 600px) {
   .content-hero-shell { gap: 1rem; }
+  body .content-hero .content-hero-actions {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .625rem;
+  }
+  body .content-hero .content-hero-actions > a {
+    min-width: 0; min-height: 48px; padding: .625rem .65rem;
+    font-size: .875rem; line-height: 1.3; white-space: normal; text-align: center;
+  }
   .content-hero-copy > p { font-size: 1rem; line-height: 1.5; }
   .hero-summary { padding: 1rem; }
   .hero-summary-list > li { padding-block: .65rem; gap: .75rem; grid-template-columns: 2rem minmax(0, 1fr); }

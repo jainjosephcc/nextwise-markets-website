@@ -1,5 +1,5 @@
-/* Keep complete cards and steps together when a chapter needs another screen.
-   Original nodes are moved, never copied: form values, listeners and links survive. */
+/* Screen transitions belong only to the homepage market story.
+   All other content stays in its original, continuous document flow. */
 export function packScreenRows(heights, firstCapacity, nextCapacity, gap = 16) {
   const pages = [[]];
   let used = 0;
@@ -33,9 +33,12 @@ export function packScreenRows(heights, firstCapacity, nextCapacity, gap = 16) {
   return pages;
 }
 
-if (typeof document !== 'undefined') {
+const story = typeof document !== 'undefined'
+  && document.querySelector('[data-home-scroll] > .home-scroll-stage');
+
+if (story) {
   const collectionSelector = '.content-grid, .market-links, .platform-capabilities, .account-grid, .confidence-grid, .closing-steps, .account-roadmap, .process-list, .hero-summary-list, .instrument-list, .stat-list, .comparison-cards, .platform-access-gallery > .content-section-body';
-  const chapterSelector = '.content-hero, .nw-section:not(.nw-live-markets), .nw-market-gateway, .nw-closing, .content-section, .policy-faq';
+  const chapterSelector = ':scope > .nw-section:not(.nw-live-markets), :scope > .nw-market-gateway';
   const states = [];
   const viewport = document.createElement('div');
   viewport.className = 'screen-height-measure';
@@ -54,7 +57,6 @@ if (typeof document !== 'undefined') {
 
   function restore() {
     document.dispatchEvent(new CustomEvent('nw:screens-reset'));
-    document.querySelectorAll('[data-screen-group]').forEach(group => group.classList.remove('screens-combined'));
     for (const state of states.splice(0)) {
       for (const snapshot of state.snapshots.reverse()) snapshot.node.replaceChildren(...snapshot.children);
       state.section.classList.remove('screen-sequence', 'screen-form-section');
@@ -216,7 +218,7 @@ if (typeof document !== 'undefined') {
   }
 
   function fitMarketSection(budget) {
-    const section = document.querySelector('.nw-live-markets');
+    const section = story.querySelector(':scope > .nw-live-markets');
     const stage = section?.querySelector('.market-widget-stage');
     if (!stage || stage.getBoundingClientRect().height >= 300) return;
     const root = section.querySelector(':scope > .nw-shell');
@@ -235,23 +237,15 @@ if (typeof document !== 'undefined') {
     chartPage.body.append(widget);
   }
 
-  function fitScreenGroups(budget) {
-    document.querySelectorAll('[data-screen-group]').forEach(group => {
-      // Measure the complete composition at its readable size before combining.
-      // Smaller or shorter views keep the original complete-section pagination.
-      if (innerWidth <= 700) return;
-      group.classList.add('screens-combined');
-      if (group.getBoundingClientRect().height > budget + 1 || group.scrollWidth > group.clientWidth + 1) {
-        group.classList.remove('screens-combined');
-      }
-    });
-  }
-
   function layout() {
     if (busy || matchMedia('print').matches) return;
     busy = true;
     const active = document.activeElement;
-    const anchor = [...document.querySelectorAll('main h2, main h3, main .form-field')].find(node => {
+    let initialTarget;
+    if (!lastWidth && location.hash) {
+      try { initialTarget = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { /* Invalid fragments keep native scrolling. */ }
+    }
+    const anchor = [...story.querySelectorAll('h2, h3')].find(node => {
       const r = node.getBoundingClientRect();
       return r.top >= 90 && r.top < innerHeight / 2;
     });
@@ -260,20 +254,13 @@ if (typeof document !== 'undefined') {
     const height = viewport.getBoundingClientRect().height;
     const headerHeight = document.querySelector('.site-header,.content-header,.policy-header')?.getBoundingClientRect().height || 0;
     const budget = Math.max(240, height - headerHeight);
-    document.documentElement.style.setProperty('--nw-screen-height', `${budget}px`);
-    const gadgetRoom = fitHeroDevice(height);
-    if (innerWidth <= 600 && gadgetRoom < 220) splitShortHero(budget);
-    fitScreenGroups(budget);
-    document.querySelectorAll(chapterSelector).forEach(section => paginate(section, budget));
+    story.parentElement.style.setProperty('--nw-screen-height', `${budget}px`);
+    story.querySelectorAll(chapterSelector).forEach(section => paginate(section, budget));
     fitMarketSection(budget);
     if (active?.isConnected && active !== document.body) active.focus({ preventScroll: true });
-    // Reapply the initial fragment after moving content into responsive screens.
-    // Otherwise a direct enquiry link can stop at the section's old position.
-    if (!lastWidth && location.hash) {
-      const target = document.getElementById(location.hash.slice(1));
-      const group = target?.closest('[data-screen-group]');
-      const destination = group?.classList.contains('screens-combined') ? group : group ? target.closest('section') || group : target;
-      destination?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    // Story links are aligned before the transition controller reveals their panel.
+    if (initialTarget && story.contains(initialTarget)) {
+      initialTarget.scrollIntoView({ block: 'start', behavior: 'instant' });
     } else if (lastWidth && anchor?.isConnected && scrollY > height) {
       scrollBy(0, anchor.getBoundingClientRect().top - anchorTop);
     }
@@ -282,42 +269,11 @@ if (typeof document !== 'undefined') {
     document.documentElement.dataset.screensReady = 'true';
     busy = false;
     document.dispatchEvent(new CustomEvent('nw:screens-ready'));
-  }
-
-  function fitHeroDevice(height = viewport.getBoundingClientRect().height) {
-    const grid = document.querySelector('.nw-hero-grid');
-    const devices = grid?.querySelector('.hero-devices');
-    if (!devices) return;
-    const style = getComputedStyle(grid);
-    const stacked = style.gridTemplateColumns.split(' ').length === 1;
-    const copyHeight = stacked ? grid.querySelector('.nw-hero-copy').getBoundingClientRect().height + (parseFloat(style.rowGap) || 0) : 0;
-    const controls = devices.querySelector('.hero-device-controls');
-    const controlHeight = controls.getBoundingClientRect().height + parseFloat(getComputedStyle(controls).marginTop);
-    const space = height - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - copyHeight - controlHeight;
-    devices.style.setProperty('--hero-gadget-space', `${Math.max(100, space)}px`);
-    return space;
-  }
-
-  function splitShortHero(budget) {
-    const section = document.querySelector('.nw-hero');
-    const root = section.querySelector('.nw-hero-grid');
-    const heading = root.querySelector('.nw-hero-copy');
-    const devices = root.querySelector('.hero-devices');
-    const state = { section, heading, title: 'Explore live markets', snapshots: [] };
-    remember(state, section);
-    remember(state, root);
-    states.push(state);
-    const decorations = [...section.children].filter(node => node.matches('.nw-left-ribbon'));
-    section.classList.add('screen-sequence');
-    section.replaceChildren(...decorations);
-    makePage(state, true);
-    const devicePage = makePage(state);
-    devicePage.page.classList.add('screen-device-page');
-    devicePage.body.append(devices);
-    const style = getComputedStyle(devicePage.page);
-    const controls = devices.querySelector('.hero-device-controls');
-    const space = budget - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - devicePage.heading.getBoundingClientRect().height - parseFloat(style.rowGap) - controls.getBoundingClientRect().height - parseFloat(getComputedStyle(controls).marginTop);
-    devices.style.setProperty('--hero-gadget-space', `${Math.max(160, space)}px`);
+    // Pinning changes the story's total height. Restore a direct link below it
+    // only on initial load, after that height is final; normal scrolling stays free.
+    if (initialTarget && !story.contains(initialTarget)) {
+      initialTarget.scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
   }
 
   function schedule() {
@@ -329,9 +285,6 @@ if (typeof document !== 'undefined') {
     // Stable viewport units avoid repagination while mobile browser bars collapse.
     if (innerWidth !== lastWidth || Math.abs(viewport.getBoundingClientRect().height - lastHeight) > 2) schedule();
   });
-  document.addEventListener('toggle', event => {
-    if (event.target.matches('.faq-item')) schedule();
-  }, true);
   addEventListener('beforeprint', restore);
   addEventListener('afterprint', layout);
 }

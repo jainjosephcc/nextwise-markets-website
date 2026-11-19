@@ -55,7 +55,10 @@ iframe?.addEventListener("load", () => {
   window.clearTimeout(chartTimer);
   setChartState("ready");
 });
-document.querySelector("[data-chart-retry]")?.addEventListener("click", () => loadChart({ force: true }));
+// A reload remains available even if the cross-origin frame fires load on an error page.
+document.querySelectorAll("[data-chart-retry]").forEach(button => {
+  button.addEventListener("click", () => loadChart({ force: true }));
+});
 if (chart) {
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {

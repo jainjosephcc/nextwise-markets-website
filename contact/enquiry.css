@@ -31,7 +31,7 @@
 .content-section.enquiry-section {
   position: relative; isolation: isolate;
   display: flex; align-items: center; min-width: 0;
-  min-height: var(--nw-screen-height); margin: 0; padding: 0;
+  min-height: 0; margin: 0; padding: 0;
   border: 0; border-radius: 0;
   background: linear-gradient(120deg, #dceffc, #c5e6fa 58%, #a3daf9);
 }
@@ -100,12 +100,6 @@ html[data-theme="dark"] .content-section.enquiry-section { background: linear-gr
 html[data-theme="dark"] .enquiry-section .contact-form { --enquiry-panel: #ede2d9; --enquiry-panel-edge: #fff4e9; }
 html[data-theme="dark"] .enquiry-section .form-field :is(input, select, textarea),
 html[data-theme="dark"] .enquiry-section .contact-form .nw-select-trigger { background: #fff; color: #26292d; border-color: #99bad2; }
-@media (min-width: 1024px) and (max-height: 740px) {
-  .enquiry-shell { padding-block: 1rem 2rem; }
-  .enquiry-section .contact-form { padding: 1rem; gap: .625rem; }
-  .enquiry-fields { gap: .5rem 1rem; }
-  .enquiry-section .form-field textarea { min-height: 4rem; height: 4rem; }
-}
 @media (max-width: 1023px) {
   .enquiry-shell { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-block: 1.25rem 4.5rem; }
   .enquiry-section .enquiry-intro { display: flex; align-items: center; gap: 1rem; }
@@ -130,52 +124,11 @@ html[data-theme="dark"] .enquiry-section .contact-form .nw-select-trigger { back
   .enquiry-section .enquiry-actions button { padding-inline: 1rem; }
 }
 @media (max-width: 640px) and (max-height: 740px) {
-  .enquiry-shell { padding-block: .5rem; gap: .5rem; }
-  .enquiry-section .enquiry-intro { min-height: 44px; }
-  .enquiry-section .contact-form { padding: .75rem; gap: .5rem; }
-  .enquiry-section .enquiry-intro h2 { font-size: 1.6rem; }
-  .enquiry-art { width: 2rem; height: 2rem; }
-  .enquiry-section .contact-form-note { font-size: .875rem !important; line-height: 1.25; }
   /* Keep chat available beside the title instead of over the form actions. */
   body.enquiry-chat-at-heading #nextwise-live-chat { top: var(--enquiry-chat-top); bottom: auto; right: var(--nw-page-gutter); }
   body.enquiry-chat-at-heading #nextwise-live-chat button { width: 44px; min-height: 44px; padding: .5rem; }
   body.enquiry-chat-at-heading #nextwise-live-chat button span { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   body.enquiry-chat-at-heading #nextwise-live-chat .website-chat-notice { top: calc(100% + .75rem); bottom: auto; }
-}
-@media (max-width: 640px) and (max-height: 620px) {
-  .enquiry-shell { padding-block: .5rem; }
-  .enquiry-section .contact-form { padding: .5rem; }
-  .enquiry-fields { gap: .375rem .625rem; }
-  .enquiry-section .form-field label { font-size: .875rem; }
-  .enquiry-section .form-field label span { font-size: .75rem; }
-  .enquiry-group[data-enquiry-group="message"] > .form-field { grid-column: auto; }
-  .enquiry-section .form-field textarea { min-height: 4rem; height: 4rem; }
-  .enquiry-section .enquiry-actions button { padding-inline: .75rem; }
-  .enquiry-section .enquiry-draft-note { font-size: .8125rem !important; }
-  .enquiry-section .contact-form:has([aria-invalid="true"]) textarea { min-height: 44px; height: 44px; }
-}
-@media (min-width: 701px) and (max-height: 650px) {
-  .enquiry-shell { padding-block: 1rem; }
-  .enquiry-section .contact-form { padding: 1rem; gap: .625rem; }
-  .enquiry-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem .75rem; }
-  .enquiry-group[data-enquiry-group="message"] > .form-field:first-child { grid-column: span 1; }
-  .enquiry-group[data-enquiry-group="message"] > .form-field:last-child { grid-column: span 2; }
-  .enquiry-section .form-field textarea { height: 4rem; min-height: 4rem; }
-  .enquiry-art { height: 5rem; }
-}
-@media (min-width: 701px) and (max-height: 500px) {
-  .enquiry-shell { grid-template-columns: minmax(0, 1fr); padding-block: .25rem; gap: .5rem; }
-  .enquiry-section .enquiry-intro { display: flex; align-items: center; gap: .75rem; }
-  .enquiry-intro h2 { max-width: none; font-size: 1.5rem; }
-  .enquiry-art { width: 2rem; height: 2rem; margin: 0; }
-  .enquiry-aside-details { display: none; }
-  .enquiry-section .contact-form { padding: .5rem; gap: .5rem; }
-  .enquiry-fields { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .375rem .75rem; }
-  .enquiry-group[data-enquiry-group="message"] > .form-field:last-child { grid-column: span 1; }
-  .enquiry-section .form-field { gap: .125rem; }
-  .enquiry-section .form-field label { font-size: .875rem; line-height: 1.2; }
-  .enquiry-section .form-field label span { font-size: .8125rem; }
-  .enquiry-section .contact-form-note { font-size: .875rem !important; line-height: 1.25; }
 }
 @media print {
   .content-section.enquiry-section { display: block; min-height: 0; background: transparent; }

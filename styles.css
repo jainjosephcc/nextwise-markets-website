@@ -460,13 +460,13 @@ html[data-theme="dark"] .nw-hero #home-title span { color: #9cddff; }
 }
 .hero-device .chart-loading, .hero-device .chart-error { padding: .75rem; font-size: .875rem; }
 
-/* One complete first screen, with a shared top baseline for copy and device. */
+/* The hero grows naturally around its copy and device preview. */
 .nw-hero { padding: 0; }
 .nw-hero .nw-hero-grid {
   --nw-hero-offset: clamp(1.25rem, 3svh, 2rem);
-  box-sizing: border-box; min-height: 100svh; margin-bottom: 0;
-  padding-top: calc(clamp(10rem, 20svh, 13rem) + var(--nw-hero-offset));
-  padding-bottom: calc(5rem - var(--nw-hero-offset));
+  box-sizing: border-box; min-height: 0; margin-bottom: 0;
+  padding-top: calc(var(--nw-header-height, 5.5rem) + clamp(2rem, 5vw, 4rem));
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 .nw-hero .nw-hero-copy { padding-top: 1.5rem; }
 .nw-market-gateway { padding-block: 3rem; }

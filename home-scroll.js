@@ -11,12 +11,13 @@ export function settleScrollPosition(current, target, elapsed) {
   return current + (target - current) * weight;
 }
 
-export function chapterAt(position, offsets) {
+export function chapterAt(position, offsets, readingDistances = []) {
   if (!offsets.length) return { index: -1, progress: 0 };
   const index = Math.max(0, offsets.findLastIndex(offset => offset <= position));
   return {
     index,
-    progress: index < offsets.length - 1 ? transitionProgress(position, offsets[index], offsets[index + 1]) : 0,
+    progress: index < offsets.length - 1
+      ? transitionProgress(position, offsets[index] + (readingDistances[index] || 0), offsets[index + 1]) : 0,
   };
 }
 
@@ -37,6 +38,7 @@ if (journey) {
   let position = 0;
   let lastFrameTime = 0;
   let inTransition = false;
+  const clamp = (value, maximum) => Math.min(maximum, Math.max(0, value));
   const transitions = {
     'client-portal': 'overlay',
     platform: 'split',
@@ -46,7 +48,6 @@ if (journey) {
   };
   const headerHeight = () => document.querySelector('.site-header')?.getBoundingClientRect().height || 0;
   const screenHeight = () => document.querySelector('.screen-height-measure')?.getBoundingClientRect().height || innerHeight;
-  const chapterTop = item => origin + item.offset;
 
   function reset() {
     cancelAnimationFrame(animationFrame);
@@ -58,6 +59,7 @@ if (journey) {
         section: current.section,
         page: panels.filter(item => item.section === current.section).indexOf(current),
         panel: current.panel,
+        reading: clamp(position - current.offset, current.travel),
         content: current.panel.contains(document.activeElement) ? document.activeElement
           : current.panel.querySelector('.account-card, .confidence-card, .market-link, .platform-capabilities article'),
       };
@@ -67,6 +69,7 @@ if (journey) {
       splitStage?.remove();
       panel.classList.remove('home-scroll-panel', 'is-visible', 'is-transitioning');
       panel.style.removeProperty('--home-panel-order');
+      panel.style.removeProperty('--home-panel-height');
       panel.style.removeProperty('--home-panel-transform');
       panel.style.removeProperty('--home-panel-clip');
       panel.style.removeProperty('--home-split-shift');
@@ -78,13 +81,19 @@ if (journey) {
     inTransition = false;
   }
 
-  function reveal(item) {
+  function reveal(item, target, reading = 0) {
     if (item) {
       cancelAnimationFrame(animationFrame);
       animationFrame = 0;
       lastFrameTime = 0;
-      position = item.offset;
-      scrollTo({ top: chapterTop(item), behavior: 'instant' });
+      if (target && item.panel.contains(target)) {
+        const bounds = target.getBoundingClientRect();
+        const budget = layoutHeight - headerHeight();
+        const inset = Math.min(budget * .3, Math.max(0, budget - bounds.height));
+        reading = bounds.top - item.panel.getBoundingClientRect().top - inset;
+      }
+      position = item.offset + clamp(reading, item.travel);
+      scrollTo({ top: origin + position, behavior: 'instant' });
       paint();
     }
   }
@@ -97,6 +106,7 @@ if (journey) {
     const stage = document.createElement('div');
     stage.className = 'home-scroll-split';
     stage.setAttribute('aria-hidden', 'true');
+    stage.style.height = `${layoutHeight - headerHeight()}px`;
     stage.hidden = true;
     for (const side of ['left', 'right']) {
       const half = document.createElement('div');
@@ -109,6 +119,8 @@ if (journey) {
       copy.classList.add('home-scroll-split-copy');
       copy.inert = true;
       copy.style.removeProperty('--home-panel-order');
+      copy.style.height = `${previous.height}px`;
+      copy.style.transform = `translateY(-${previous.travel}px)`;
       delete copy.dataset.homeTransition;
       for (const element of [copy, ...copy.querySelectorAll('*')]) {
         element.removeAttribute('id');
@@ -128,19 +140,20 @@ if (journey) {
 
   function paint() {
     if (!panels.length) return;
-    const scene = chapterAt(position, panels.map(item => item.offset));
+    const scene = chapterAt(position, panels.map(item => item.offset), panels.map(item => item.travel));
     const next = scene.index + 1;
     const progress = scene.progress;
     inTransition = progress > 0 && progress < 1;
     for (let index = 0; index < panels.length; index += 1) {
       const item = panels[index];
+      const reading = clamp(position - item.offset, item.travel);
       const active = index === next && inTransition;
       const visible = (index === scene.index && progress < 1) || (index === next && progress > 0);
       item.panel.classList.toggle('is-visible', visible);
       item.panel.classList.toggle('is-transitioning', active);
       if (item.splitStage) item.splitStage.hidden = !active;
       if (!active) {
-        item.panel.style.removeProperty('--home-panel-transform');
+        item.panel.style.setProperty('--home-panel-transform', `translate3d(0, -${reading}px, 0)`);
         item.panel.style.removeProperty('--home-panel-clip');
         continue;
       }
@@ -148,22 +161,28 @@ if (journey) {
       let x = 0;
       let y = 0;
       let clip = 'none';
-      if (item.effect === 'overlay') y = remaining * 100;
+      const budget = layoutHeight - headerHeight();
+      if (item.effect === 'overlay') y = remaining * budget;
       if (item.effect === 'left') x = -100 * remaining;
       if (item.effect === 'right') x = 100 * remaining;
-      if (item.effect === 'centre') clip = `inset(${remaining * 50}% ${remaining * 50}% round ${remaining * 2}rem)`;
+      if (item.effect === 'centre') {
+        const inset = remaining * budget / 2;
+        clip = `inset(${inset}px ${remaining * 50}% ${item.height - budget + inset}px round ${remaining * 2}rem)`;
+      }
       if (item.effect === 'split') item.panel.style.setProperty('--home-split-shift', `${progress * 50}%`);
-      item.panel.style.setProperty('--home-panel-transform', `translate3d(${x}%, ${y}%, 0)`);
+      item.panel.style.setProperty('--home-panel-transform', `translate3d(${x}%, ${y - reading}px, 0)`);
       item.panel.style.setProperty('--home-panel-clip', clip);
     }
     const current = panels[progress > .5 ? next : scene.index];
-    currentPanel = scrollY >= origin - 2 && scrollY < origin + panels.at(-1).offset + layoutHeight ? current : null;
+    const last = panels.at(-1);
+    currentPanel = scrollY >= origin - 2 && scrollY < origin + last.offset + last.travel + layoutHeight ? current : null;
   }
 
   function renderTransitions(time) {
     animationFrame = 0;
     if (!journey.classList.contains('is-pinned') || innerWidth !== layoutWidth || Math.abs(screenHeight() - layoutHeight) > 2) return;
-    const end = panels.at(-1).offset;
+    const last = panels.at(-1);
+    const end = last.offset + last.travel;
     const target = Math.min(end, Math.max(0, scrollY - origin));
     // Page jumps and the story boundaries should land directly, not race
     // through intermediate screens or leave a partial panel at the footer.
@@ -189,7 +208,7 @@ if (journey) {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = document.getElementById(id);
-    if (target) reveal(findPanel(target));
+    if (target) reveal(findPanel(target), target);
   }
 
   function setup() {
@@ -211,8 +230,7 @@ if (journey) {
       }
     }
     const budget = screenHeight() - headerHeight();
-    if (!panels.length || panels.some(item => item.height > budget + 2)) {
-      // Enlarged text and oversized cards keep the complete normal-flow page.
+    if (!panels.length || budget <= 0) {
       panels = [];
       if (resume) {
         (resume.panel.isConnected ? resume.panel : resume.section).scrollIntoView({ block: 'start', behavior: 'instant' });
@@ -225,12 +243,19 @@ if (journey) {
     let offset = 0;
     for (let index = 0; index < panels.length; index += 1) {
       const item = panels[index];
-      if (index) offset += budget * (panels[index - 1].section === item.section ? 1.1 : 1.8);
+      // A tall chapter reads with the document's own scroll before the next
+      // transition. Keep every card together without clipping or shrinking it.
+      item.height = Math.max(budget, Math.ceil(item.height));
+      item.travel = Math.max(0, item.height - budget);
+      if (index) offset += panels[index - 1].travel
+        + budget * (panels[index - 1].section === item.section ? 1.1 : 1.8);
       item.offset = offset;
       item.panel.classList.add('home-scroll-panel');
       item.panel.style.setProperty('--home-panel-order', String(index + 1));
+      item.panel.style.setProperty('--home-panel-height', `${item.height}px`);
     }
-    journey.style.setProperty('--home-track-height', `${offset + budget * 1.25}px`);
+    const end = offset + panels.at(-1).travel;
+    journey.style.setProperty('--home-track-height', `${end + budget * 1.25}px`);
     journey.classList.add('is-pinned');
     origin = journey.getBoundingClientRect().top + scrollY - headerHeight();
     for (let index = 1; index < panels.length; index += 1) {
@@ -243,13 +268,13 @@ if (journey) {
     if (resume) {
       const sectionPanels = panels.filter(item => item.section === resume.section);
       reveal(sectionPanels.find(item => resume.content && item.panel.contains(resume.content))
-        || sectionPanels[Math.min(resume.page, sectionPanels.length - 1)]);
+        || sectionPanels[Math.min(resume.page, sectionPanels.length - 1)], null, resume.reading);
       resume = null;
     } else if (restoringHash) {
       restoringHash = false;
       revealHash();
     }
-    position = Math.min(offset, Math.max(0, scrollY - origin));
+    position = clamp(scrollY - origin, end);
     paint();
   }
 
@@ -274,7 +299,7 @@ if (journey) {
     if (!item) return;
     event.preventDefault();
     if (location.hash !== url.hash) history.pushState(null, '', url.hash);
-    reveal(item);
+    reveal(item, target);
     if (event.detail === 0) {
       const heading = item.panel.querySelector('h2') || item.panel;
       if (!heading.hasAttribute('tabindex')) {
@@ -288,7 +313,10 @@ if (journey) {
     if (pointerFocus) return;
     const item = findPanel(event.target);
     if (!item) return;
-    if (item !== currentPanel || inTransition) reveal(item);
+    const bounds = event.target.getBoundingClientRect();
+    if (item !== currentPanel || inTransition || bounds.top < headerHeight() || bounds.bottom > screenHeight()) {
+      reveal(item, event.target);
+    }
   });
   if (document.documentElement.dataset.screensReady === 'true') setup();
 }

@@ -39,6 +39,46 @@ test('unequal chapter distances select the correct adjacent screens, including d
   assert.deepEqual(chapterAt(0, []), { index: -1, progress: 0 });
 });
 
+test('a tall chapter remains fully active while its lower content scrolls into view', () => {
+  // The second chapter needs 600px of reading travel, then a 1000px transition.
+  const stops = [0, 1000, 2600];
+  const reading = [0, 600, 0];
+  for (const position of [1000, 1250, 1500, 1599, 1600, 1800]) {
+    assert.deepEqual(chapterAt(position, stops, reading), { index: 1, progress: 0 });
+  }
+  assert.ok(Math.abs(chapterAt(2150, stops, reading).progress - .5) < 1e-10);
+  assert.deepEqual(chapterAt(2520, stops, reading), { index: 1, progress: 1 });
+  assert.deepEqual(chapterAt(2600, stops, reading), { index: 2, progress: 0 });
+});
+
+test('reading travel and transitions retrace consistently when scrolling back or jumping chapters', () => {
+  const stops = [0, 1800, 2850, 4250];
+  const reading = [800, 50, 400, 500];
+  const positions = [-100, 0, 500, 800, 1350, 1799, 1800, 1825, 1850, 2400, 2850, 3100, 3250, 3800, 4250, 4750, 6000];
+  const forward = positions.map(position => chapterAt(position, stops, reading));
+  const backward = positions.toReversed().map(position => chapterAt(position, stops, reading));
+  assert.deepEqual(backward, forward.toReversed());
+  assert.ok(forward.every(({ progress }) => Number.isFinite(progress) && progress >= 0 && progress <= 1));
+  assert.deepEqual(chapterAt(3100, stops, reading), { index: 2, progress: 0 });
+  assert.deepEqual(chapterAt(1825, stops, reading), { index: 1, progress: 0 });
+  assert.ok(Math.abs(chapterAt(3800, stops, reading).progress - .5) < 1e-10);
+});
+
+test('the last tall chapter stays visible through its reading travel and the end of the story', () => {
+  for (const position of [2600, 2800, 3200, 4000]) {
+    assert.deepEqual(chapterAt(position, [0, 1000, 2600], [0, 600, 600]), { index: 2, progress: 0 });
+  }
+  assert.deepEqual(chapterAt(0, [], []), { index: -1, progress: 0 });
+});
+
+test('chapters without extra reading distance keep their existing transition timing', () => {
+  const stops = [0, 1000, 2000];
+  for (const position of [0, 200, 550, 950, 1000, 1550, 2000]) {
+    assert.deepEqual(chapterAt(position, stops, []), chapterAt(position, stops));
+    assert.deepEqual(chapterAt(position, stops, [0]), chapterAt(position, stops));
+  }
+});
+
 test('scroll smoothing has consistent timing across frame rates and never overshoots', () => {
   let at60 = 0, at120 = 0;
   for (let i = 0; i < 12; i += 1) at60 = settleScrollPosition(at60, 1000, 1000 / 60);
