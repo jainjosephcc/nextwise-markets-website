@@ -9,7 +9,7 @@ const socialImage = "https://imagedelivery.net/rOThsJwRI2L_FvAzE6eQ4A/3c30bab4-a
 const pages = {
   "index.html": {
     title: "Online Forex & CFD Trading | NEXTWISE MARKETS",
-    description: "Access forex, metals, energy, indices and selected crypto markets with NEXTWISE MARKETS through a connected MetaTrader5 trading experience.",
+    description: "Access forex, metals, energy, indices and selected crypto markets with NEXTWISE MARKETS through a connected MetaTrader 5 trading experience.",
     path: "/",
     type: "WebPage",
     breadcrumb: "Home",
@@ -29,8 +29,8 @@ const pages = {
     breadcrumb: "Account Types",
   },
   "trading-platform/index.html": {
-    title: "MetaTrader5 Trading Platform | NEXTWISE MARKETS",
-    description: "Explore MetaTrader5 at NEXTWISE MARKETS, with multi-device access, advanced charts, market analysis tools and order management for global markets.",
+    title: "MetaTrader 5 Trading Platform | NEXTWISE MARKETS",
+    description: "Explore MetaTrader 5 at NEXTWISE MARKETS, with multi-device access, advanced charts, market analysis tools and order management for global markets.",
     path: "/trading-platform/",
     type: "WebPage",
     breadcrumb: "Trading Platform",
@@ -51,28 +51,28 @@ const pages = {
   },
   "forex/index.html": {
     title: "Forex Trading | Currency Pairs | NEXTWISE MARKETS",
-    description: "Explore forex trading at NEXTWISE MARKETS, including major and minor currency pairs, live market charts and MetaTrader5 access.",
+    description: "Explore forex trading at NEXTWISE MARKETS, including major and minor currency pairs, live market charts and MetaTrader 5 access.",
     path: "/forex/",
     type: "WebPage",
     breadcrumb: "Forex",
   },
   "crypto/index.html": {
     title: "Cryptocurrency Trading | NEXTWISE MARKETS",
-    description: "Explore selected cryptocurrency markets at NEXTWISE MARKETS with market charts, multi-device access and MetaTrader5 trading tools.",
+    description: "Explore selected cryptocurrency markets at NEXTWISE MARKETS with market charts, multi-device access and MetaTrader 5 trading tools.",
     path: "/crypto/",
     type: "WebPage",
     breadcrumb: "Crypto",
   },
   "metals-energy/index.html": {
     title: "Metals & Energy Trading | NEXTWISE MARKETS",
-    description: "Explore gold, silver and energy markets at NEXTWISE MARKETS with clear pricing, market charts and MetaTrader5 trading access.",
+    description: "Explore gold, silver and energy markets at NEXTWISE MARKETS with clear pricing, market charts and MetaTrader 5 trading access.",
     path: "/metals-energy/",
     type: "WebPage",
     breadcrumb: "Metals & Energy",
   },
   "indices/index.html": {
     title: "Indices Trading | Global Markets | NEXTWISE MARKETS",
-    description: "Explore major global stock indices at NEXTWISE MARKETS, including S&P 500, NASDAQ and FTSE 100, with charts and MetaTrader5 access.",
+    description: "Explore major global stock indices at NEXTWISE MARKETS, including S&P 500, NASDAQ and FTSE 100, with charts and MetaTrader 5 access.",
     path: "/indices/",
     type: "WebPage",
     breadcrumb: "Indices",
@@ -174,7 +174,7 @@ const organization = {
 
 const homeFaq = [
   ["What can I trade with NEXTWISE MARKETS?", "NEXTWISE MARKETS is designed to provide access across major asset classes, including forex, metals, indices, energy and selected digital assets. Availability can vary by account and region."],
-  ["Which platform does NEXTWISE MARKETS support?", "The account options shown on this page use MetaTrader5. Final platform access and account conditions are confirmed during onboarding."],
+  ["Which platform does NEXTWISE MARKETS support?", "The account options shown on this page use MetaTrader 5. Final platform access and account conditions are confirmed during onboarding."],
   ["How do I choose an account type?", "Compare starting balance, trading style, leverage and commission preferences. If you are unsure, speak with the team before funding an account."],
   ["Is the chart in the mobile preview live?", "The chart uses TradingView market data for exploration. Data may be delayed and the preview does not place trades or provide investment advice."],
 ];
@@ -226,7 +226,24 @@ function schemaForPage(page) {
     });
   } else {
     if (page.path === "/contact/") graph.push(organization);
-
+    graph.push({
+      "@type": "BreadcrumbList",
+      "@id": `${canonical}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "NEXTWISE MARKETS",
+          item: `${siteUrl}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: page.breadcrumb,
+          item: canonical,
+        },
+      ],
+    });
   }
 
   return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2).replaceAll("<", "\\u003c");
@@ -280,7 +297,7 @@ for (const [relativePath, page] of Object.entries(pages)) {
   if (!html.includes('href="/analytics.css')) {
     html = html.replace(
       /(    <link rel="stylesheet")/,
-      '    <link rel="stylesheet" href="/analytics.css?v=4" />\n    <script src="/analytics.js?v=2" defer></script>\n$1',
+      '    <link rel="stylesheet" href="/analytics.css?v=1" />\n    <script src="/analytics.js?v=1" defer></script>\n$1',
     );
   }
 

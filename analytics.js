@@ -4,10 +4,8 @@
   const measurementId = "G-8H0V825E7C";
   const storageKey = "nextwise-analytics-consent";
   const isProduction = /(^|\.)nextwisemarkets\.com$/i.test(window.location.hostname);
-  const disableAnalyticsKey = `ga-disable-${measurementId}`;
   let tagLoaded = false;
 
-  window[disableAnalyticsKey] = true;
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag() {
     window.dataLayer.push(arguments);
@@ -55,8 +53,6 @@
 
   function applyConsent(value) {
     const accepted = value === "accepted";
-    // Also stops an already-loaded tag if consent is later withdrawn.
-    window[disableAnalyticsKey] = !accepted || !isProduction;
     window.gtag("consent", "update", {
       analytics_storage: accepted ? "granted" : "denied",
       ad_storage: "denied",
@@ -64,28 +60,16 @@
       ad_personalization: "denied",
     });
     if (accepted) loadAnalytics();
-    else clearAnalyticsCookies();
   }
 
-  function clearAnalyticsCookies() {
-    try {
-      const names = document.cookie.split(";")
-        .map(cookie => cookie.trim().split("=")[0])
-        .filter(name => /^(_ga($|_)|_gid$|_gat($|_))/.test(name));
-      const domains = [""];
-      const parts = window.location.hostname.split(".");
-      while (parts.length > 1) {
-        domains.push(`; Domain=${parts.join(".")}`);
-        parts.shift();
-      }
-      for (const name of new Set(names)) {
-        for (const domain of domains) {
-          document.cookie = `${name}=; Max-Age=0; Path=/${domain}; SameSite=Lax`;
-        }
-      }
-    } catch {
-      // Blocking cookie access does not prevent rejecting analytics.
-    }
+  function createPreferencesButton(openPreferences) {
+    const button = document.createElement("button");
+    button.className = "cookie-preferences";
+    button.type = "button";
+    button.textContent = "Cookie preferences";
+    button.addEventListener("click", openPreferences);
+    document.body.appendChild(button);
+    return button;
   }
 
   function createBanner() {
@@ -94,11 +78,10 @@
     banner.setAttribute("role", "dialog");
     banner.setAttribute("aria-modal", "false");
     banner.setAttribute("aria-labelledby", "cookie-banner-title");
-    banner.setAttribute("aria-describedby", "cookie-banner-description");
     banner.innerHTML = `
       <div class="cookie-banner-copy">
-        <h2 id="cookie-banner-title">Your cookie choice</h2>
-        <p id="cookie-banner-description">Allow optional analytics cookies to help us improve the website. Analytics stays off unless you accept. We’ll remember your choice. <a href="/privacy-policy/#website-analytics-and-cookies">Privacy details</a></p>
+        <h2 id="cookie-banner-title">Analytics preferences</h2>
+        <p>We use Google Analytics to understand how visitors use this website. Analytics is disabled unless you accept. <a href="/privacy-policy/#website-analytics-and-cookies">Privacy details</a></p>
       </div>
       <div class="cookie-banner-actions">
         <button type="button" data-cookie-choice="rejected">Reject analytics</button>
@@ -110,53 +93,39 @@
 
   function initialiseConsentUi() {
     let banner;
-    let returnFocus;
+    let preferencesButton;
 
-    const openPreferences = (trigger) => {
+    const openPreferences = () => {
       if (!banner) banner = createBanner();
       banner.hidden = false;
-      if (trigger) {
-        returnFocus = trigger;
-        banner.querySelector("[data-cookie-choice='rejected']").focus();
-      }
+      preferencesButton.hidden = true;
+      banner.querySelector("[data-cookie-choice='accepted']").focus();
     };
 
     const closePreferences = () => {
-      const hadFocus = banner?.contains(document.activeElement);
-      if (hadFocus) document.activeElement.blur();
       if (banner) banner.hidden = true;
-      if (hadFocus && returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
-      returnFocus = null;
+      preferencesButton.hidden = false;
     };
 
+    preferencesButton = createPreferencesButton(openPreferences);
     document.addEventListener("click", (event) => {
-      const settingsButton = event.target.closest("[data-cookie-settings]");
-      if (settingsButton) {
-        openPreferences(settingsButton);
-        return;
-      }
       const choiceButton = event.target.closest("[data-cookie-choice]");
       if (!choiceButton || !banner?.contains(choiceButton)) return;
       const choice = choiceButton.dataset.cookieChoice;
-      if (choice !== "accepted" && choice !== "rejected") return;
       storeConsent(choice);
       applyConsent(choice);
       closePreferences();
     });
 
-    window.addEventListener("storage", (event) => {
-      if (event.key !== storageKey) return;
-      applyConsent(event.newValue);
-      if (event.newValue === "accepted" || event.newValue === "rejected") closePreferences();
-    });
-
     const savedConsent = readConsent();
-    applyConsent(savedConsent);
+
     if (savedConsent === "accepted" || savedConsent === "rejected") {
+      applyConsent(savedConsent);
       return;
     }
 
-    openPreferences();
+    preferencesButton.hidden = true;
+    banner = createBanner();
   }
 
   if (document.readyState === "loading") {

@@ -1,6 +1,0 @@
-<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="417.56" height="260.5" viewBox="0 0 417.56 260.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="stroke0_0_6" fill="white">
-<path d="M417.56 130.25C417.56 202.185 324.086 260.5 208.78 260.5C93.474 260.5 0 202.185 0 130.25C0 58.3149 93.474 0 208.78 0C324.086 0 417.56 58.3149 417.56 130.25Z"/>
-</mask>
-<ellipse id="Orbital contour" opacity="0.22" cx="208.78" cy="130.25" rx="208.78" ry="130.25" stroke-width="2" stroke="#A9C8E7" mask="url(#stroke0_0_6)"/>
-</svg>

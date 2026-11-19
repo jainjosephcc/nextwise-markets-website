@@ -13,11 +13,10 @@ const officialSocialProfiles = [
 ];
 
 const entries = await readdir(targetDirectory, { withFileTypes: true });
-const sitemap = await readFile(join(targetDirectory, "sitemap.xml"), "utf8");
-const publishedRoutes = new Set([...sitemap.matchAll(/<loc>https:\/\/nextwisemarkets\.com\/([^/<]+)\/<\/loc>/g)].map((match) => match[1]));
 const pageFiles = ["index.html"];
+const excludedDirectories = new Set(["assets", "dist", "node_modules", "reference", "scripts"]);
 for (const entry of entries) {
-  if (!entry.isDirectory() || !publishedRoutes.has(entry.name)) continue;
+  if (!entry.isDirectory() || entry.name.startsWith(".") || excludedDirectories.has(entry.name)) continue;
   const files = await readdir(join(targetDirectory, entry.name));
   if (files.includes("index.html")) pageFiles.push(`${entry.name}/index.html`);
 }
@@ -61,7 +60,7 @@ for (const relativePath of pageFiles) {
   if (!html.includes(`property="og:url" content="${canonical}"`)) failures.push(`${relativePath}: Open Graph URL does not match canonical`);
   if (!html.includes('name="twitter:card" content="summary_large_image"')) failures.push(`${relativePath}: missing large X/Twitter card`);
   if (!/href="\/analytics\.css\?v=\d+"/.test(html)) failures.push(`${relativePath}: missing analytics consent styles`);
-  if (!/src="\/analytics\.js\?v=\d+"/.test(html)) failures.push(`${relativePath}: missing consent-aware analytics loader`);
+  if (!html.includes('src="/analytics.js?v=1"')) failures.push(`${relativePath}: missing consent-aware analytics loader`);
   if (imageTags.some((tag) => !/\balt="[^"]*"/.test(tag))) failures.push(`${relativePath}: image without alt attribute`);
   if (schemaBlocks.length !== 1) failures.push(`${relativePath}: expected one JSON-LD block, found ${schemaBlocks.length}`);
   for (const [, json] of schemaBlocks) {
@@ -81,6 +80,7 @@ for (const relativePath of pageFiles) {
   }
 }
 
+const sitemap = await readFile(join(targetDirectory, "sitemap.xml"), "utf8");
 const sitemapUrls = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
 for (const canonical of canonicals) {
   if (!sitemapUrls.has(canonical)) failures.push(`sitemap.xml: missing ${canonical}`);

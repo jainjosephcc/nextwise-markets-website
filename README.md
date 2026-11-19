@@ -1,8 +1,6 @@
 # NEXTWISE MARKETS Website
 
-This repository contains all 18 responsive NEXTWISE MARKETS public pages: the homepage, account comparison, platform and market pages, company information, contact, and full legal documents.
-
-The website follows the current Nextwise client portal brand: Boing Regular and Bold, a white/blue canvas, orange outline controls and Lucide icons. `horizon.css` owns shared tokens and typography; `site-header.css` keeps navigation geometry consistent across all page families. The theme switch uses the portal’s sliding orange thumb and accessible switch semantics. `theme.js` defaults to light and remembers an explicit choice. Hero panels use meaningful HTML content with real links, without generated imagery, tilted mockups, serif headlines or decorative section captions. The original portal silk ribbons, boxed MetaTrader 5 mark, fonts and matching light/dark Paperbot icons are copied unchanged from the client portal. `brand-material.css` adds glazed surfaces, ribbon placement and a lighter optical Boing heading treatment. `site-footer.css` provides the shared all-page directory and social icons. `account-journey.css` styles the complete account-opening and platform-connection roadmaps. Earlier concept artwork remains under `assets/` for reference.
+This repository contains the responsive NEXTWISE MARKETS landing page, including its interactive market experience, scroll-led feature sequences, account comparison, live TradingView market board, and complete company footer.
 
 The site is designed as a static website and can be published directly through GitHub Pages.
 
@@ -13,8 +11,6 @@ npm start
 ```
 
 Open `http://127.0.0.1:4174`.
-
-For a page-by-page review, open `http://127.0.0.1:4174/review-local/`. The picker includes all 18 pages, desktop and phone previews, and direct page links. This local review tool is excluded from the production build.
 
 ## Validate JavaScript
 
@@ -30,7 +26,7 @@ npm run build
 
 The production-ready static site is written to `dist/`. For a Cloudflare Git deployment, use `npm run build` as the build command and `dist` as the build output directory.
 
-The homepage chart and market board use TradingView's public embeds and therefore need an internet connection. They are read-only market previews and may use delayed data. The hero’s account and platform shortcuts use semantic HTML and native icons, separate from these live previews. They contain no real client account information.
+The hero chart and market board use TradingView's public embeds and therefore need an internet connection. They are read-only market previews and may use delayed data.
 
 ## Website live chat
 

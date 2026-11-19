@@ -25,9 +25,6 @@ document.addEventListener("pointerdown", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && primaryNav?.classList.contains("open")) closeMenu({ restoreFocus: true });
 });
-window.matchMedia("(min-width: 1161px)").addEventListener("change", (event) => {
-  if (event.matches) closeMenu();
-});
 
 document.querySelectorAll("[data-current-year]").forEach((node) => {
   node.textContent = String(new Date().getFullYear());
@@ -37,7 +34,7 @@ const countrySelect = document.querySelector("#country");
 if (countrySelect?.options?.length) {
   countrySelect.options[0].value = "";
   countrySelect.options[0].disabled = true;
-  countrySelect.options[0].textContent = "Select";
+  countrySelect.options[0].textContent = "Choose a country";
 }
 
 const footerBrand = document.querySelector(".content-footer-brand");
@@ -46,9 +43,9 @@ if (footerBrand && !footerBrand.querySelector(".content-social-links")) {
   socialNav.className = "content-social-links";
   socialNav.setAttribute("aria-label", "Follow NEXTWISE MARKETS");
   [
+    ["LinkedIn", "https://www.linkedin.com/company/nextwise-markets/about/"],
     ["Facebook", "https://www.facebook.com/nextwise.markets"],
     ["Instagram", "https://www.instagram.com/nextwise.markets/"],
-    ["LinkedIn", "https://www.linkedin.com/company/nextwise-markets/about/"],
     ["YouTube", "https://www.youtube.com/@nextwise.markets"],
   ].forEach(([label, url]) => {
     const link = document.createElement("a");

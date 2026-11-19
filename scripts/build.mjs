@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, readdir, rm } from "node:fs/promises";
+import { cp, mkdir, readdir, rm } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,13 +15,6 @@ const publicFiles = [
   "analytics.css",
   "analytics.js",
   "app.js",
-  "theme.js",
-  "horizon.css",
-  "brand-material.css",
-  "crm-finish.css",
-  "hero-visuals.css",
-  "site-footer.css",
-  "account-journey.css",
   "content.css",
   "content.js",
   "favicon.ico",
@@ -35,18 +28,7 @@ const publicFiles = [
   "site.webmanifest",
   "sitemap.xml",
   "styles.css",
-  "home-refinement.css",
-  "home-scroll.css",
-  "home-scroll.js",
-  "illustrations.css",
-  "responsive-art.css",
-  "section-art-layout.css",
-  "site-refinement.css",
-  "site-interactions.js",
-  "screen-layout.css",
-  "screen-layout.js",
   "site-header.css",
-  "glacier.css",
 ];
 
 const publicAssets = [
@@ -103,26 +85,9 @@ for (const asset of publicAssets) {
   await cp(join(projectDirectory, "assets", asset), destination);
 }
 
-await cp(join(projectDirectory, "assets", "glacier"), join(outputDirectory, "assets", "glacier"), { recursive: true });
-await cp(join(projectDirectory, "assets", "horizon"), join(outputDirectory, "assets", "horizon"), { recursive: true });
-await cp(join(projectDirectory, "assets", "portal-signature"), join(outputDirectory, "assets", "portal-signature"), { recursive: true });
-await cp(join(projectDirectory, "assets", "fonts"), join(outputDirectory, "assets", "fonts"), { recursive: true });
-await cp(join(projectDirectory, "assets", "illustrations"), join(outputDirectory, "assets", "illustrations"), { recursive: true });
-await cp(join(projectDirectory, "assets", "product"), join(outputDirectory, "assets", "product"), { recursive: true });
-await cp(join(projectDirectory, "assets", "hero-art"), join(outputDirectory, "assets", "hero-art"), {
-  recursive: true,
-  filter: (source) => !/\.(?:json|md)$/i.test(source),
-});
-await cp(join(projectDirectory, "assets", "optimized"), join(outputDirectory, "assets", "optimized"), {
-  recursive: true,
-  filter: (source) => !/\.(?:json|md)$/i.test(source),
-});
-
-const sitemap = await readFile(join(projectDirectory, "sitemap.xml"), "utf8");
-const publishedRoutes = new Set([...sitemap.matchAll(/<loc>https:\/\/nextwisemarkets\.com\/([^/<]+)\/<\/loc>/g)].map((match) => match[1]));
 const entries = await readdir(projectDirectory, { withFileTypes: true });
 const routeDirectories = entries
-  .filter((entry) => entry.isDirectory() && publishedRoutes.has(entry.name))
+  .filter((entry) => entry.isDirectory() && !entry.name.startsWith(".") && !["assets", "dist", "node_modules", "reference", "scripts"].includes(entry.name))
   .map((entry) => entry.name)
   .sort();
 
